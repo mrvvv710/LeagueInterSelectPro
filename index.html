@@ -234,6 +234,47 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .fc{font-size:.72rem;color:var(--dim);}
 
 @media(max-width:600px){.evb{flex-direction:column;}.ag{grid-template-columns:1fr;}.hl{width:155px;height:155px;}}
+
+/* NAV DROPDOWN */
+.nav-item{position:relative;display:inline-flex;align-items:center;}
+.dropdown{display:none;position:absolute;top:100%;left:0;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:.5rem;min-width:170px;flex-direction:column;box-shadow:0 10px 30px rgba(0,0,0,.4);z-index:50;margin-top:.3rem;}
+.nav-item:hover .dropdown{display:flex;}
+.dropdown a{padding:.5rem .7rem!important;border-radius:4px;}
+.dropdown a:hover{background:rgba(201,149,106,.1);}
+.nav-login{border:1px solid var(--gold)!important;border-radius:4px!important;color:var(--gold)!important;margin-left:.3rem;}
+.nav-login:hover{background:rgba(201,149,106,.12);}
+.mm-sub{padding-left:1.2rem!important;font-size:.7rem!important;opacity:.8;}
+
+/* SPORT CARD HOME (square outline placeholder) */
+.hsports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1.1rem;max-width:900px;margin:0 auto 2rem;}
+.hsport-card{display:flex;flex-direction:column;align-items:center;gap:.6rem;cursor:pointer;transition:transform .25s;}
+.hsport-card:hover{transform:translateY(-5px);}
+.hsport-imgbox{width:100%;aspect-ratio:1;border:2px dashed var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;background:rgba(201,149,106,.04);transition:border-color .25s,background .25s;}
+.hsport-card:hover .hsport-imgbox{border-color:var(--gold);background:rgba(201,149,106,.09);}
+.hsport-label{font-family:'Cinzel',serif;font-size:.92rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);text-align:center;}
+
+/* STAFF (Managers/Coaches) */
+.staff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.4rem;}
+.staff-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.2rem;text-align:center;transition:border-color .25s,transform .25s;}
+.staff-card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.staff-photo{width:88px;height:88px;border-radius:50%;border:2px dashed var(--border);margin:0 auto .9rem;display:flex;align-items:center;justify-content:center;font-size:1.8rem;background:rgba(201,149,106,.05);}
+.staff-name{font-family:'Cinzel',serif;font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:.2rem;}
+.staff-role{font-size:.72rem;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.6rem;}
+.staff-contact{font-size:.75rem;color:var(--dim);line-height:1.6;}
+
+/* HOME SECTIONS */
+.home-sec{max-width:1300px;margin:0 auto;padding:3rem 2rem;}
+.home-sec-alt{background:var(--bg2);}
+.hs-header{margin-bottom:2rem;}
+.hs-link{display:inline-block;margin-top:1.2rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;cursor:pointer;border-bottom:1px solid var(--gold);padding-bottom:.15rem;transition:opacity .2s;}
+.hs-link:hover{opacity:.7;}
+
+/* LOGIN PAGE */
+.login-box{max-width:400px;margin:3rem auto;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:2.5rem;text-align:center;}
+.login-icon{font-size:2.5rem;margin-bottom:1rem;}
+.login-title{font-family:'Cinzel',serif;font-size:1.2rem;font-weight:700;color:var(--gold2);margin-bottom:.5rem;}
+.login-sub{font-size:.82rem;color:var(--dim);margin-bottom:1.5rem;line-height:1.6;}
+
 </style>
 </head>
 <body>
@@ -266,17 +307,24 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     </div>
     <nav id="mainNav">
       <a onclick="showPage('home')" data-ru="Главная" data-en="Home">Главная</a>
+      <a onclick="showPage('league')" data-ru="Лига" data-en="League">Лига</a>
       <a onclick="showPage('academy')" data-ru="Академия" data-en="Academy">Академия</a>
-      <a onclick="showPage('teams')" data-ru="Команды" data-en="Teams">Команды</a>
+      <a onclick="showPage('legends')" data-ru="Вызов Легенд" data-en="Legends Challenge">Вызов Легенд</a>
+      <div class="nav-item">
+        <a onclick="showPage('events')" data-ru="Ивенты" data-en="Events">Ивенты ▾</a>
+        <div class="dropdown">
+          <a onclick="showPage('standings')" data-ru="Таблица" data-en="Standings">Таблица</a>
+          <a onclick="showPage('teams')" data-ru="Команды" data-en="Teams">Команды</a>
+          <a onclick="showPage('players')" data-ru="Игроки" data-en="Players">Игроки</a>
+          <a onclick="showPage('documents')" data-ru="Документы" data-en="Documents">Документы</a>
+          <a onclick="showPage('merch')" data-ru="Атрибутика" data-en="Merchandise">Атрибутика</a>
+        </div>
+      </div>
       <a onclick="showPage('news')" data-ru="Новости" data-en="News">Новости</a>
-      <a onclick="showPage('events')" data-ru="Ивенты" data-en="Events">Ивенты</a>
-      <a onclick="showPage('standings')" data-ru="Таблица" data-en="Standings">Таблица</a>
-      <a onclick="showPage('players')" data-ru="Игроки" data-en="Players">Игроки</a>
-      <a onclick="showPage('documents')" data-ru="Документы" data-en="Documents">Документы</a>
       <a onclick="showPage('gallery')" data-ru="Галерея" data-en="Gallery">Галерея</a>
       <a onclick="showPage('contacts')" data-ru="Контакты" data-en="Contacts">Контакты</a>
       <a onclick="showPage('sponsors')" data-ru="Спонсоры" data-en="Sponsors">Спонсоры</a>
-      <a onclick="showPage('about')" data-ru="О нас" data-en="About">О нас</a>
+      <a onclick="showPage('account')" class="nav-login" data-ru="Войти" data-en="Login">Войти</a>
     </nav>
     <div class="hc">
       <div class="lsw">
@@ -290,17 +338,20 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
   </div>
   <div class="mm" id="mobileMenu">
     <a onclick="showPage('home');toggleMenu()" data-ru="Главная" data-en="Home">Главная</a>
+    <a onclick="showPage('league');toggleMenu()" data-ru="Лига" data-en="League">Лига</a>
     <a onclick="showPage('academy');toggleMenu()" data-ru="Академия" data-en="Academy">Академия</a>
-    <a onclick="showPage('teams');toggleMenu()" data-ru="Команды" data-en="Teams">Команды</a>
-    <a onclick="showPage('news');toggleMenu()" data-ru="Новости" data-en="News">Новости</a>
+    <a onclick="showPage('legends');toggleMenu()" data-ru="Вызов Легенд" data-en="Legends Challenge">Вызов Легенд</a>
     <a onclick="showPage('events');toggleMenu()" data-ru="Ивенты" data-en="Events">Ивенты</a>
-    <a onclick="showPage('standings');toggleMenu()" data-ru="Таблица" data-en="Standings">Таблица</a>
-    <a onclick="showPage('players');toggleMenu()" data-ru="Игроки" data-en="Players">Игроки</a>
-    <a onclick="showPage('documents');toggleMenu()" data-ru="Документы" data-en="Documents">Документы</a>
+    <a onclick="showPage('standings');toggleMenu()" class="mm-sub" data-ru="— Таблица" data-en="— Standings">— Таблица</a>
+    <a onclick="showPage('teams');toggleMenu()" class="mm-sub" data-ru="— Команды" data-en="— Teams">— Команды</a>
+    <a onclick="showPage('players');toggleMenu()" class="mm-sub" data-ru="— Игроки" data-en="— Players">— Игроки</a>
+    <a onclick="showPage('documents');toggleMenu()" class="mm-sub" data-ru="— Документы" data-en="— Documents">— Документы</a>
+    <a onclick="showPage('merch');toggleMenu()" class="mm-sub" data-ru="— Атрибутика" data-en="— Merchandise">— Атрибутика</a>
+    <a onclick="showPage('news');toggleMenu()" data-ru="Новости" data-en="News">Новости</a>
     <a onclick="showPage('gallery');toggleMenu()" data-ru="Галерея" data-en="Gallery">Галерея</a>
     <a onclick="showPage('contacts');toggleMenu()" data-ru="Контакты" data-en="Contacts">Контакты</a>
     <a onclick="showPage('sponsors');toggleMenu()" data-ru="Спонсоры" data-en="Sponsors">Спонсоры</a>
-    <a onclick="showPage('about');toggleMenu()" data-ru="О нас" data-en="About">О нас</a>
+    <a onclick="showPage('account');toggleMenu()" data-ru="Войти" data-en="Login">Войти</a>
   </div>
 </header>
 
@@ -314,13 +365,13 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
       <div class="htitle">INTER SELECT PRO</div>
       <div class="hsub" data-ru="Международная образовательная и спортивная сеть" data-en="International Educational &amp; Sports Network">Международная образовательная и спортивная сеть</div>
       <div class="hdiv"></div>
-      <div class="hpills">
-        <span class="pill" onclick="showSportPage('hockey')" data-ru="🏒 Хоккей" data-en="🏒 Hockey">🏒 Хоккей</span>
-        <span class="pill" onclick="showSportPage('football')" data-ru="⚽ Футбол" data-en="⚽ Football">⚽ Футбол</span>
-        <span class="pill" onclick="showSportPage('basketball')" data-ru="🏀 Баскетбол" data-en="🏀 Basketball">🏀 Баскетбол</span>
-        <span class="pill" onclick="showSportPage('waterpolo')" data-ru="🤽 Водное поло" data-en="🤽 Water Polo">🤽 Водное поло</span>
-        <span class="pill" onclick="showSportPage('figure')" data-ru="⛸️ Фигурное катание" data-en="⛸️ Figure Skating">⛸️ Фигурное катание</span>
-        <span class="pill" onclick="showSportPage('golf')" data-ru="⛳ Гольф" data-en="⛳ Golf">⛳ Гольф</span>
+      <div class="hsports-grid">
+        <div class="hsport-card" onclick="showSportPage('hockey')"><div class="hsport-imgbox">🏒</div><div class="hsport-label" data-ru="Хоккей" data-en="Hockey">Хоккей</div></div>
+        <div class="hsport-card" onclick="showSportPage('football')"><div class="hsport-imgbox">⚽</div><div class="hsport-label" data-ru="Футбол" data-en="Football">Футбол</div></div>
+        <div class="hsport-card" onclick="showSportPage('basketball')"><div class="hsport-imgbox">🏀</div><div class="hsport-label" data-ru="Баскетбол" data-en="Basketball">Баскетбол</div></div>
+        <div class="hsport-card" onclick="showSportPage('waterpolo')"><div class="hsport-imgbox">🤽</div><div class="hsport-label" data-ru="Водное поло" data-en="Water Polo">Водное поло</div></div>
+        <div class="hsport-card" onclick="showSportPage('figure')"><div class="hsport-imgbox">⛸️</div><div class="hsport-label" data-ru="Фигурное катание" data-en="Figure Skating">Фигурное катание</div></div>
+        <div class="hsport-card" onclick="showSportPage('golf')"><div class="hsport-imgbox">⛳</div><div class="hsport-label" data-ru="Гольф" data-en="Golf">Гольф</div></div>
       </div>
       <div class="hbtns">
         <button class="bgold" onclick="showPage('events')" data-ru="Ивенты" data-en="Events">Ивенты</button>
@@ -329,7 +380,48 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     </div>
   </section>
   <div class="gd"></div>
-  <div style="max-width:1300px;margin:0 auto;padding:2.5rem 2rem 0;">
+
+  <!-- НОВОСТИ (preview) -->
+  <div class="home-sec">
+    <div class="hs-header">
+      <div class="sec-label" data-ru="Последние события" data-en="Latest Events">Последние события</div>
+      <div class="sec-title" data-ru="Новости" data-en="News">Новости</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="ng">
+      <div class="nc" onclick="showPage('news')"><div class="ni">📰</div><div class="nb"><div class="nm">— · —</div><div class="nh" data-ru="Новость скоро появится" data-en="News coming soon">Новость скоро появится</div><div class="ne" data-ru="Здесь будут публиковаться последние новости академии." data-en="The latest news will be published here.">Здесь будут публиковаться последние новости академии.</div></div></div>
+      <div class="nc" onclick="showPage('news')"><div class="ni">📰</div><div class="nb"><div class="nm">— · —</div><div class="nh" data-ru="Новость скоро появится" data-en="News coming soon">Новость скоро появится</div><div class="ne" data-ru="Здесь будут публиковаться последние новости академии." data-en="The latest news will be published here.">Здесь будут публиковаться последние новости академии.</div></div></div>
+      <div class="nc" onclick="showPage('news')"><div class="ni">📰</div><div class="nb"><div class="nm">— · —</div><div class="nh" data-ru="Новость скоро появится" data-en="News coming soon">Новость скоро появится</div><div class="ne" data-ru="Здесь будут публиковаться последние новости академии." data-en="The latest news will be published here.">Здесь будут публиковаться последние новости академии.</div></div></div>
+    </div>
+    <a class="hs-link" onclick="showPage('news')" data-ru="Все новости →" data-en="All News →">Все новости →</a>
+  </div>
+
+  <div class="gd"></div>
+
+  <!-- МЕНЕДЖЕРЫ / ТРЕНЕРЫ -->
+  <div class="home-sec home-sec-alt">
+    <div class="hs-header">
+      <div class="sec-label" data-ru="Наша команда" data-en="Our Team">Наша команда</div>
+      <div class="sec-title" data-ru="Менеджеры и тренеры" data-en="Managers &amp; Coaches">Менеджеры и тренеры</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="staff-grid">
+      <div class="staff-card"><div class="staff-photo">👤</div><div class="staff-name" data-ru="Имя Фамилия" data-en="Full Name">Имя Фамилия</div><div class="staff-role" data-ru="Директор лиги" data-en="League Director">Директор лиги</div><div class="staff-contact">+7 (___) ___-__-__<br>email@interselectpro.ru</div></div>
+      <div class="staff-card"><div class="staff-photo">👤</div><div class="staff-name" data-ru="Имя Фамилия" data-en="Full Name">Имя Фамилия</div><div class="staff-role" data-ru="Тренер · Хоккей" data-en="Coach · Hockey">Тренер · Хоккей</div><div class="staff-contact">+7 (___) ___-__-__<br>email@interselectpro.ru</div></div>
+      <div class="staff-card"><div class="staff-photo">👤</div><div class="staff-name" data-ru="Имя Фамилия" data-en="Full Name">Имя Фамилия</div><div class="staff-role" data-ru="Тренер · Футбол" data-en="Coach · Football">Тренер · Футбол</div><div class="staff-contact">+7 (___) ___-__-__<br>email@interselectpro.ru</div></div>
+      <div class="staff-card"><div class="staff-photo">👤</div><div class="staff-name" data-ru="Имя Фамилия" data-en="Full Name">Имя Фамилия</div><div class="staff-role" data-ru="Менеджер по спорту" data-en="Sports Manager">Менеджер по спорту</div><div class="staff-contact">+7 (___) ___-__-__<br>email@interselectpro.ru</div></div>
+    </div>
+  </div>
+
+  <div class="gd"></div>
+
+  <!-- БЛИЖАЙШИЕ ИВЕНТЫ -->
+  <div class="home-sec">
+    <div class="hs-header">
+      <div class="sec-label" data-ru="Не пропустите" data-en="Don't Miss">Не пропустите</div>
+      <div class="sec-title" data-ru="Ближайшие ивенты" data-en="Upcoming Events">Ближайшие ивенты</div>
+      <div class="sec-line"></div>
+    </div>
     <div class="evb">
       <div>
         <div class="evb-lbl" data-ru="Ближайший ивент" data-en="Next Event">Ближайший ивент</div>
@@ -342,16 +434,35 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
       </div>
       <button class="bgold" onclick="showPage('events')" data-ru="Подробнее" data-en="Learn More">Подробнее</button>
     </div>
+    <a class="hs-link" onclick="showPage('events')" data-ru="Все ивенты →" data-en="All Events →">Все ивенты →</a>
   </div>
-  <div class="gd" style="margin-top:2.5rem;"></div>
-  <div class="cnts">
-    <div class="cnts-in">
-      <div class="cnt-card"><div class="cnt-n" id="c1">0</div><div class="cnt-l" data-ru="Видов спорта" data-en="Sports">Видов спорта</div></div>
-      <div class="cnt-card"><div class="cnt-n" id="c2">0</div><div class="cnt-l" data-ru="Команд" data-en="Teams">Команд</div></div>
-      <div class="cnt-card"><div class="cnt-n" id="c3">0</div><div class="cnt-l" data-ru="Игроков" data-en="Players">Игроков</div></div>
-      <div class="cnt-card"><div class="cnt-n" id="c4">0</div><div class="cnt-l" data-ru="Турниров" data-en="Tournaments">Турниров</div></div>
+
+  <div class="gd"></div>
+
+  <!-- СПОНСОРЫ -->
+  <div class="home-sec home-sec-alt">
+    <div class="hs-header">
+      <div class="sec-label" data-ru="Наши партнёры" data-en="Our Partners">Наши партнёры</div>
+      <div class="sec-title" data-ru="Спонсоры" data-en="Sponsors">Спонсоры</div>
+      <div class="sec-line"></div>
     </div>
+    <div class="cs"><div class="cs-i">🤝</div><div class="cs-t" data-ru="Информация о спонсорах скоро появится" data-en="Sponsor info coming soon">Информация о спонсорах скоро появится</div><div class="cs-s" data-ru="Хотите стать партнёром? Свяжитесь с нами" data-en="Want to become a partner? Contact us">Хотите стать партнёром? Свяжитесь с нами</div></div>
+    <a class="hs-link" onclick="showPage('sponsors')" data-ru="Все спонсоры →" data-en="All Sponsors →">Все спонсоры →</a>
   </div>
+
+  <div class="gd"></div>
+
+  <!-- О НАС -->
+  <div class="home-sec">
+    <div class="hs-header">
+      <div class="sec-label" data-ru="Наша история" data-en="Our Story">Наша история</div>
+      <div class="sec-title" data-ru="О нас" data-en="About Us">О нас</div>
+      <div class="sec-line"></div>
+    </div>
+    <p class="ap" data-ru="Inter Select Pro — международная образовательная и спортивная сеть, основанная в 2023 году в Калининграде. Мы объединяем спортсменов, тренеров и команды по шести видам спорта, создавая платформу для честной конкуренции и профессионального роста." data-en="Inter Select Pro is an international educational and sports network founded in 2023 in Kaliningrad. We unite athletes, coaches and teams across six sports, creating a platform for fair competition and professional growth.">Inter Select Pro — международная образовательная и спортивная сеть, основанная в 2023 году в Калининграде. Мы объединяем спортсменов, тренеров и команды по шести видам спорта, создавая платформу для честной конкуренции и профессионального роста.</p>
+    <a class="hs-link" onclick="showPage('about')" data-ru="Подробнее о нас →" data-en="More About Us →">Подробнее о нас →</a>
+  </div>
+
   <div class="gd"></div>
 </div>
 
@@ -686,6 +797,41 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
   </div>
 </div>
 
+
+<!-- ══ LEAGUE ══ -->
+<div class="page" id="page-league">
+  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Об организации" data-en="About the Organization">Об организации</div><div class="pt" data-ru="Лига" data-en="League">Лига</div><div class="pd"></div></div></div>
+  <div class="pb"><div class="cs"><div class="cs-i">🏛️</div><div class="cs-t" data-ru="Информация о лиге скоро появится" data-en="League information coming soon">Информация о лиге скоро появится</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div></div>
+</div>
+
+<!-- ══ LEGENDS CHALLENGE ══ -->
+<div class="page" id="page-legends">
+  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Специальный формат" data-en="Special Format">Специальный формат</div><div class="pt" data-ru="Вызов Легенд" data-en="Legends Challenge">Вызов Легенд</div><div class="pd"></div></div></div>
+  <div class="pb"><div class="cs"><div class="cs-i">⚔️</div><div class="cs-t" data-ru="Раздел «Вызов Легенд» скоро появится" data-en="Legends Challenge section coming soon">Раздел «Вызов Легенд» скоро появится</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div></div>
+</div>
+
+<!-- ══ MERCH (АТРИБУТИКА) ══ -->
+<div class="page" id="page-merch">
+  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Магазин" data-en="Store">Магазин</div><div class="pt" data-ru="Атрибутика" data-en="Merchandise">Атрибутика</div><div class="pd"></div></div></div>
+  <div class="pb"><div class="cs"><div class="cs-i">👕</div><div class="cs-t" data-ru="Атрибутика скоро появится" data-en="Merchandise coming soon">Атрибутика скоро появится</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div></div>
+</div>
+
+<!-- ══ ACCOUNT (ЛИЧНЫЙ КАБИНЕТ) ══ -->
+<div class="page" id="page-account">
+  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Личный кабинет" data-en="Personal Account">Личный кабинет</div><div class="pt" data-ru="Войти" data-en="Login">Войти</div><div class="pd"></div></div></div>
+  <div class="pb">
+    <div class="login-box">
+      <div class="login-icon">🔐</div>
+      <div class="login-title" data-ru="Личный кабинет" data-en="Personal Account">Личный кабинет</div>
+      <div class="login-sub" data-ru="Здесь вы сможете видеть свою статистику игр и матчей, медиатеку и достижения." data-en="Here you will be able to see your game and match statistics, media library and achievements.">Здесь вы сможете видеть свою статистику игр и матчей, медиатеку и достижения.</div>
+      <div class="fg" style="text-align:left;"><label data-ru="Email или телефон" data-en="Email or Phone">Email или телефон</label><input type="text" class="fi" placeholder="email@example.com"></div>
+      <div class="fg" style="text-align:left;"><label data-ru="Пароль" data-en="Password">Пароль</label><input type="password" class="fi" placeholder="••••••••"></div>
+      <button class="fsub" data-ru="Войти" data-en="Login">Войти</button>
+      <div style="margin-top:1rem;font-size:.78rem;color:var(--dim);" data-ru="Нет аккаунта? Подайте заявку на участие" data-en="No account? Apply to join">Нет аккаунта? Подайте заявку на участие</div>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="fl">INTER SELECT PRO</div>
@@ -746,7 +892,7 @@ window.addEventListener('resize',initCv);
 initCv();drawPts();
 
 // PAGES
-const VALID=['home','academy','teams','news','events','standings','players','documents','gallery','contacts','sponsors','about'];
+const VALID=['home','league','academy','legends','teams','news','events','standings','players','documents','merch','gallery','contacts','sponsors','about','account'];
 const SPORTS=['hockey','football','basketball','waterpolo','figure','golf'];
 
 function showPage(id){
