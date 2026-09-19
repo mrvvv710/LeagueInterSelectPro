@@ -275,6 +275,37 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .login-title{font-family:'Cinzel',serif;font-size:1.2rem;font-weight:700;color:var(--gold2);margin-bottom:.5rem;}
 .login-sub{font-size:.82rem;color:var(--dim);margin-bottom:1.5rem;line-height:1.6;}
 
+
+/* CALENDAR */
+.cal-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.8rem;max-width:700px;margin:0 auto;}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
+.cal-month{font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:var(--gold2);letter-spacing:.05em;}
+.cal-nav-btn{background:none;border:1px solid var(--border);border-radius:4px;color:var(--gold);width:32px;height:32px;cursor:pointer;font-size:1rem;transition:all .2s;}
+.cal-nav-btn:hover{border-color:var(--gold);background:rgba(201,149,106,.08);}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.4rem;}
+.cal-dow{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);text-align:center;padding:.4rem 0;}
+.cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:6px;font-size:.82rem;color:var(--text);border:1px solid transparent;transition:all .2s;cursor:default;}
+.cal-day.empty{visibility:hidden;}
+.cal-day.event{background:rgba(201,149,106,.15);border-color:var(--gold);color:var(--gold2);font-weight:700;cursor:pointer;}
+.cal-day.event:hover{background:rgba(201,149,106,.28);}
+.cal-legend{display:flex;align-items:center;gap:.5rem;margin-top:1.5rem;font-size:.78rem;color:var(--dim);}
+.cal-legend-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);}
+.cal-eventlist{margin-top:2rem;}
+.cal-event-item{display:flex;align-items:center;gap:1rem;padding:.9rem 1.2rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;margin-bottom:.7rem;transition:border-color .2s;}
+.cal-event-item:hover{border-color:var(--gold);}
+.cal-event-date{font-family:'Cinzel',serif;font-size:1.3rem;font-weight:900;color:var(--gold);text-align:center;min-width:45px;}
+.cal-event-info{flex:1;}
+.cal-event-title{font-family:'Cinzel',serif;font-size:.85rem;font-weight:600;color:var(--text);}
+.cal-event-sub{font-size:.75rem;color:var(--dim);margin-top:.15rem;}
+
+/* PARTNERS */
+.partners-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.3rem;}
+.partner-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.6rem;text-align:center;transition:border-color .25s,transform .25s;}
+.partner-card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.partner-logo{width:70px;height:70px;border-radius:50%;border:2px dashed var(--border);margin:0 auto .9rem;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:rgba(201,149,106,.05);}
+.partner-name{font-family:'Cinzel',serif;font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:.25rem;}
+.partner-type{font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;}
+
 </style>
 </head>
 <body>
@@ -307,11 +338,18 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     </div>
     <nav id="mainNav">
       <a onclick="showPage('home')" data-ru="Главная" data-en="Home">Главная</a>
-      <a onclick="showPage('league')" data-ru="Лига" data-en="League">Лига</a>
+      <div class="nav-item" id="leagueNavItem">
+        <a onclick="toggleDropdown(event,'leagueNavItem')" data-ru="Лига ▾" data-en="League ▾">Лига ▾</a>
+        <div class="dropdown">
+          <a onclick="showPage('league')" data-ru="О лиге" data-en="About League" style="border-bottom:1px solid var(--border);margin-bottom:.3rem;padding-bottom:.6rem!important;">О лиге</a>
+          <a onclick="showPage('calendar')" data-ru="Таблица ивентов" data-en="Events Calendar">Таблица ивентов</a>
+          <a onclick="showPage('partners')" data-ru="Вузы и Лиги" data-en="Universities &amp; Leagues">Вузы и Лиги</a>
+        </div>
+      </div>
       <a onclick="showPage('academy')" data-ru="Академия" data-en="Academy">Академия</a>
       <a onclick="showPage('legends')" data-ru="Вызов Легенд" data-en="Legends Challenge">Вызов Легенд</a>
       <div class="nav-item" id="eventsNavItem">
-        <a onclick="toggleDropdown(event)" data-ru="Ивенты ▾" data-en="Events ▾">Ивенты ▾</a>
+        <a onclick="toggleDropdown(event,'eventsNavItem')" data-ru="Ивенты ▾" data-en="Events ▾">Ивенты ▾</a>
         <div class="dropdown" id="eventsDropdown">
           <a onclick="showPage('events')" data-ru="Все ивенты" data-en="All Events" style="border-bottom:1px solid var(--border);margin-bottom:.3rem;padding-bottom:.6rem!important;">Все ивенты</a>
           <a onclick="showPage('standings')" data-ru="Таблица" data-en="Standings">Таблица</a>
@@ -340,6 +378,8 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
   <div class="mm" id="mobileMenu">
     <a onclick="showPage('home');toggleMenu()" data-ru="Главная" data-en="Home">Главная</a>
     <a onclick="showPage('league');toggleMenu()" data-ru="Лига" data-en="League">Лига</a>
+    <a onclick="showPage('calendar');toggleMenu()" class="mm-sub" data-ru="— Таблица ивентов" data-en="— Events Calendar">— Таблица ивентов</a>
+    <a onclick="showPage('partners');toggleMenu()" class="mm-sub" data-ru="— Вузы и Лиги" data-en="— Universities &amp; Leagues">— Вузы и Лиги</a>
     <a onclick="showPage('academy');toggleMenu()" data-ru="Академия" data-en="Academy">Академия</a>
     <a onclick="showPage('legends');toggleMenu()" data-ru="Вызов Легенд" data-en="Legends Challenge">Вызов Легенд</a>
     <a onclick="showPage('events');toggleMenu()" data-ru="Ивенты" data-en="Events">Ивенты</a>
@@ -833,6 +873,42 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
   </div>
 </div>
 
+
+<!-- ══ CALENDAR (ТАБЛИЦА ИВЕНТОВ) ══ -->
+<div class="page" id="page-calendar">
+  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Расписание" data-en="Schedule">Расписание</div><div class="pt" data-ru="Таблица ивентов" data-en="Events Calendar">Таблица ивентов</div><div class="pd"></div></div></div>
+  <div class="pb">
+    <div class="cal-wrap">
+      <div class="cal-head">
+        <button class="cal-nav-btn" onclick="calChangeMonth(-1)">‹</button>
+        <div class="cal-month" id="calMonthLabel"></div>
+        <button class="cal-nav-btn" onclick="calChangeMonth(1)">›</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+      <div class="cal-legend"><span class="cal-legend-dot"></span><span data-ru="Дни с запланированными ивентами" data-en="Days with scheduled events">Дни с запланированными ивентами</span></div>
+    </div>
+    <div class="cal-eventlist">
+      <div class="cal-event-item">
+        <div class="cal-event-date">15</div>
+        <div class="cal-event-info">
+          <div class="cal-event-title" data-ru="Открытый турнир Inter Select Pro 2025" data-en="Inter Select Pro Open Tournament 2025">Открытый турнир Inter Select Pro 2025</div>
+          <div class="cal-event-sub" data-ru="Сентябрь 2025 · Калининград · 6 видов спорта" data-en="September 2025 · Kaliningrad · 6 sports">Сентябрь 2025 · Калининград · 6 видов спорта</div>
+        </div>
+      </div>
+    </div>
+    <div class="cs" style="margin-top:2rem;"><div class="cs-i">🗓️</div><div class="cs-t" data-ru="Полное расписание ивентов скоро появится" data-en="Full events schedule coming soon">Полное расписание ивентов скоро появится</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div>
+  </div>
+</div>
+
+<!-- ══ PARTNERS (ВУЗЫ И ЛИГИ) ══ -->
+<div class="page" id="page-partners">
+  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Сотрудничество" data-en="Cooperation">Сотрудничество</div><div class="pt" data-ru="Вузы и Лиги" data-en="Universities &amp; Leagues">Вузы и Лиги</div><div class="pd"></div></div></div>
+  <div class="pb">
+    <p class="ap" style="margin-bottom:2rem;" data-ru="Inter Select Pro сотрудничает с ведущими вузами и спортивными лигами, создавая единую экосистему для развития спорта и образования." data-en="Inter Select Pro cooperates with leading universities and sports leagues, creating a unified ecosystem for the development of sports and education.">Inter Select Pro сотрудничает с ведущими вузами и спортивными лигами, создавая единую экосистему для развития спорта и образования.</p>
+    <div class="cs"><div class="cs-i">🎓</div><div class="cs-t" data-ru="Информация о партнёрах скоро появится" data-en="Partner information coming soon">Информация о партнёрах скоро появится</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="fl">INTER SELECT PRO</div>
@@ -893,7 +969,7 @@ window.addEventListener('resize',initCv);
 initCv();drawPts();
 
 // PAGES
-const VALID=['home','league','academy','legends','teams','news','events','standings','players','documents','merch','gallery','contacts','sponsors','about','account'];
+const VALID=['home','league','calendar','partners','academy','legends','teams','news','events','standings','players','documents','merch','gallery','contacts','sponsors','about','account'];
 const SPORTS=['hockey','football','basketball','waterpolo','figure','golf'];
 
 function showPage(id){
@@ -908,6 +984,7 @@ function showPage(id){
   window.scrollTo({top:0,behavior:'smooth'});
   history.pushState({page:id},'','#'+id);
   if(id==='home'){cntDone=false;animateCounters();}
+  if(id==='calendar'){renderCalendar();}
 }
 
 function showSportPage(key){
@@ -978,14 +1055,18 @@ function toggleTheme(){applyTheme(localStorage.getItem('theme')==='light'?'dark'
 // MOBILE MENU
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
 
-// EVENTS DROPDOWN (click-toggle)
-function toggleDropdown(e){
+// NAV DROPDOWNS (click-toggle, multi-support)
+function toggleDropdown(e, itemId){
   e.stopPropagation();
-  document.getElementById('eventsNavItem').classList.toggle('open');
+  const item = document.getElementById(itemId);
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.nav-item.open').forEach(el => el.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
 }
 document.addEventListener('click', (e) => {
-  const item = document.getElementById('eventsNavItem');
-  if(item && !item.contains(e.target)) item.classList.remove('open');
+  document.querySelectorAll('.nav-item').forEach(item => {
+    if(!item.contains(e.target)) item.classList.remove('open');
+  });
 });
 
 // MODAL
@@ -1021,6 +1102,39 @@ function animateCounters(){
 
 // BACK TO TOP
 window.addEventListener('scroll',()=>document.getElementById('btt').classList.toggle('visible',window.scrollY>400));
+
+// CALENDAR
+let calDate = new Date(2025, 8, 1); // September 2025
+const calMonthsRu = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+const calMonthsEn = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const calDowRu = ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+const calDowEn = ['Mo','Tu','We','Th','Fr','Sa','Su'];
+const calEventDays = {'2025-8':[15]}; // month index (0-based) : [days]
+
+function renderCalendar(){
+  const lang = localStorage.getItem('lang') || 'ru';
+  const y = calDate.getFullYear(), m = calDate.getMonth();
+  document.getElementById('calMonthLabel').textContent = (lang==='ru'?calMonthsRu[m]:calMonthsEn[m]) + ' ' + y;
+  const grid = document.getElementById('calGrid');
+  if(!grid) return;
+  grid.innerHTML = '';
+  const dows = lang==='ru'?calDowRu:calDowEn;
+  dows.forEach(d => { const el = document.createElement('div'); el.className='cal-dow'; el.textContent=d; grid.appendChild(el); });
+  const firstDay = new Date(y, m, 1).getDay();
+  const offset = firstDay === 0 ? 6 : firstDay - 1;
+  const daysInMonth = new Date(y, m+1, 0).getDate();
+  const eventDays = calEventDays[y+'-'+m] || [];
+  for(let i=0;i<offset;i++){ const el=document.createElement('div'); el.className='cal-day empty'; grid.appendChild(el); }
+  for(let d=1; d<=daysInMonth; d++){
+    const el = document.createElement('div');
+    el.className = 'cal-day' + (eventDays.includes(d) ? ' event' : '');
+    el.textContent = d;
+    if(eventDays.includes(d)) el.onclick = () => showPage('events');
+    grid.appendChild(el);
+  }
+}
+function calChangeMonth(dir){ calDate.setMonth(calDate.getMonth()+dir); renderCalendar(); }
+
 </script>
 </body>
 </html>
