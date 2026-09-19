@@ -311,6 +311,26 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .cal-day.today{box-shadow:inset 0 0 0 2px var(--gold);}
 .cal-today-line{margin-top:1rem;font-size:.78rem;color:var(--gold2);text-align:center;font-family:'Cinzel',serif;letter-spacing:.05em;}
 
+
+/* AUTH TABS */
+.auth-tabs{display:flex;gap:.4rem;margin-bottom:1.3rem;border-bottom:1px solid var(--border);}
+.auth-tab{flex:1;background:none;border:none;cursor:pointer;font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);padding:.6rem 0;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s;}
+.auth-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.auth-error{color:#e07a5f;font-size:.78rem;margin:.4rem 0 .8rem;min-height:1.1rem;text-align:left;}
+
+/* DASHBOARD */
+.dash-header{display:flex;align-items:center;gap:1.2rem;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.8rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+.dash-avatar{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:var(--bg);flex-shrink:0;}
+.dash-name{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:700;color:var(--text);}
+.dash-sport{font-size:.78rem;color:var(--gold);letter-spacing:.05em;margin-top:.15rem;}
+.dash-logout{margin-left:auto;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);background:none;border:1px solid var(--border);border-radius:4px;padding:.5rem 1rem;cursor:pointer;transition:all .2s;}
+.dash-logout:hover{color:var(--gold);border-color:var(--gold);}
+.dash-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:1.8rem;}
+.dash-tab{background:none;border:none;cursor:pointer;font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);padding:.7rem 1.1rem;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s;}
+.dash-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.dash-stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.2rem;}
+.dash-stats-grid .cnt-n{font-size:2rem;}
+
 </style>
 </head>
 <body>
@@ -923,17 +943,84 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 
 <!-- ══ ACCOUNT (ЛИЧНЫЙ КАБИНЕТ) ══ -->
 <div class="page" id="page-account">
-  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Личный кабинет" data-en="Personal Account">Личный кабинет</div><div class="pt" data-ru="Войти" data-en="Login">Войти</div><div class="pd"></div></div></div>
+  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Личный кабинет" data-en="Personal Account">Личный кабинет</div><div class="pt" id="acctPageTitle" data-ru="Войти" data-en="Login">Войти</div><div class="pd"></div></div></div>
   <div class="pb">
-    <div class="login-box">
-      <div class="login-icon">🔐</div>
-      <div class="login-title" data-ru="Личный кабинет" data-en="Personal Account">Личный кабинет</div>
-      <div class="login-sub" data-ru="Здесь вы сможете видеть свою статистику игр и матчей, медиатеку и достижения." data-en="Here you will be able to see your game and match statistics, media library and achievements.">Здесь вы сможете видеть свою статистику игр и матчей, медиатеку и достижения.</div>
-      <div class="fg" style="text-align:left;"><label data-ru="Email или телефон" data-en="Email or Phone">Email или телефон</label><input type="text" class="fi" placeholder="email@example.com"></div>
-      <div class="fg" style="text-align:left;"><label data-ru="Пароль" data-en="Password">Пароль</label><input type="password" class="fi" placeholder="••••••••"></div>
-      <button class="fsub" data-ru="Войти" data-en="Login">Войти</button>
-      <div style="margin-top:1rem;font-size:.78rem;color:var(--dim);" data-ru="Нет аккаунта? Подайте заявку на участие" data-en="No account? Apply to join">Нет аккаунта? Подайте заявку на участие</div>
+
+    <!-- LOGIN / REGISTER FORMS -->
+    <div id="authBox">
+      <div class="login-box">
+        <div class="login-icon">🔐</div>
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tabLoginBtn" onclick="switchAuthTab('login')" data-ru="Вход" data-en="Login">Вход</button>
+          <button class="auth-tab" id="tabRegisterBtn" onclick="switchAuthTab('register')" data-ru="Регистрация" data-en="Register">Регистрация</button>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <div id="loginForm">
+          <div class="login-sub" data-ru="Войдите, чтобы увидеть статистику, медиатеку и достижения." data-en="Log in to see your statistics, media library and achievements.">Войдите, чтобы увидеть статистику, медиатеку и достижения.</div>
+          <div class="fg" style="text-align:left;"><label data-ru="Email" data-en="Email">Email</label><input type="email" class="fi" id="loginEmail" placeholder="email@example.com"></div>
+          <div class="fg" style="text-align:left;"><label data-ru="Пароль" data-en="Password">Пароль</label><input type="password" class="fi" id="loginPassword" placeholder="••••••••"></div>
+          <div class="auth-error" id="loginError"></div>
+          <button class="fsub" onclick="ispLogin()" data-ru="Войти" data-en="Login">Войти</button>
+        </div>
+
+        <!-- REGISTER FORM -->
+        <div id="registerForm" style="display:none;">
+          <div class="login-sub" data-ru="Создайте аккаунт, чтобы отслеживать свой прогресс." data-en="Create an account to track your progress.">Создайте аккаунт, чтобы отслеживать свой прогресс.</div>
+          <div class="fg" style="text-align:left;"><label data-ru="Имя" data-en="Name">Имя</label><input type="text" class="fi" id="regName" placeholder="Иван Иванов"></div>
+          <div class="fg" style="text-align:left;"><label data-ru="Email" data-en="Email">Email</label><input type="email" class="fi" id="regEmail" placeholder="email@example.com"></div>
+          <div class="fg" style="text-align:left;"><label data-ru="Вид спорта" data-en="Sport">Вид спорта</label>
+            <select class="fi" id="regSport">
+              <option data-ru="Выберите вид спорта" data-en="Choose a sport">Выберите вид спорта</option>
+              <option>Хоккей / Hockey</option><option>Футбол / Football</option>
+              <option>Баскетбол / Basketball</option><option>Водное поло / Water Polo</option>
+              <option>Фигурное катание / Figure Skating</option><option>Гольф / Golf</option>
+            </select>
+          </div>
+          <div class="fg" style="text-align:left;"><label data-ru="Пароль" data-en="Password">Пароль</label><input type="password" class="fi" id="regPassword" placeholder="Минимум 6 символов"></div>
+          <div class="fg" style="text-align:left;"><label data-ru="Повторите пароль" data-en="Confirm Password">Повторите пароль</label><input type="password" class="fi" id="regPassword2" placeholder="••••••••"></div>
+          <div class="auth-error" id="regError"></div>
+          <button class="fsub" onclick="ispRegister()" data-ru="Зарегистрироваться" data-en="Register">Зарегистрироваться</button>
+        </div>
+      </div>
     </div>
+
+    <!-- DASHBOARD (shown after login) -->
+    <div id="dashboardBox" style="display:none;">
+      <div class="dash-header">
+        <div class="dash-avatar" id="dashAvatar">👤</div>
+        <div>
+          <div class="dash-name" id="dashName">—</div>
+          <div class="dash-sport" id="dashSport">—</div>
+        </div>
+        <button class="dash-logout" onclick="ispLogout()" data-ru="Выйти" data-en="Logout">Выйти</button>
+      </div>
+
+      <div class="dash-tabs">
+        <button class="dash-tab active" onclick="switchDashTab('stats',this)" data-ru="Статистика" data-en="Statistics">Статистика</button>
+        <button class="dash-tab" onclick="switchDashTab('media',this)" data-ru="Медиатека" data-en="Media Library">Медиатека</button>
+        <button class="dash-tab" onclick="switchDashTab('achievements',this)" data-ru="Достижения" data-en="Achievements">Достижения</button>
+      </div>
+
+      <div id="dashStats" class="dash-tab-content">
+        <div class="dash-stats-grid">
+          <div class="cnt-card"><div class="cnt-n">0</div><div class="cnt-l" data-ru="Матчей сыграно" data-en="Matches Played">Матчей сыграно</div></div>
+          <div class="cnt-card"><div class="cnt-n">0</div><div class="cnt-l" data-ru="Побед" data-en="Wins">Побед</div></div>
+          <div class="cnt-card"><div class="cnt-n">0</div><div class="cnt-l" data-ru="Турниров" data-en="Tournaments">Турниров</div></div>
+          <div class="cnt-card"><div class="cnt-n">0</div><div class="cnt-l" data-ru="Место в рейтинге" data-en="Rank">Место в рейтинге</div></div>
+        </div>
+        <div class="cs" style="margin-top:2rem;"><div class="cs-i">📊</div><div class="cs-t" data-ru="Статистика появится после первого матча" data-en="Stats will appear after your first match">Статистика появится после первого матча</div></div>
+      </div>
+
+      <div id="dashMedia" class="dash-tab-content" style="display:none;">
+        <div class="cs"><div class="cs-i">🎬</div><div class="cs-t" data-ru="Медиатека пуста" data-en="Media library is empty">Медиатека пуста</div><div class="cs-s" data-ru="Фото и видео с ваших матчей появятся здесь" data-en="Photos and videos from your matches will appear here">Фото и видео с ваших матчей появятся здесь</div></div>
+      </div>
+
+      <div id="dashAchievements" class="dash-tab-content" style="display:none;">
+        <div class="cs"><div class="cs-i">🏅</div><div class="cs-t" data-ru="Пока нет достижений" data-en="No achievements yet">Пока нет достижений</div><div class="cs-s" data-ru="Участвуйте в турнирах, чтобы получить награды" data-en="Take part in tournaments to earn awards">Участвуйте в турнирах, чтобы получить награды</div></div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -1043,6 +1130,7 @@ function showPage(id){
   history.pushState({page:id},'','#'+id);
   if(id==='home'){cntDone=false;animateCounters();}
   if(id==='calendar'||id==='league'||id==='events'||id==='home'){renderCalendar();}
+  if(id==='account'){ispCheckSession();}
 }
 
 function showSportPage(key){
@@ -1086,6 +1174,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   else if(h&&VALID.includes(h))showPage(h);
   else{showPage('home');animateCounters();}
   renderCalendar();
+  updateLoginNavLabel();
   const lang=localStorage.getItem('lang')||'ru';
   if(lang==='en')setLang('en');
   const theme=localStorage.getItem('theme')||'dark';
@@ -1223,6 +1312,130 @@ setInterval(() => {
     renderCalendar();
   }
 }, 60000); // check every minute
+
+
+// AUTH SYSTEM (stored locally in this browser)
+function ispGetUsers(){
+  try { return JSON.parse(localStorage.getItem('isp_users') || '[]'); }
+  catch(e){ return []; }
+}
+function ispSaveUsers(users){ localStorage.setItem('isp_users', JSON.stringify(users)); }
+
+function switchAuthTab(tab){
+  document.getElementById('tabLoginBtn').classList.toggle('active', tab==='login');
+  document.getElementById('tabRegisterBtn').classList.toggle('active', tab==='register');
+  document.getElementById('loginForm').style.display = tab==='login' ? 'block' : 'none';
+  document.getElementById('registerForm').style.display = tab==='register' ? 'block' : 'none';
+  document.getElementById('loginError').textContent = '';
+  document.getElementById('regError').textContent = '';
+}
+
+function ispRegister(){
+  const lang = localStorage.getItem('lang') || 'ru';
+  const name = document.getElementById('regName').value.trim();
+  const email = document.getElementById('regEmail').value.trim().toLowerCase();
+  const sport = document.getElementById('regSport').value;
+  const pass = document.getElementById('regPassword').value;
+  const pass2 = document.getElementById('regPassword2').value;
+  const errEl = document.getElementById('regError');
+
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!name){ errEl.textContent = lang==='ru' ? 'Введите имя' : 'Enter your name'; return; }
+  if(!emailRe.test(email)){ errEl.textContent = lang==='ru' ? 'Некорректный email' : 'Invalid email'; return; }
+  if(pass.length < 6){ errEl.textContent = lang==='ru' ? 'Пароль минимум 6 символов' : 'Password must be at least 6 characters'; return; }
+  if(pass !== pass2){ errEl.textContent = lang==='ru' ? 'Пароли не совпадают' : 'Passwords do not match'; return; }
+
+  const users = ispGetUsers();
+  if(users.find(u => u.email === email)){
+    errEl.textContent = lang==='ru' ? 'Этот email уже зарегистрирован' : 'This email is already registered';
+    return;
+  }
+  users.push({name, email, sport, pass});
+  ispSaveUsers(users);
+  errEl.textContent = '';
+  localStorage.setItem('isp_current_user', email);
+  showDashboard();
+}
+
+function ispLogin(){
+  const lang = localStorage.getItem('lang') || 'ru';
+  const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+  const pass = document.getElementById('loginPassword').value;
+  const errEl = document.getElementById('loginError');
+
+  const users = ispGetUsers();
+  const user = users.find(u => u.email === email && u.pass === pass);
+  if(!user){
+    errEl.textContent = lang==='ru' ? 'Неверный email или пароль' : 'Incorrect email or password';
+    return;
+  }
+  errEl.textContent = '';
+  localStorage.setItem('isp_current_user', email);
+  showDashboard();
+}
+
+function ispLogout(){
+  localStorage.removeItem('isp_current_user');
+  document.getElementById('authBox').style.display = 'block';
+  document.getElementById('dashboardBox').style.display = 'none';
+  document.getElementById('loginEmail').value = '';
+  document.getElementById('loginPassword').value = '';
+  const lang = localStorage.getItem('lang') || 'ru';
+  document.getElementById('acctPageTitle').textContent = lang==='ru' ? 'Войти' : 'Login';
+  updateLoginNavLabel();
+}
+
+function showDashboard(){
+  const email = localStorage.getItem('isp_current_user');
+  const users = ispGetUsers();
+  const user = users.find(u => u.email === email);
+  if(!user){ return; }
+  const lang = localStorage.getItem('lang') || 'ru';
+
+  document.getElementById('authBox').style.display = 'none';
+  document.getElementById('dashboardBox').style.display = 'block';
+  document.getElementById('dashName').textContent = user.name;
+  document.getElementById('dashSport').textContent = (user.sport && user.sport.indexOf('Выберите')===-1 && user.sport.indexOf('Choose')===-1) ? user.sport : (lang==='ru' ? 'Вид спорта не указан' : 'Sport not specified');
+  document.getElementById('dashAvatar').textContent = user.name.charAt(0).toUpperCase() || '👤';
+  document.getElementById('acctPageTitle').textContent = lang==='ru' ? ('Привет, ' + user.name.split(' ')[0]) : ('Hi, ' + user.name.split(' ')[0]);
+  updateLoginNavLabel();
+}
+
+function switchDashTab(tab, btn){
+  document.querySelectorAll('.dash-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('dashStats').style.display = tab==='stats' ? 'block' : 'none';
+  document.getElementById('dashMedia').style.display = tab==='media' ? 'block' : 'none';
+  document.getElementById('dashAchievements').style.display = tab==='achievements' ? 'block' : 'none';
+}
+
+function updateLoginNavLabel(){
+  const email = localStorage.getItem('isp_current_user');
+  const navLink = document.querySelector('.nav-login');
+  const mobileLoginLink = document.querySelector('.mm a[onclick*="account"]');
+  if(email){
+    const users = ispGetUsers();
+    const user = users.find(u => u.email === email);
+    const label = user ? ('👤 ' + user.name.split(' ')[0]) : '👤';
+    if(navLink) navLink.textContent = label;
+    if(mobileLoginLink) mobileLoginLink.textContent = label;
+  } else {
+    const lang = localStorage.getItem('lang') || 'ru';
+    const label = lang==='ru' ? 'Войти' : 'Login';
+    if(navLink) navLink.textContent = label;
+    if(mobileLoginLink) mobileLoginLink.textContent = label;
+  }
+}
+
+function ispCheckSession(){
+  const email = localStorage.getItem('isp_current_user');
+  if(email){ showDashboard(); }
+  else {
+    document.getElementById('authBox').style.display = 'block';
+    document.getElementById('dashboardBox').style.display = 'none';
+  }
+  updateLoginNavLabel();
+}
 
 </script>
 </body>
