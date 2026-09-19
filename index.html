@@ -239,6 +239,7 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .nav-item{position:relative;display:inline-flex;align-items:center;}
 .dropdown{display:none;position:absolute;top:100%;left:0;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:.5rem;min-width:170px;flex-direction:column;box-shadow:0 10px 30px rgba(0,0,0,.4);z-index:50;margin-top:.3rem;}
 .nav-item:hover .dropdown{display:flex;}
+.nav-item.open .dropdown{display:flex;}
 .dropdown a{padding:.5rem .7rem!important;border-radius:4px;}
 .dropdown a:hover{background:rgba(201,149,106,.1);}
 .nav-login{border:1px solid var(--gold)!important;border-radius:4px!important;color:var(--gold)!important;margin-left:.3rem;}
@@ -310,9 +311,10 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
       <a onclick="showPage('league')" data-ru="Лига" data-en="League">Лига</a>
       <a onclick="showPage('academy')" data-ru="Академия" data-en="Academy">Академия</a>
       <a onclick="showPage('legends')" data-ru="Вызов Легенд" data-en="Legends Challenge">Вызов Легенд</a>
-      <div class="nav-item">
-        <a onclick="showPage('events')" data-ru="Ивенты" data-en="Events">Ивенты ▾</a>
-        <div class="dropdown">
+      <div class="nav-item" id="eventsNavItem">
+        <a onclick="toggleDropdown(event)" data-ru="Ивенты ▾" data-en="Events ▾">Ивенты ▾</a>
+        <div class="dropdown" id="eventsDropdown">
+          <a onclick="showPage('events')" data-ru="Все ивенты" data-en="All Events" style="border-bottom:1px solid var(--border);margin-bottom:.3rem;padding-bottom:.6rem!important;">Все ивенты</a>
           <a onclick="showPage('standings')" data-ru="Таблица" data-en="Standings">Таблица</a>
           <a onclick="showPage('teams')" data-ru="Команды" data-en="Teams">Команды</a>
           <a onclick="showPage('players')" data-ru="Игроки" data-en="Players">Игроки</a>
@@ -976,6 +978,16 @@ function toggleTheme(){applyTheme(localStorage.getItem('theme')==='light'?'dark'
 
 // MOBILE MENU
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+
+// EVENTS DROPDOWN (click-toggle)
+function toggleDropdown(e){
+  e.stopPropagation();
+  document.getElementById('eventsNavItem').classList.toggle('open');
+}
+document.addEventListener('click', (e) => {
+  const item = document.getElementById('eventsNavItem');
+  if(item && !item.contains(e.target)) item.classList.remove('open');
+});
 
 // MODAL
 function openModal(){document.getElementById('appModal').classList.add('open');document.body.style.overflow='hidden';}
