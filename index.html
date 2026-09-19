@@ -38,8 +38,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(20,24,31,.97);backdrop-
 .lw img{height:46px;width:46px;object-fit:contain;border-radius:50%;border:2px solid var(--gold);background:#0f1a1a;padding:3px;transition:box-shadow .3s,transform .3s;}
 .lw:hover img{box-shadow:0 0 22px rgba(201,149,106,.6);transform:scale(1.07);}
 .lt{font-family:'Cinzel',serif;font-weight:700;font-size:.82rem;line-height:1.2;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.05em;}
-nav{margin-left:auto;display:flex;gap:0;align-items:center;overflow-x:auto;scrollbar-width:none;}
-nav::-webkit-scrollbar{display:none;}
+nav{margin-left:auto;display:flex;gap:0;align-items:center;overflow:visible;flex-wrap:nowrap;}
 nav a{font-family:'Cinzel',serif;font-size:.63rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--dim);text-decoration:none;padding:.38rem .58rem;border-radius:4px;transition:color .2s,background .2s;cursor:pointer;white-space:nowrap;border:none;background:none;position:relative;}
 nav a::after{content:'';position:absolute;bottom:2px;left:50%;right:50%;height:1.5px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:left .25s,right .25s;border-radius:2px;}
 nav a:hover,nav a.active{color:var(--gold2);}
