@@ -306,6 +306,11 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .partner-name{font-family:'Cinzel',serif;font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:.25rem;}
 .partner-type{font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;}
 
+
+.cal-legend-today{background:var(--steel2);border:1px solid var(--gold);margin-left:1rem;}
+.cal-day.today{box-shadow:inset 0 0 0 2px var(--gold);}
+.cal-today-line{margin-top:1rem;font-size:.78rem;color:var(--gold2);text-align:center;font-family:'Cinzel',serif;letter-spacing:.05em;}
+
 </style>
 </head>
 <body>
@@ -842,7 +847,57 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 <!-- ══ LEAGUE ══ -->
 <div class="page" id="page-league">
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Об организации" data-en="About the Organization">Об организации</div><div class="pt" data-ru="Лига" data-en="League">Лига</div><div class="pd"></div></div></div>
-  <div class="pb"><div class="cs"><div class="cs-i">🏛️</div><div class="cs-t" data-ru="Информация о лиге скоро появится" data-en="League information coming soon">Информация о лиге скоро появится</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div></div>
+  <div class="pb">
+    <div class="cs"><div class="cs-i">🏛️</div><div class="cs-t" data-ru="Информация о лиге скоро появится" data-en="League information coming soon">Информация о лиге скоро появится</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div>
+  </div>
+
+  <div class="gd"></div>
+
+  <!-- ТАБЛИЦА ИВЕНТОВ (embedded) -->
+  <div class="pb">
+    <div class="hs-header">
+      <div class="sec-label" data-ru="Расписание" data-en="Schedule">Расписание</div>
+      <div class="sec-title" data-ru="Таблица ивентов" data-en="Events Calendar">Таблица ивентов</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="cal-wrap">
+      <div class="cal-head">
+        <button class="cal-nav-btn" onclick="calChangeMonth(-1)">‹</button>
+        <div class="cal-month" class="calMonthLabelEl"></div>
+        <button class="cal-nav-btn" onclick="calChangeMonth(1)">›</button>
+      </div>
+      <div class="cal-grid" class="calGridEl"></div>
+      <div class="cal-legend">
+        <span class="cal-legend-dot"></span><span data-ru="Дни с ивентами" data-en="Event days">Дни с ивентами</span>
+        <span class="cal-legend-dot cal-legend-today"></span><span data-ru="Сегодня" data-en="Today">Сегодня</span>
+      </div>
+      <div class="cal-today-line" id="calTodayLine"></div>
+    </div>
+    <div class="cal-eventlist">
+      <div class="cal-event-item">
+        <div class="cal-event-date">15</div>
+        <div class="cal-event-info">
+          <div class="cal-event-title" data-ru="Открытый турнир Inter Select Pro 2025" data-en="Inter Select Pro Open Tournament 2025">Открытый турнир Inter Select Pro 2025</div>
+          <div class="cal-event-sub" data-ru="Сентябрь 2025 · Калининград · 6 видов спорта" data-en="September 2025 · Kaliningrad · 6 sports">Сентябрь 2025 · Калининград · 6 видов спорта</div>
+        </div>
+      </div>
+    </div>
+    <a class="hs-link" onclick="showPage('calendar')" data-ru="Открыть полную таблицу →" data-en="Open Full Calendar →">Открыть полную таблицу →</a>
+  </div>
+
+  <div class="gd"></div>
+
+  <!-- ВУЗЫ И ЛИГИ (embedded) -->
+  <div class="pb">
+    <div class="hs-header">
+      <div class="sec-label" data-ru="Сотрудничество" data-en="Cooperation">Сотрудничество</div>
+      <div class="sec-title" data-ru="Вузы и Лиги" data-en="Universities &amp; Leagues">Вузы и Лиги</div>
+      <div class="sec-line"></div>
+    </div>
+    <p class="ap" style="margin-bottom:1.5rem;" data-ru="Inter Select Pro сотрудничает с ведущими вузами и спортивными лигами, создавая единую экосистему для развития спорта и образования." data-en="Inter Select Pro cooperates with leading universities and sports leagues, creating a unified ecosystem for the development of sports and education.">Inter Select Pro сотрудничает с ведущими вузами и спортивными лигами, создавая единую экосистему для развития спорта и образования.</p>
+    <div class="cs"><div class="cs-i">🎓</div><div class="cs-t" data-ru="Информация о партнёрах скоро появится" data-en="Partner information coming soon">Информация о партнёрах скоро появится</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div>
+    <a class="hs-link" onclick="showPage('partners')" data-ru="Все партнёры →" data-en="All Partners →">Все партнёры →</a>
+  </div>
 </div>
 
 <!-- ══ LEGENDS CHALLENGE ══ -->
@@ -881,10 +936,10 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     <div class="cal-wrap">
       <div class="cal-head">
         <button class="cal-nav-btn" onclick="calChangeMonth(-1)">‹</button>
-        <div class="cal-month" id="calMonthLabel"></div>
+        <div class="cal-month" class="calMonthLabelEl"></div>
         <button class="cal-nav-btn" onclick="calChangeMonth(1)">›</button>
       </div>
-      <div class="cal-grid" id="calGrid"></div>
+      <div class="cal-grid" class="calGridEl"></div>
       <div class="cal-legend"><span class="cal-legend-dot"></span><span data-ru="Дни с запланированными ивентами" data-en="Days with scheduled events">Дни с запланированными ивентами</span></div>
     </div>
     <div class="cal-eventlist">
@@ -984,7 +1039,7 @@ function showPage(id){
   window.scrollTo({top:0,behavior:'smooth'});
   history.pushState({page:id},'','#'+id);
   if(id==='home'){cntDone=false;animateCounters();}
-  if(id==='calendar'){renderCalendar();}
+  if(id==='calendar'||id==='league'){renderCalendar();}
 }
 
 function showSportPage(key){
@@ -1027,6 +1082,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   if(h.startsWith('sport-'))showSportPage(h.replace('sport-',''));
   else if(h&&VALID.includes(h))showPage(h);
   else{showPage('home');animateCounters();}
+  renderCalendar();
   const lang=localStorage.getItem('lang')||'ru';
   if(lang==='en')setLang('en');
   const theme=localStorage.getItem('theme')||'dark';
@@ -1103,37 +1159,67 @@ function animateCounters(){
 // BACK TO TOP
 window.addEventListener('scroll',()=>document.getElementById('btt').classList.toggle('visible',window.scrollY>400));
 
-// CALENDAR
-let calDate = new Date(2025, 8, 1); // September 2025
+// CALENDAR — always starts on the real current month/year, auto-updates daily
+let calDate = new Date();
+calDate.setHours(0,0,0,0);
+calDate.setDate(1);
 const calMonthsRu = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
 const calMonthsEn = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const calDowRu = ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
 const calDowEn = ['Mo','Tu','We','Th','Fr','Sa','Su'];
-const calEventDays = {'2025-8':[15]}; // month index (0-based) : [days]
+// Real event dates (year, 0-based month): [days]
+const calEventDays = {'2025-8':[15]};
+
+function getRealToday(){ const t = new Date(); t.setHours(0,0,0,0); return t; }
 
 function renderCalendar(){
   const lang = localStorage.getItem('lang') || 'ru';
   const y = calDate.getFullYear(), m = calDate.getMonth();
-  document.getElementById('calMonthLabel').textContent = (lang==='ru'?calMonthsRu[m]:calMonthsEn[m]) + ' ' + y;
-  const grid = document.getElementById('calGrid');
-  if(!grid) return;
-  grid.innerHTML = '';
+  const today = getRealToday();
+  const isCurrentMonth = (today.getFullYear() === y && today.getMonth() === m);
+  const monthLabel = (lang==='ru'?calMonthsRu[m]:calMonthsEn[m]) + ' ' + y;
+
+  document.querySelectorAll('.calMonthLabelEl').forEach(el => el.textContent = monthLabel);
+
   const dows = lang==='ru'?calDowRu:calDowEn;
-  dows.forEach(d => { const el = document.createElement('div'); el.className='cal-dow'; el.textContent=d; grid.appendChild(el); });
   const firstDay = new Date(y, m, 1).getDay();
   const offset = firstDay === 0 ? 6 : firstDay - 1;
   const daysInMonth = new Date(y, m+1, 0).getDate();
   const eventDays = calEventDays[y+'-'+m] || [];
-  for(let i=0;i<offset;i++){ const el=document.createElement('div'); el.className='cal-day empty'; grid.appendChild(el); }
-  for(let d=1; d<=daysInMonth; d++){
-    const el = document.createElement('div');
-    el.className = 'cal-day' + (eventDays.includes(d) ? ' event' : '');
-    el.textContent = d;
-    if(eventDays.includes(d)) el.onclick = () => showPage('events');
-    grid.appendChild(el);
-  }
+
+  document.querySelectorAll('.calGridEl').forEach(grid => {
+    grid.innerHTML = '';
+    dows.forEach(d => { const el = document.createElement('div'); el.className='cal-dow'; el.textContent=d; grid.appendChild(el); });
+    for(let i=0;i<offset;i++){ const el=document.createElement('div'); el.className='cal-day empty'; grid.appendChild(el); }
+    for(let d=1; d<=daysInMonth; d++){
+      const el = document.createElement('div');
+      let cls = 'cal-day';
+      if(eventDays.includes(d)) cls += ' event';
+      if(isCurrentMonth && d === today.getDate()) cls += ' today';
+      el.className = cls;
+      el.textContent = d;
+      if(eventDays.includes(d)) el.onclick = () => showPage('events');
+      grid.appendChild(el);
+    }
+  });
+
+  // "Today" line text
+  const todayStr = today.toLocaleDateString(lang==='ru'?'ru-RU':'en-US', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
+  const label = (lang==='ru'?'Сегодня: ':'Today: ') + todayStr;
+  document.querySelectorAll('#calTodayLine').forEach(el => el.textContent = label);
 }
 function calChangeMonth(dir){ calDate.setMonth(calDate.getMonth()+dir); renderCalendar(); }
+
+// Auto-refresh calendar when the real date rolls over to a new day
+let _lastKnownDay = getRealToday().getTime();
+setInterval(() => {
+  const nowDay = getRealToday().getTime();
+  if(nowDay !== _lastKnownDay){
+    _lastKnownDay = nowDay;
+    calDate = new Date(); calDate.setDate(1); calDate.setHours(0,0,0,0);
+    renderCalendar();
+  }
+}, 60000); // check every minute
 
 </script>
 </body>
