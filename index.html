@@ -332,6 +332,7 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .dash-stats-grid .cnt-n{font-size:2rem;}
 
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
 <body>
 
@@ -1314,12 +1315,10 @@ setInterval(() => {
 }, 60000); // check every minute
 
 
-// AUTH SYSTEM (stored locally in this browser)
-function ispGetUsers(){
-  try { return JSON.parse(localStorage.getItem('isp_users') || '[]'); }
-  catch(e){ return []; }
-}
-function ispSaveUsers(users){ localStorage.setItem('isp_users', JSON.stringify(users)); }
+// AUTH SYSTEM — powered by Supabase (real database, works across devices)
+const SUPABASE_URL = 'https://emdmktpciebdabbtvldd.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_FYvbAu1jihSobNqQ0p4tzQ_zpqaLrWn';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 function switchAuthTab(tab){
   document.getElementById('tabLoginBtn').classList.toggle('active', tab==='login');
@@ -1330,7 +1329,7 @@ function switchAuthTab(tab){
   document.getElementById('regError').textContent = '';
 }
 
-function ispRegister(){
+async function ispRegister(){
   const lang = localStorage.getItem('lang') || 'ru';
   const name = document.getElementById('regName').value.trim();
   const email = document.getElementById('regEmail').value.trim().toLowerCase();
@@ -1338,6 +1337,7 @@ function ispRegister(){
   const pass = document.getElementById('regPassword').value;
   const pass2 = document.getElementById('regPassword2').value;
   const errEl = document.getElementById('regError');
+  const btn = document.querySelector('#registerForm .fsub');
 
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if(!name){ errEl.textContent = lang==='ru' ? 'Введите имя' : 'Enter your name'; return; }
@@ -1345,37 +1345,48 @@ function ispRegister(){
   if(pass.length < 6){ errEl.textContent = lang==='ru' ? 'Пароль минимум 6 символов' : 'Password must be at least 6 characters'; return; }
   if(pass !== pass2){ errEl.textContent = lang==='ru' ? 'Пароли не совпадают' : 'Passwords do not match'; return; }
 
-  const users = ispGetUsers();
-  if(users.find(u => u.email === email)){
-    errEl.textContent = lang==='ru' ? 'Этот email уже зарегистрирован' : 'This email is already registered';
+  errEl.textContent = lang==='ru' ? 'Создаём аккаунт...' : 'Creating account...';
+  btn.disabled = true;
+
+  const { data, error } = await sb.auth.signUp({
+    email, password: pass,
+    options: { data: { name, sport } }
+  });
+
+  btn.disabled = false;
+  if(error){
+    errEl.textContent = error.message.includes('already registered') || error.message.includes('exists')
+      ? (lang==='ru' ? 'Этот email уже зарегистрирован' : 'This email is already registered')
+      : error.message;
     return;
   }
-  users.push({name, email, sport, pass});
-  ispSaveUsers(users);
   errEl.textContent = '';
-  localStorage.setItem('isp_current_user', email);
   showDashboard();
 }
 
-function ispLogin(){
+async function ispLogin(){
   const lang = localStorage.getItem('lang') || 'ru';
   const email = document.getElementById('loginEmail').value.trim().toLowerCase();
   const pass = document.getElementById('loginPassword').value;
   const errEl = document.getElementById('loginError');
+  const btn = document.querySelector('#loginForm .fsub');
 
-  const users = ispGetUsers();
-  const user = users.find(u => u.email === email && u.pass === pass);
-  if(!user){
+  errEl.textContent = lang==='ru' ? 'Входим...' : 'Logging in...';
+  btn.disabled = true;
+
+  const { data, error } = await sb.auth.signInWithPassword({ email, password: pass });
+
+  btn.disabled = false;
+  if(error){
     errEl.textContent = lang==='ru' ? 'Неверный email или пароль' : 'Incorrect email or password';
     return;
   }
   errEl.textContent = '';
-  localStorage.setItem('isp_current_user', email);
   showDashboard();
 }
 
-function ispLogout(){
-  localStorage.removeItem('isp_current_user');
+async function ispLogout(){
+  await sb.auth.signOut();
   document.getElementById('authBox').style.display = 'block';
   document.getElementById('dashboardBox').style.display = 'none';
   document.getElementById('loginEmail').value = '';
@@ -1385,20 +1396,33 @@ function ispLogout(){
   updateLoginNavLabel();
 }
 
-function showDashboard(){
-  const email = localStorage.getItem('isp_current_user');
-  const users = ispGetUsers();
-  const user = users.find(u => u.email === email);
+async function showDashboard(){
+  const { data: { user } } = await sb.auth.getUser();
   if(!user){ return; }
   const lang = localStorage.getItem('lang') || 'ru';
 
+  const { data: profile } = await sb.from('profiles').select('*').eq('id', user.id).single();
+  const { data: stats } = await sb.from('player_stats').select('*').eq('user_id', user.id).single();
+
+  const name = profile?.name || (lang==='ru' ? 'Игрок' : 'Player');
+  const sport = profile?.sport;
+
   document.getElementById('authBox').style.display = 'none';
   document.getElementById('dashboardBox').style.display = 'block';
-  document.getElementById('dashName').textContent = user.name;
-  document.getElementById('dashSport').textContent = (user.sport && user.sport.indexOf('Выберите')===-1 && user.sport.indexOf('Choose')===-1) ? user.sport : (lang==='ru' ? 'Вид спорта не указан' : 'Sport not specified');
-  document.getElementById('dashAvatar').textContent = user.name.charAt(0).toUpperCase() || '👤';
-  document.getElementById('acctPageTitle').textContent = lang==='ru' ? ('Привет, ' + user.name.split(' ')[0]) : ('Hi, ' + user.name.split(' ')[0]);
-  updateLoginNavLabel();
+  document.getElementById('dashName').textContent = name;
+  document.getElementById('dashSport').textContent = (sport && sport.indexOf('Выберите')===-1 && sport.indexOf('Choose')===-1) ? sport : (lang==='ru' ? 'Вид спорта не указан' : 'Sport not specified');
+  document.getElementById('dashAvatar').textContent = name.charAt(0).toUpperCase() || '👤';
+  document.getElementById('acctPageTitle').textContent = lang==='ru' ? ('Привет, ' + name.split(' ')[0]) : ('Hi, ' + name.split(' ')[0]);
+
+  if(stats){
+    const cards = document.querySelectorAll('#dashStats .cnt-n');
+    if(cards[0]) cards[0].textContent = stats.matches_played || 0;
+    if(cards[1]) cards[1].textContent = stats.wins || 0;
+    if(cards[2]) cards[2].textContent = stats.tournaments || 0;
+    if(cards[3]) cards[3].textContent = stats.rank_position || '—';
+  }
+
+  updateLoginNavLabel(name);
 }
 
 function switchDashTab(tab, btn){
@@ -1409,14 +1433,17 @@ function switchDashTab(tab, btn){
   document.getElementById('dashAchievements').style.display = tab==='achievements' ? 'block' : 'none';
 }
 
-function updateLoginNavLabel(){
-  const email = localStorage.getItem('isp_current_user');
+async function updateLoginNavLabel(knownName){
   const navLink = document.querySelector('.nav-login');
   const mobileLoginLink = document.querySelector('.mm a[onclick*="account"]');
-  if(email){
-    const users = ispGetUsers();
-    const user = users.find(u => u.email === email);
-    const label = user ? ('👤 ' + user.name.split(' ')[0]) : '👤';
+  const { data: { user } } = await sb.auth.getUser();
+  if(user){
+    let name = knownName;
+    if(!name){
+      const { data: profile } = await sb.from('profiles').select('name').eq('id', user.id).single();
+      name = profile?.name || 'Player';
+    }
+    const label = '👤 ' + name.split(' ')[0];
     if(navLink) navLink.textContent = label;
     if(mobileLoginLink) mobileLoginLink.textContent = label;
   } else {
@@ -1427,9 +1454,9 @@ function updateLoginNavLabel(){
   }
 }
 
-function ispCheckSession(){
-  const email = localStorage.getItem('isp_current_user');
-  if(email){ showDashboard(); }
+async function ispCheckSession(){
+  const { data: { user } } = await sb.auth.getUser();
+  if(user){ showDashboard(); }
   else {
     document.getElementById('authBox').style.display = 'block';
     document.getElementById('dashboardBox').style.display = 'none';
