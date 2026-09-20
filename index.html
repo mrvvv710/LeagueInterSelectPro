@@ -1360,8 +1360,16 @@ async function ispRegister(){
       : error.message;
     return;
   }
-  errEl.textContent = '';
-  showDashboard();
+  // Email confirmation is required — session is not active yet
+  errEl.style.color = 'var(--gold2)';
+  errEl.textContent = lang==='ru'
+    ? '✅ Почти готово! Мы отправили письмо на ' + email + ' — перейдите по ссылке в письме, чтобы подтвердить аккаунт, затем войдите.'
+    : '✅ Almost done! We sent an email to ' + email + ' — click the link in it to confirm your account, then log in.';
+  document.getElementById('regName').value = '';
+  document.getElementById('regEmail').value = '';
+  document.getElementById('regPassword').value = '';
+  document.getElementById('regPassword2').value = '';
+  setTimeout(() => { errEl.style.color = ''; switchAuthTab('login'); }, 4500);
 }
 
 async function ispLogin(){
@@ -1463,6 +1471,14 @@ async function ispCheckSession(){
   }
   updateLoginNavLabel();
 }
+
+// If the person arrives via the email confirmation link, log them in automatically
+sb.auth.onAuthStateChange((event, session) => {
+  if(event === 'SIGNED_IN' && session){
+    showPage('account');
+    showDashboard();
+  }
+});
 
 </script>
 </body>
