@@ -431,7 +431,7 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     <div class="hc">
       <div class="search-wrap">
         <div class="search-input-wrap" id="searchInputWrap">
-          <input type="text" class="search-input" id="searchInput" placeholder="Поиск..." oninput="doSearch()" onkeydown="if(event.key==='Escape')toggleSearch()">
+          <input type="text" class="search-input" id="searchInput" placeholder="Поиск..." oninput="doSearch()" onkeydown="handleSearchKey(event)">
         </div>
         <button class="search-btn" onclick="toggleSearch()" title="Поиск">🔍</button>
         <div class="search-results" id="searchResults"></div>
@@ -1468,6 +1468,13 @@ Object.keys(teamsData).forEach(key => {
 function toggleSearch(){
   const wrap = document.getElementById('searchInputWrap');
   const input = document.getElementById('searchInput');
+
+  // If search is already open and has a query, treat the button as "go" instead of closing
+  if(wrap.classList.contains('open') && input.value.trim()){
+    goToTopResult();
+    return;
+  }
+
   wrap.classList.toggle('open');
   if(wrap.classList.contains('open')){
     setTimeout(()=>input.focus(), 200);
@@ -1477,17 +1484,43 @@ function toggleSearch(){
   }
 }
 
-function doSearch(){
-  const q = document.getElementById('searchInput').value.trim().toLowerCase();
-  const resultsEl = document.getElementById('searchResults');
-  if(!q){ resultsEl.classList.remove('open'); return; }
+function handleSearchKey(e){
+  if(e.key === 'Escape'){ closeSearchFully(); }
+  else if(e.key === 'Enter'){ goToTopResult(); }
+}
 
+function closeSearchFully(){
+  document.getElementById('searchInputWrap').classList.remove('open');
+  document.getElementById('searchInput').value = '';
+  document.getElementById('searchResults').classList.remove('open');
+}
+
+function getCurrentMatches(){
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  if(!q) return [];
   const lang = localStorage.getItem('lang') || 'ru';
-  const matches = searchIndex.filter(item => {
+  return searchIndex.filter(item => {
     const t = (lang==='ru'?item.title:item.titleEn).toLowerCase();
     const tOther = (lang==='ru'?item.titleEn:item.title).toLowerCase();
     return t.includes(q) || tOther.includes(q);
   });
+}
+
+function goToTopResult(){
+  const matches = getCurrentMatches();
+  if(matches.length > 0){
+    matches[0].action();
+    closeSearchFully();
+  }
+}
+
+function doSearch(){
+  const q = document.getElementById('searchInput').value.trim();
+  const resultsEl = document.getElementById('searchResults');
+  if(!q){ resultsEl.classList.remove('open'); return; }
+
+  const lang = localStorage.getItem('lang') || 'ru';
+  const matches = getCurrentMatches();
 
   if(matches.length === 0){
     resultsEl.innerHTML = `<div class="search-empty">${lang==='ru'?'Ничего не найдено':'No results found'}</div>`;
@@ -1502,7 +1535,7 @@ function doSearch(){
 }
 function runSearchResult(idx){
   searchIndex[idx].action();
-  toggleSearch();
+  closeSearchFully();
 }
 document.addEventListener('click', (e) => {
   const wrap = document.querySelector('.search-wrap');
