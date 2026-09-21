@@ -331,6 +331,43 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .dash-stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.2rem;}
 .dash-stats-grid .cnt-n{font-size:2rem;}
 
+
+/* ROSTER / PLAYER */
+.roster-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1.2rem;}
+.player-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1rem;text-align:center;cursor:pointer;transition:all .25s;}
+.player-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 8px 25px rgba(0,0,0,.2);}
+.player-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--bg);margin:0 auto .7rem;font-family:'Cinzel',serif;font-weight:700;}
+.player-num{position:relative;font-family:'Cinzel',serif;font-size:.68rem;color:var(--gold);letter-spacing:.05em;margin-bottom:.2rem;}
+.player-card-name{font-family:'Cinzel',serif;font-size:.8rem;font-weight:600;color:var(--text);margin-bottom:.2rem;}
+.player-card-pos{font-size:.7rem;color:var(--dim);text-transform:uppercase;letter-spacing:.05em;}
+
+.player-mb{max-width:420px;}
+.player-modal-header{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.5rem;}
+.player-photo{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-size:1.9rem;color:var(--bg);font-family:'Cinzel',serif;font-weight:700;flex-shrink:0;}
+.player-name{font-family:'Cinzel',serif;font-size:1.15rem;font-weight:700;color:var(--gold2);margin-bottom:.2rem;}
+.player-meta{font-size:.8rem;color:var(--dim);}
+.player-stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1.3rem;}
+.player-stats-grid .cnt-n{font-size:1.5rem;}
+.player-bio{font-size:.82rem;color:var(--dim);line-height:1.7;padding-top:1rem;border-top:1px solid var(--border);}
+
+/* SEARCH */
+.search-wrap{position:relative;display:flex;align-items:center;}
+.search-btn{background:none;border:1px solid var(--border);border-radius:4px;cursor:pointer;color:var(--dim);width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .2s;}
+.search-btn:hover{color:var(--gold);border-color:var(--gold);}
+.search-input-wrap{display:flex;align-items:center;overflow:hidden;max-width:0;transition:max-width .3s ease;}
+.search-input-wrap.open{max-width:220px;margin-right:.4rem;}
+.search-input{width:210px;padding:.4rem .7rem;background:rgba(46,74,74,.2);border:1px solid var(--border);border-radius:4px;color:var(--text);font-size:.8rem;font-family:'Raleway',sans-serif;outline:none;}
+.search-input:focus{border-color:var(--gold);}
+.search-results{position:absolute;top:calc(100% + .5rem);right:0;width:280px;max-height:360px;overflow-y:auto;background:var(--bg2);border:1px solid var(--border);border-radius:8px;box-shadow:0 12px 35px rgba(0,0,0,.4);display:none;z-index:150;}
+.search-results.open{display:block;}
+.search-result-item{display:flex;align-items:center;gap:.7rem;padding:.7rem 1rem;cursor:pointer;border-bottom:1px solid rgba(201,149,106,.06);transition:background .2s;}
+.search-result-item:last-child{border-bottom:none;}
+.search-result-item:hover{background:rgba(201,149,106,.08);}
+.sr-icon{font-size:1rem;flex-shrink:0;}
+.sr-title{font-size:.82rem;color:var(--text);font-weight:600;}
+.sr-cat{font-size:.66rem;color:var(--gold);letter-spacing:.05em;text-transform:uppercase;}
+.search-empty{padding:1.2rem;text-align:center;font-size:.8rem;color:var(--dim);}
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
@@ -392,6 +429,13 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
       <a onclick="showPage('account')" class="nav-login" data-ru="Войти" data-en="Login">Войти</a>
     </nav>
     <div class="hc">
+      <div class="search-wrap">
+        <div class="search-input-wrap" id="searchInputWrap">
+          <input type="text" class="search-input" id="searchInput" placeholder="Поиск..." oninput="doSearch()" onkeydown="if(event.key==='Escape')toggleSearch()">
+        </div>
+        <button class="search-btn" onclick="toggleSearch()" title="Поиск">🔍</button>
+        <div class="search-results" id="searchResults"></div>
+      </div>
       <div class="lsw">
         <button class="lb active" id="btn-ru" onclick="setLang('ru')">RU</button>
         <span class="lsep">|</span>
@@ -741,6 +785,29 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     <div class="cs"><div class="cs-i">🗓️</div><div class="cs-t" data-ru="Ивенты скоро появятся" data-en="Events coming soon">Ивенты скоро появятся</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div>
   </div>
 </div>
+
+<!-- ══ TEAM DETAIL ══ -->
+<div class="page" id="page-team">
+  <div class="sph">
+    <div class="sph-in">
+      <div class="sp-logo" id="teamEmblem" style="display:flex;align-items:center;justify-content:center;font-size:3rem;">🏒</div>
+      <div>
+        <div class="sp-title" id="teamTitle">—</div>
+        <div class="sp-sub" id="teamSub">—</div>
+        <button class="sp-back" onclick="showPage('teams')" data-ru="← Назад к командам" data-en="← Back to Teams">← Назад к командам</button>
+      </div>
+    </div>
+  </div>
+  <div class="pb">
+    <div class="hs-header">
+      <div class="sec-label" data-ru="Состав команды" data-en="Team Roster">Состав команды</div>
+      <div class="sec-title" data-ru="Игроки" data-en="Players">Игроки</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="roster-grid" id="rosterGrid"></div>
+  </div>
+</div>
+
 <!-- ══ TEAMS ══ -->
 <div class="page" id="page-teams">
   <div class="ph"><div class="ph-in">
@@ -759,14 +826,14 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
       <button class="fb" onclick="filterTeams(this,'golf')" data-ru="Гольф" data-en="Golf">Гольф</button>
     </div>
     <div class="tg">
-      <div class="tc" data-sport="hockey"><div class="te">🏒</div><div class="tn">Белые медведи</div><div class="tsp" data-ru="Хоккей" data-en="Hockey">Хоккей</div><div class="ts2" data-ru="Игроков: 20" data-en="Players: 20">Игроков: 20</div></div>
-      <div class="tc" data-sport="hockey"><div class="te">🏒</div><div class="tn">Северные звёзды</div><div class="tsp" data-ru="Хоккей" data-en="Hockey">Хоккей</div><div class="ts2" data-ru="Игроков: 18" data-en="Players: 18">Игроков: 18</div></div>
-      <div class="tc" data-sport="football"><div class="te">⚽</div><div class="tn">Динамо ИСП</div><div class="tsp" data-ru="Футбол" data-en="Football">Футбол</div><div class="ts2" data-ru="Игроков: 22" data-en="Players: 22">Игроков: 22</div></div>
-      <div class="tc" data-sport="football"><div class="te">⚽</div><div class="tn">Атлетик</div><div class="tsp" data-ru="Футбол" data-en="Football">Футбол</div><div class="ts2" data-ru="Игроков: 20" data-en="Players: 20">Игроков: 20</div></div>
-      <div class="tc" data-sport="basketball"><div class="te">🏀</div><div class="tn">Академия ISP</div><div class="tsp" data-ru="Баскетбол" data-en="Basketball">Баскетбол</div><div class="ts2" data-ru="Игроков: 12" data-en="Players: 12">Игроков: 12</div></div>
-      <div class="tc" data-sport="waterpolo"><div class="te">🤽</div><div class="tn">Нептун ИСП</div><div class="tsp" data-ru="Водное поло" data-en="Water Polo">Водное поло</div><div class="ts2" data-ru="Игроков: 13" data-en="Players: 13">Игроков: 13</div></div>
-      <div class="tc" data-sport="figure"><div class="te">⛸️</div><div class="tn" data-ru="Команда по ФК" data-en="Figure Skating Team">Команда по ФК</div><div class="tsp" data-ru="Фиг. катание" data-en="Figure Skating">Фиг. катание</div><div class="ts2" data-ru="Участников: 10" data-en="Athletes: 10">Участников: 10</div></div>
-      <div class="tc" data-sport="golf"><div class="te">⛳</div><div class="tn" data-ru="Клуб гольфа ISP" data-en="ISP Golf Club">Клуб гольфа ISP</div><div class="tsp" data-ru="Гольф" data-en="Golf">Гольф</div><div class="ts2" data-ru="Участников: 8" data-en="Athletes: 8">Участников: 8</div></div>
+      <div class="tc" data-sport="hockey" onclick="showTeamPage('bears')"><div class="te">🏒</div><div class="tn">Белые медведи</div><div class="tsp" data-ru="Хоккей" data-en="Hockey">Хоккей</div><div class="ts2" data-ru="Игроков: 20" data-en="Players: 20">Игроков: 20</div></div>
+      <div class="tc" data-sport="hockey" onclick="showTeamPage('stars')"><div class="te">🏒</div><div class="tn">Северные звёзды</div><div class="tsp" data-ru="Хоккей" data-en="Hockey">Хоккей</div><div class="ts2" data-ru="Игроков: 18" data-en="Players: 18">Игроков: 18</div></div>
+      <div class="tc" data-sport="football" onclick="showTeamPage('dynamo')"><div class="te">⚽</div><div class="tn">Динамо ИСП</div><div class="tsp" data-ru="Футбол" data-en="Football">Футбол</div><div class="ts2" data-ru="Игроков: 22" data-en="Players: 22">Игроков: 22</div></div>
+      <div class="tc" data-sport="football" onclick="showTeamPage('athletic')"><div class="te">⚽</div><div class="tn">Атлетик</div><div class="tsp" data-ru="Футбол" data-en="Football">Футбол</div><div class="ts2" data-ru="Игроков: 20" data-en="Players: 20">Игроков: 20</div></div>
+      <div class="tc" data-sport="basketball" onclick="showTeamPage('academy')"><div class="te">🏀</div><div class="tn">Академия ISP</div><div class="tsp" data-ru="Баскетбол" data-en="Basketball">Баскетбол</div><div class="ts2" data-ru="Игроков: 12" data-en="Players: 12">Игроков: 12</div></div>
+      <div class="tc" data-sport="waterpolo" onclick="showTeamPage('neptune')"><div class="te">🤽</div><div class="tn">Нептун ИСП</div><div class="tsp" data-ru="Водное поло" data-en="Water Polo">Водное поло</div><div class="ts2" data-ru="Игроков: 13" data-en="Players: 13">Игроков: 13</div></div>
+      <div class="tc" data-sport="figure" onclick="showTeamPage('figureteam')"><div class="te">⛸️</div><div class="tn" data-ru="Команда по ФК" data-en="Figure Skating Team">Команда по ФК</div><div class="tsp" data-ru="Фиг. катание" data-en="Figure Skating">Фиг. катание</div><div class="ts2" data-ru="Участников: 10" data-en="Athletes: 10">Участников: 10</div></div>
+      <div class="tc" data-sport="golf" onclick="showTeamPage('golfclub')"><div class="te">⛳</div><div class="tn" data-ru="Клуб гольфа ISP" data-en="ISP Golf Club">Клуб гольфа ISP</div><div class="tsp" data-ru="Гольф" data-en="Golf">Гольф</div><div class="ts2" data-ru="Участников: 8" data-en="Athletes: 8">Участников: 8</div></div>
     </div>
   </div>
 </div>
@@ -1069,6 +1136,23 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
   <div class="fc">© 2023–2025 Inter Select Pro · EST. 2023 · Калининград</div>
 </footer>
 
+
+<!-- MODAL: ИГРОК -->
+<div class="mo" id="playerModal" onclick="closePlayerModal()">
+  <div class="mb player-mb" onclick="event.stopPropagation()">
+    <button class="mc" onclick="closePlayerModal()">✕</button>
+    <div class="player-modal-header">
+      <div class="player-photo" id="pmPhoto">👤</div>
+      <div>
+        <div class="player-name" id="pmName">—</div>
+        <div class="player-meta" id="pmMeta">—</div>
+      </div>
+    </div>
+    <div class="player-stats-grid" id="pmStats"></div>
+    <div class="player-bio" id="pmBio"></div>
+  </div>
+</div>
+
 <!-- MODAL -->
 <div class="mo" id="appModal" onclick="closeModal()">
   <div class="mb" onclick="event.stopPropagation()">
@@ -1166,12 +1250,14 @@ window.addEventListener('popstate',e=>{
   if(!e.state)return;
   const pg=e.state.page||'';
   if(pg.startsWith('sport-'))showSportPage(pg.replace('sport-',''));
+  else if(pg.startsWith('team-'))showTeamPage(pg.replace('team-',''));
   else if(pg)showPage(pg);
 });
 
 window.addEventListener('DOMContentLoaded',()=>{
   const h=location.hash.replace('#','');
   if(h.startsWith('sport-'))showSportPage(h.replace('sport-',''));
+  else if(h.startsWith('team-'))showTeamPage(h.replace('team-',''));
   else if(h&&VALID.includes(h))showPage(h);
   else{showPage('home');animateCounters();}
   renderCalendar();
@@ -1188,6 +1274,7 @@ function setLang(lang){
     const v=el.getAttribute('data-'+lang);
     if(v)el.textContent=v;
   });
+  document.getElementById('searchInput').placeholder = lang==='ru' ? 'Поиск...' : 'Search...';
   document.getElementById('btn-ru').classList.toggle('active',lang==='ru');
   document.getElementById('btn-en').classList.toggle('active',lang==='en');
   localStorage.setItem('lang',lang);
@@ -1248,6 +1335,181 @@ function animateCounters(){
     const t=setInterval(()=>{cur=Math.min(cur+step,target);el.textContent=Math.floor(cur)+'+';if(cur>=target){el.textContent=target+'+';clearInterval(t);}},16);
   });
 }
+
+
+// ── TEAMS DATA & ROSTER ──
+const teamsData = {
+  bears:      { name:'Белые медведи', nameEn:'White Bears', sport:'hockey', emoji:'🏒', playerCount:20, players:genPlayers(20,'hockey') },
+  stars:      { name:'Северные звёзды', nameEn:'Northern Stars', sport:'hockey', emoji:'🏒', playerCount:18, players:genPlayers(18,'hockey') },
+  dynamo:     { name:'Динамо ИСП', nameEn:'Dynamo ISP', sport:'football', emoji:'⚽', playerCount:22, players:genPlayers(22,'football') },
+  athletic:   { name:'Атлетик', nameEn:'Athletic', sport:'football', emoji:'⚽', playerCount:20, players:genPlayers(20,'football') },
+  academy:    { name:'Академия ISP', nameEn:'Academy ISP', sport:'basketball', emoji:'🏀', playerCount:12, players:genPlayers(12,'basketball') },
+  neptune:    { name:'Нептун ИСП', nameEn:'Neptune ISP', sport:'waterpolo', emoji:'🤽', playerCount:13, players:genPlayers(13,'waterpolo') },
+  figureteam: { name:'Команда по ФК', nameEn:'Figure Skating Team', sport:'figure', emoji:'⛸️', playerCount:10, players:genPlayers(10,'figure') },
+  golfclub:   { name:'Клуб гольфа ISP', nameEn:'ISP Golf Club', sport:'golf', emoji:'⛳', playerCount:8, players:genPlayers(8,'golf') },
+};
+
+const positionsBySport = {
+  hockey: ['Нападающий','Защитник','Вратарь'],
+  football: ['Нападающий','Полузащитник','Защитник','Вратарь'],
+  basketball: ['Разыгрывающий','Форвард','Центровой'],
+  waterpolo: ['Полевой игрок','Вратарь'],
+  figure: ['Одиночное катание','Парное катание'],
+  golf: ['Игрок']
+};
+const posEn = {
+  'Нападающий':'Forward','Защитник':'Defender','Вратарь':'Goalkeeper','Полузащитник':'Midfielder',
+  'Разыгрывающий':'Point Guard','Форвард':'Forward','Центровой':'Center','Полевой игрок':'Field Player',
+  'Одиночное катание':'Singles','Парное катание':'Pairs','Игрок':'Player'
+};
+
+function genPlayers(count, sport){
+  const positions = positionsBySport[sport];
+  const arr = [];
+  for(let i=1;i<=count;i++){
+    arr.push({
+      id: sport+'-'+i,
+      name: 'Игрок ' + i,
+      nameEn: 'Player ' + i,
+      number: i,
+      position: positions[i % positions.length],
+      matches: 0, goals: 0, assists: 0
+    });
+  }
+  return arr;
+}
+
+function showTeamPage(key){
+  const team = teamsData[key];
+  if(!team) return;
+  const lang = localStorage.getItem('lang') || 'ru';
+
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-team').classList.add('active');
+
+  document.getElementById('teamEmblem').textContent = team.emoji;
+  document.getElementById('teamTitle').textContent = lang==='ru' ? team.name : team.nameEn;
+  const sportNames = {hockey:['Хоккей','Hockey'],football:['Футбол','Football'],basketball:['Баскетбол','Basketball'],waterpolo:['Водное поло','Water Polo'],figure:['Фигурное катание','Figure Skating'],golf:['Гольф','Golf']};
+  const sn = sportNames[team.sport];
+  document.getElementById('teamSub').textContent = 'Inter Select Pro · ' + (lang==='ru'?sn[0]:sn[1]) + ' · ' + team.playerCount + ' ' + (lang==='ru'?'игроков':'players');
+
+  const grid = document.getElementById('rosterGrid');
+  grid.innerHTML = team.players.map(p => `
+    <div class="player-card" onclick="showPlayerModal('${key}','${p.id}')">
+      <div class="player-avatar">${p.number}</div>
+      <div class="player-card-name">${lang==='ru'?p.name:p.nameEn}</div>
+      <div class="player-card-pos">${lang==='ru'?p.position:posEn[p.position]}</div>
+    </div>`).join('');
+
+  window.scrollTo({top:0,behavior:'smooth'});
+  history.pushState({page:'team-'+key},'','#team-'+key);
+}
+
+function showPlayerModal(teamKey, playerId){
+  const team = teamsData[teamKey];
+  const player = team.players.find(p => p.id === playerId);
+  if(!player) return;
+  const lang = localStorage.getItem('lang') || 'ru';
+
+  document.getElementById('pmPhoto').textContent = player.number;
+  document.getElementById('pmName').textContent = lang==='ru' ? player.name : player.nameEn;
+  document.getElementById('pmMeta').textContent = '#' + player.number + ' · ' + (lang==='ru'?player.position:posEn[player.position]) + ' · ' + (lang==='ru'?team.name:team.nameEn);
+
+  document.getElementById('pmStats').innerHTML = `
+    <div class="cnt-card"><div class="cnt-n">${player.matches}</div><div class="cnt-l" data-ru="Матчей" data-en="Matches">${lang==='ru'?'Матчей':'Matches'}</div></div>
+    <div class="cnt-card"><div class="cnt-n">${player.goals}</div><div class="cnt-l">${lang==='ru'?'Голов':'Goals'}</div></div>
+    <div class="cnt-card"><div class="cnt-n">${player.assists}</div><div class="cnt-l">${lang==='ru'?'Передач':'Assists'}</div></div>
+  `;
+  document.getElementById('pmBio').textContent = lang==='ru'
+    ? 'Подробная статистика и фотографии появятся по мере проведения матчей сезона.'
+    : 'Detailed statistics and photos will appear as season matches are played.';
+
+  document.getElementById('playerModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePlayerModal(){
+  document.getElementById('playerModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── SITE SEARCH ──
+const searchIndex = [
+  {title:'Главная', titleEn:'Home', icon:'🏠', cat:'Страница', catEn:'Page', action:()=>showPage('home')},
+  {title:'Лига', titleEn:'League', icon:'🏛️', cat:'Страница', catEn:'Page', action:()=>showPage('league')},
+  {title:'Академия', titleEn:'Academy', icon:'🎓', cat:'Страница', catEn:'Page', action:()=>showPage('academy')},
+  {title:'Вызов Легенд', titleEn:'Legends Challenge', icon:'⚔️', cat:'Страница', catEn:'Page', action:()=>showPage('legends')},
+  {title:'Команды', titleEn:'Teams', icon:'👥', cat:'Страница', catEn:'Page', action:()=>showPage('teams')},
+  {title:'Новости', titleEn:'News', icon:'📰', cat:'Страница', catEn:'Page', action:()=>showPage('news')},
+  {title:'Ивенты', titleEn:'Events', icon:'🗓️', cat:'Страница', catEn:'Page', action:()=>showPage('events')},
+  {title:'Таблица ивентов', titleEn:'Events Calendar', icon:'📅', cat:'Страница', catEn:'Page', action:()=>showPage('calendar')},
+  {title:'Вузы и Лиги', titleEn:'Universities & Leagues', icon:'🎓', cat:'Страница', catEn:'Page', action:()=>showPage('partners')},
+  {title:'Турнирные таблицы', titleEn:'Standings', icon:'🏆', cat:'Страница', catEn:'Page', action:()=>showPage('standings')},
+  {title:'Игроки', titleEn:'Players', icon:'👤', cat:'Страница', catEn:'Page', action:()=>showPage('players')},
+  {title:'Документы', titleEn:'Documents', icon:'📄', cat:'Страница', catEn:'Page', action:()=>showPage('documents')},
+  {title:'Атрибутика', titleEn:'Merchandise', icon:'👕', cat:'Страница', catEn:'Page', action:()=>showPage('merch')},
+  {title:'Галерея', titleEn:'Gallery', icon:'📸', cat:'Страница', catEn:'Page', action:()=>showPage('gallery')},
+  {title:'Контакты', titleEn:'Contacts', icon:'📍', cat:'Страница', catEn:'Page', action:()=>showPage('contacts')},
+  {title:'Спонсоры', titleEn:'Sponsors', icon:'🤝', cat:'Страница', catEn:'Page', action:()=>showPage('sponsors')},
+  {title:'О нас', titleEn:'About Us', icon:'ℹ️', cat:'Страница', catEn:'Page', action:()=>showPage('about')},
+  {title:'Войти', titleEn:'Login', icon:'🔐', cat:'Страница', catEn:'Page', action:()=>showPage('account')},
+  {title:'Хоккей', titleEn:'Hockey', icon:'🏒', cat:'Вид спорта', catEn:'Sport', action:()=>showSportPage('hockey')},
+  {title:'Футбол', titleEn:'Football', icon:'⚽', cat:'Вид спорта', catEn:'Sport', action:()=>showSportPage('football')},
+  {title:'Баскетбол', titleEn:'Basketball', icon:'🏀', cat:'Вид спорта', catEn:'Sport', action:()=>showSportPage('basketball')},
+  {title:'Водное поло', titleEn:'Water Polo', icon:'🤽', cat:'Вид спорта', catEn:'Sport', action:()=>showSportPage('waterpolo')},
+  {title:'Фигурное катание', titleEn:'Figure Skating', icon:'⛸️', cat:'Вид спорта', catEn:'Sport', action:()=>showSportPage('figure')},
+  {title:'Гольф', titleEn:'Golf', icon:'⛳', cat:'Вид спорта', catEn:'Sport', action:()=>showSportPage('golf')},
+];
+// Add teams to search index dynamically
+Object.keys(teamsData).forEach(key => {
+  const t = teamsData[key];
+  searchIndex.push({title:t.name, titleEn:t.nameEn, icon:t.emoji, cat:'Команда', catEn:'Team', action:()=>showTeamPage(key)});
+});
+
+function toggleSearch(){
+  const wrap = document.getElementById('searchInputWrap');
+  const input = document.getElementById('searchInput');
+  wrap.classList.toggle('open');
+  if(wrap.classList.contains('open')){
+    setTimeout(()=>input.focus(), 200);
+  } else {
+    input.value = '';
+    document.getElementById('searchResults').classList.remove('open');
+  }
+}
+
+function doSearch(){
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const resultsEl = document.getElementById('searchResults');
+  if(!q){ resultsEl.classList.remove('open'); return; }
+
+  const lang = localStorage.getItem('lang') || 'ru';
+  const matches = searchIndex.filter(item => {
+    const t = (lang==='ru'?item.title:item.titleEn).toLowerCase();
+    const tOther = (lang==='ru'?item.titleEn:item.title).toLowerCase();
+    return t.includes(q) || tOther.includes(q);
+  });
+
+  if(matches.length === 0){
+    resultsEl.innerHTML = `<div class="search-empty">${lang==='ru'?'Ничего не найдено':'No results found'}</div>`;
+  } else {
+    resultsEl.innerHTML = matches.slice(0,10).map((m,i) => `
+      <div class="search-result-item" onclick="runSearchResult(${searchIndex.indexOf(m)})">
+        <span class="sr-icon">${m.icon}</span>
+        <div><div class="sr-title">${lang==='ru'?m.title:m.titleEn}</div><div class="sr-cat">${lang==='ru'?m.cat:m.catEn}</div></div>
+      </div>`).join('');
+  }
+  resultsEl.classList.add('open');
+}
+function runSearchResult(idx){
+  searchIndex[idx].action();
+  toggleSearch();
+}
+document.addEventListener('click', (e) => {
+  const wrap = document.querySelector('.search-wrap');
+  if(wrap && !wrap.contains(e.target)){
+    document.getElementById('searchResults').classList.remove('open');
+  }
+});
 
 // BACK TO TOP
 window.addEventListener('scroll',()=>document.getElementById('btt').classList.toggle('visible',window.scrollY>400));
