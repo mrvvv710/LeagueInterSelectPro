@@ -1338,17 +1338,6 @@ function animateCounters(){
 
 
 // ── TEAMS DATA & ROSTER ──
-const teamsData = {
-  bears:      { name:'Белые медведи', nameEn:'White Bears', sport:'hockey', emoji:'🏒', playerCount:20, players:genPlayers(20,'hockey') },
-  stars:      { name:'Северные звёзды', nameEn:'Northern Stars', sport:'hockey', emoji:'🏒', playerCount:18, players:genPlayers(18,'hockey') },
-  dynamo:     { name:'Динамо ИСП', nameEn:'Dynamo ISP', sport:'football', emoji:'⚽', playerCount:22, players:genPlayers(22,'football') },
-  athletic:   { name:'Атлетик', nameEn:'Athletic', sport:'football', emoji:'⚽', playerCount:20, players:genPlayers(20,'football') },
-  academy:    { name:'Академия ISP', nameEn:'Academy ISP', sport:'basketball', emoji:'🏀', playerCount:12, players:genPlayers(12,'basketball') },
-  neptune:    { name:'Нептун ИСП', nameEn:'Neptune ISP', sport:'waterpolo', emoji:'🤽', playerCount:13, players:genPlayers(13,'waterpolo') },
-  figureteam: { name:'Команда по ФК', nameEn:'Figure Skating Team', sport:'figure', emoji:'⛸️', playerCount:10, players:genPlayers(10,'figure') },
-  golfclub:   { name:'Клуб гольфа ISP', nameEn:'ISP Golf Club', sport:'golf', emoji:'⛳', playerCount:8, players:genPlayers(8,'golf') },
-};
-
 const positionsBySport = {
   hockey: ['Нападающий','Защитник','Вратарь'],
   football: ['Нападающий','Полузащитник','Защитник','Вратарь'],
@@ -1378,6 +1367,17 @@ function genPlayers(count, sport){
   }
   return arr;
 }
+
+const teamsData = {
+  bears:      { name:'Белые медведи', nameEn:'White Bears', sport:'hockey', emoji:'🏒', playerCount:20, players:genPlayers(20,'hockey') },
+  stars:      { name:'Северные звёзды', nameEn:'Northern Stars', sport:'hockey', emoji:'🏒', playerCount:18, players:genPlayers(18,'hockey') },
+  dynamo:     { name:'Динамо ИСП', nameEn:'Dynamo ISP', sport:'football', emoji:'⚽', playerCount:22, players:genPlayers(22,'football') },
+  athletic:   { name:'Атлетик', nameEn:'Athletic', sport:'football', emoji:'⚽', playerCount:20, players:genPlayers(20,'football') },
+  academy:    { name:'Академия ISP', nameEn:'Academy ISP', sport:'basketball', emoji:'🏀', playerCount:12, players:genPlayers(12,'basketball') },
+  neptune:    { name:'Нептун ИСП', nameEn:'Neptune ISP', sport:'waterpolo', emoji:'🤽', playerCount:13, players:genPlayers(13,'waterpolo') },
+  figureteam: { name:'Команда по ФК', nameEn:'Figure Skating Team', sport:'figure', emoji:'⛸️', playerCount:10, players:genPlayers(10,'figure') },
+  golfclub:   { name:'Клуб гольфа ISP', nameEn:'ISP Golf Club', sport:'golf', emoji:'⛳', playerCount:8, players:genPlayers(8,'golf') },
+};
 
 function showTeamPage(key){
   const team = teamsData[key];
