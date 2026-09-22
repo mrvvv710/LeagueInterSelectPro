@@ -374,6 +374,18 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .pm-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
 .pm-tab-content{min-height:100px;}
 
+
+.legal-text h3{font-family:'Cinzel',serif;font-size:1rem;font-weight:700;color:var(--gold2);margin:1.8rem 0 .7rem;letter-spacing:.03em;}
+.legal-text h3:first-of-type{margin-top:0;}
+.legal-text p{font-size:.88rem;line-height:1.8;color:var(--text);margin-bottom:.8rem;}
+.legal-text ul{margin:0 0 .8rem 1.3rem;}
+.legal-text li{font-size:.87rem;line-height:1.8;color:var(--text);margin-bottom:.3rem;}
+.legal-updated{font-size:.78rem;color:var(--dim);font-style:italic;margin-bottom:1.8rem!important;}
+.consent-check{display:flex;align-items:flex-start;gap:.6rem;margin-bottom:1.2rem;}
+.consent-check input{margin-top:.2rem;flex-shrink:0;accent-color:var(--gold);cursor:pointer;}
+.consent-check label{font-size:.78rem;color:var(--dim);line-height:1.5;cursor:pointer;}
+.consent-check a{color:var(--gold);text-decoration:underline;cursor:pointer;}
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
@@ -1053,6 +1065,12 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
           </div>
           <div class="fg" style="text-align:left;"><label data-ru="Пароль" data-en="Password">Пароль</label><input type="password" class="fi" id="regPassword" placeholder="Минимум 6 символов"></div>
           <div class="fg" style="text-align:left;"><label data-ru="Повторите пароль" data-en="Confirm Password">Повторите пароль</label><input type="password" class="fi" id="regPassword2" placeholder="••••••••"></div>
+          <div class="consent-check">
+            <input type="checkbox" id="regConsent">
+            <label for="regConsent">
+              <span data-ru="Я согласен с " data-en="I agree to the ">Я согласен с </span><a onclick="event.preventDefault();showPage('account');showPage('privacy')" data-ru="политикой конфиденциальности" data-en="privacy policy">политикой конфиденциальности</a><span data-ru=" и даю согласие на обработку персональных данных" data-en=" and consent to the processing of my personal data"> и даю согласие на обработку персональных данных</span>
+            </label>
+          </div>
           <div class="auth-error" id="regError"></div>
           <button class="fsub" onclick="ispRegister()" data-ru="Зарегистрироваться" data-en="Register">Зарегистрироваться</button>
         </div>
@@ -1128,6 +1146,125 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
   </div>
 </div>
 
+
+<!-- ══ PRIVACY POLICY ══ -->
+<div class="page" id="page-privacy">
+  <div class="ph"><div class="ph-in">
+    <div class="pl" data-ru="Правовая информация" data-en="Legal Information">Правовая информация</div>
+    <div class="pt" data-ru="Политика конфиденциальности" data-en="Privacy Policy">Политика конфиденциальности</div>
+    <div class="pd"></div>
+  </div></div>
+  <div class="pb" style="max-width:900px;">
+    <div class="legal-text" data-ru-html="true" id="privacyContentRu">
+      <p class="legal-updated">Дата последнего обновления: 22 сентября 2026 г.</p>
+
+      <h3>1. Общие положения</h3>
+      <p>Настоящая Политика конфиденциальности (далее — «Политика») определяет порядок обработки и защиты персональных данных пользователей сайта Inter Select Pro (далее — «Сайт»), разработана в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+      <p>Оператором персональных данных является организация Inter Select Pro (далее — «Оператор»).</p>
+
+      <h3>2. Какие данные мы собираем</h3>
+      <p>При регистрации личного кабинета и использовании Сайта Оператор может собирать следующие данные:</p>
+      <ul>
+        <li>Имя и фамилия</li>
+        <li>Адрес электронной почты</li>
+        <li>Пароль (хранится в зашифрованном виде)</li>
+        <li>Выбранный вид спорта</li>
+        <li>Статистика участия в матчах и турнирах</li>
+        <li>Фотографии и видеоматериалы, загруженные пользователем в медиатеку</li>
+      </ul>
+
+      <h3>3. Цели обработки данных</h3>
+      <ul>
+        <li>Создание и администрирование личного кабинета пользователя</li>
+        <li>Организация участия в турнирах и мероприятиях лиги</li>
+        <li>Отображение статистики, достижений и медиаматериалов пользователя</li>
+        <li>Связь с пользователем по вопросам, связанным с деятельностью лиги</li>
+      </ul>
+
+      <h3>4. Правовые основания обработки</h3>
+      <p>Обработка персональных данных осуществляется на основании согласия субъекта персональных данных, предоставляемого при регистрации на Сайте.</p>
+
+      <h3>5. Хранение данных</h3>
+      <p>Персональные данные пользователей хранятся с использованием облачной инфраструктуры Supabase (базы данных PostgreSQL) с применением технических мер защиты, включая шифрование паролей.</p>
+
+      <h3>6. Передача данных третьим лицам</h3>
+      <p>Оператор не передаёт персональные данные пользователей третьим лицам, за исключением случаев, предусмотренных законодательством Российской Федерации, либо для обеспечения технической работы Сайта (хостинг-провайдеры, поставщики облачных сервисов).</p>
+
+      <h3>7. Права субъекта персональных данных</h3>
+      <p>Пользователь имеет право:</p>
+      <ul>
+        <li>Получить информацию, касающуюся обработки его персональных данных</li>
+        <li>Требовать уточнения, блокирования или уничтожения своих персональных данных</li>
+        <li>Отозвать согласие на обработку персональных данных</li>
+        <li>Обратиться с жалобой в уполномоченный орган по защите прав субъектов персональных данных</li>
+      </ul>
+
+      <h3>8. Файлы cookie</h3>
+      <p>Сайт может использовать технологию хранения данных в браузере (localStorage) для сохранения языковых настроек, темы оформления и сессии авторизации пользователя.</p>
+
+      <h3>9. Изменения политики</h3>
+      <p>Оператор оставляет за собой право вносить изменения в настоящую Политику. Актуальная версия всегда доступна на данной странице.</p>
+
+      <h3>10. Контакты</h3>
+      <p>По всем вопросам, связанным с обработкой персональных данных, вы можете обратиться по адресу: info@interselectpro.ru</p>
+    </div>
+
+    <div class="legal-text" id="privacyContentEn" style="display:none;">
+      <p class="legal-updated">Last updated: September 22, 2026</p>
+
+      <h3>1. General Provisions</h3>
+      <p>This Privacy Policy (the "Policy") defines how personal data of Inter Select Pro website users (the "Site") is processed and protected, in accordance with Federal Law No. 152-FZ "On Personal Data" of July 27, 2006.</p>
+      <p>The data controller is the Inter Select Pro organization (the "Operator").</p>
+
+      <h3>2. What Data We Collect</h3>
+      <p>When registering an account and using the Site, the Operator may collect the following data:</p>
+      <ul>
+        <li>First and last name</li>
+        <li>Email address</li>
+        <li>Password (stored in encrypted form)</li>
+        <li>Selected sport</li>
+        <li>Match and tournament participation statistics</li>
+        <li>Photos and videos uploaded by the user to the media library</li>
+      </ul>
+
+      <h3>3. Purposes of Data Processing</h3>
+      <ul>
+        <li>Creating and administering the user's personal account</li>
+        <li>Organizing participation in league tournaments and events</li>
+        <li>Displaying user statistics, achievements, and media</li>
+        <li>Communicating with the user regarding league activities</li>
+      </ul>
+
+      <h3>4. Legal Basis for Processing</h3>
+      <p>Personal data is processed on the basis of the consent of the data subject provided during registration on the Site.</p>
+
+      <h3>5. Data Storage</h3>
+      <p>User personal data is stored using Supabase cloud infrastructure (PostgreSQL databases) with technical protection measures applied, including password encryption.</p>
+
+      <h3>6. Data Transfer to Third Parties</h3>
+      <p>The Operator does not transfer users' personal data to third parties, except as required by Russian Federation law, or to ensure the technical operation of the Site (hosting providers, cloud service providers).</p>
+
+      <h3>7. Data Subject Rights</h3>
+      <p>The user has the right to:</p>
+      <ul>
+        <li>Receive information regarding the processing of their personal data</li>
+        <li>Request correction, blocking, or deletion of their personal data</li>
+        <li>Withdraw consent to the processing of personal data</li>
+        <li>File a complaint with the authorized body for the protection of personal data subjects' rights</li>
+      </ul>
+
+      <h3>8. Cookies</h3>
+      <p>The Site may use browser storage technology (localStorage) to save language settings, theme preferences, and user authorization sessions.</p>
+
+      <h3>9. Policy Changes</h3>
+      <p>The Operator reserves the right to make changes to this Policy. The current version is always available on this page.</p>
+
+      <h3>10. Contact</h3>
+      <p>For any questions related to the processing of personal data, please contact: info@interselectpro.ru</p>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="fl">INTER SELECT PRO</div>
@@ -1138,6 +1275,7 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     <a onclick="showPage('events')" data-ru="Ивенты" data-en="Events">Ивенты</a>
     <a onclick="showPage('contacts')" data-ru="Контакты" data-en="Contacts">Контакты</a>
     <a onclick="showPage('about')" data-ru="О нас" data-en="About">О нас</a>
+    <a onclick="showPage('privacy')" data-ru="Политика конфиденциальности" data-en="Privacy Policy">Политика конфиденциальности</a>
   </div>
   <div class="fc">© 2023–2025 Inter Select Pro · EST. 2023 · Калининград</div>
 </footer>
@@ -1218,7 +1356,7 @@ window.addEventListener('resize',initCv);
 initCv();drawPts();
 
 // PAGES
-const VALID=['home','league','calendar','partners','academy','legends','teams','news','events','standings','players','documents','merch','gallery','contacts','sponsors','about','account'];
+const VALID=['home','league','calendar','partners','academy','legends','teams','news','events','standings','players','documents','merch','gallery','contacts','sponsors','about','account','privacy'];
 const SPORTS=['hockey','football','basketball','waterpolo','figure','golf'];
 
 function showPage(id){
@@ -1294,6 +1432,9 @@ function setLang(lang){
     if(v)el.textContent=v;
   });
   document.getElementById('searchInput').placeholder = lang==='ru' ? 'Поиск...' : 'Search...';
+  const pRu = document.getElementById('privacyContentRu');
+  const pEn = document.getElementById('privacyContentEn');
+  if(pRu && pEn){ pRu.style.display = lang==='ru' ? 'block' : 'none'; pEn.style.display = lang==='en' ? 'block' : 'none'; }
   document.getElementById('btn-ru').classList.toggle('active',lang==='ru');
   document.getElementById('btn-en').classList.toggle('active',lang==='en');
   localStorage.setItem('lang',lang);
@@ -1664,6 +1805,7 @@ async function ispRegister(){
   const sport = document.getElementById('regSport').value;
   const pass = document.getElementById('regPassword').value;
   const pass2 = document.getElementById('regPassword2').value;
+  const consent = document.getElementById('regConsent').checked;
   const errEl = document.getElementById('regError');
   const btn = document.querySelector('#registerForm .fsub');
 
@@ -1672,6 +1814,8 @@ async function ispRegister(){
   if(!emailRe.test(email)){ errEl.textContent = lang==='ru' ? 'Некорректный email' : 'Invalid email'; return; }
   if(pass.length < 6){ errEl.textContent = lang==='ru' ? 'Пароль минимум 6 символов' : 'Password must be at least 6 characters'; return; }
   if(pass !== pass2){ errEl.textContent = lang==='ru' ? 'Пароли не совпадают' : 'Passwords do not match'; return; }
+
+  if(!consent){ errEl.textContent = lang==='ru' ? 'Необходимо согласие на обработку персональных данных' : 'You must consent to personal data processing'; return; }
 
   errEl.textContent = lang==='ru' ? 'Создаём аккаунт...' : 'Creating account...';
   btn.disabled = true;
