@@ -368,6 +368,12 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .sr-cat{font-size:.66rem;color:var(--gold);letter-spacing:.05em;text-transform:uppercase;}
 .search-empty{padding:1.2rem;text-align:center;font-size:.8rem;color:var(--dim);}
 
+
+.pm-tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:1.3rem;}
+.pm-tab{flex:1;background:none;border:none;cursor:pointer;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);padding:.6rem 0;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s;}
+.pm-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.pm-tab-content{min-height:100px;}
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
@@ -1148,8 +1154,21 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
         <div class="player-meta" id="pmMeta">—</div>
       </div>
     </div>
-    <div class="player-stats-grid" id="pmStats"></div>
-    <div class="player-bio" id="pmBio"></div>
+    <div class="pm-tabs">
+      <button class="pm-tab active" onclick="switchPmTab('stats',this)" data-ru="Статистика" data-en="Stats">Статистика</button>
+      <button class="pm-tab" onclick="switchPmTab('media',this)" data-ru="Медиатека" data-en="Media">Медиатека</button>
+      <button class="pm-tab" onclick="switchPmTab('achievements',this)" data-ru="Достижения" data-en="Achievements">Достижения</button>
+    </div>
+    <div id="pmStatsTab" class="pm-tab-content">
+      <div class="player-stats-grid" id="pmStats"></div>
+      <div class="player-bio" id="pmBio"></div>
+    </div>
+    <div id="pmMediaTab" class="pm-tab-content" style="display:none;">
+      <div class="cs" style="padding:2.2rem 1.5rem;"><div class="cs-i">🎬</div><div class="cs-t" data-ru="Медиатека пуста" data-en="Media library is empty">Медиатека пуста</div><div class="cs-s" data-ru="Фото и видео с матчей появятся здесь" data-en="Match photos and videos will appear here">Фото и видео с матчей появятся здесь</div></div>
+    </div>
+    <div id="pmAchievementsTab" class="pm-tab-content" style="display:none;">
+      <div class="cs" style="padding:2.2rem 1.5rem;"><div class="cs-i">🏅</div><div class="cs-t" data-ru="Пока нет достижений" data-en="No achievements yet">Пока нет достижений</div><div class="cs-s" data-ru="Награды появятся по мере участия в турнирах" data-en="Awards will appear as tournaments are played">Награды появятся по мере участия в турнирах</div></div>
+    </div>
   </div>
 </div>
 
@@ -1424,12 +1443,26 @@ function showPlayerModal(teamKey, playerId){
     ? 'Подробная статистика и фотографии появятся по мере проведения матчей сезона.'
     : 'Detailed statistics and photos will appear as season matches are played.';
 
+  document.querySelectorAll('.pm-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector('.pm-tab').classList.add('active');
+  document.getElementById('pmStatsTab').style.display = 'block';
+  document.getElementById('pmMediaTab').style.display = 'none';
+  document.getElementById('pmAchievementsTab').style.display = 'none';
+
   document.getElementById('playerModal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closePlayerModal(){
   document.getElementById('playerModal').classList.remove('open');
   document.body.style.overflow = '';
+}
+
+function switchPmTab(tab, btn){
+  document.querySelectorAll('.pm-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pmStatsTab').style.display = tab==='stats' ? 'block' : 'none';
+  document.getElementById('pmMediaTab').style.display = tab==='media' ? 'block' : 'none';
+  document.getElementById('pmAchievementsTab').style.display = tab==='achievements' ? 'block' : 'none';
 }
 
 // ── SITE SEARCH ──
