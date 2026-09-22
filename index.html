@@ -386,6 +386,15 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .consent-check label{font-size:.78rem;color:var(--dim);line-height:1.5;cursor:pointer;}
 .consent-check a{color:var(--gold);text-decoration:underline;cursor:pointer;}
 
+
+/* BREADCRUMBS */
+.breadcrumb-bar{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;max-width:1300px;margin:0 auto;padding:.9rem 2rem;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.04em;}
+.bc-item{color:var(--dim);cursor:pointer;transition:color .2s;text-transform:uppercase;}
+.bc-item:hover{color:var(--gold2);}
+.bc-item.bc-current{color:var(--gold);cursor:default;}
+.bc-item.bc-current:hover{color:var(--gold);}
+.bc-sep{color:var(--border);}
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
@@ -483,6 +492,8 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     <a onclick="showPage('account');toggleMenu()" data-ru="Войти" data-en="Login">Войти</a>
   </div>
 </header>
+
+<div class="breadcrumb-bar" id="breadcrumbBar" style="display:none;"></div>
 
 <!-- ══ HOME ══ -->
 <div class="page active" id="page-home">
@@ -1373,6 +1384,7 @@ function showPage(id){
   if(id==='home'){cntDone=false;animateCounters();}
   if(id==='calendar'||id==='league'||id==='events'||id==='home'){renderCalendar();}
   if(id==='account'){ispCheckSession();}
+  renderBreadcrumb(breadcrumbTrails[id] || null);
 }
 
 function showSportPage(key){
@@ -1387,6 +1399,9 @@ function showSportPage(key){
   document.getElementById('se-'+key).style.display='none';
   window.scrollTo({top:0,behavior:'smooth'});
   history.pushState({page:'sport-'+key},'','#sport-'+key);
+  const spTitleEl = pg.querySelector('.sp-title');
+  const sportLabel = spTitleEl ? {ru:spTitleEl.getAttribute('data-ru'), en:spTitleEl.getAttribute('data-en')} : {ru:key,en:key};
+  renderBreadcrumb([{ru:'Академия',en:'Academy',action:()=>showPage('academy')}, sportLabel]);
 }
 
 function switchSportTab(key,tab,btn){
@@ -1435,6 +1450,7 @@ function setLang(lang){
   const pRu = document.getElementById('privacyContentRu');
   const pEn = document.getElementById('privacyContentEn');
   if(pRu && pEn){ pRu.style.display = lang==='ru' ? 'block' : 'none'; pEn.style.display = lang==='en' ? 'block' : 'none'; }
+  if(_lastBreadcrumbTrail !== undefined) renderBreadcrumb(_lastBreadcrumbTrail);
   document.getElementById('btn-ru').classList.toggle('active',lang==='ru');
   document.getElementById('btn-en').classList.toggle('active',lang==='en');
   localStorage.setItem('lang',lang);
@@ -1496,6 +1512,66 @@ function animateCounters(){
   });
 }
 
+
+
+// ── BREADCRUMBS ──
+const breadcrumbTrails = {
+  league:     [{ru:'Лига',en:'League'}],
+  calendar:   [{ru:'Лига',en:'League',action:()=>showPage('league')},{ru:'Таблица ивентов',en:'Events Calendar'}],
+  partners:   [{ru:'Лига',en:'League',action:()=>showPage('league')},{ru:'Вузы и Лиги',en:'Universities & Leagues'}],
+  academy:    [{ru:'Академия',en:'Academy'}],
+  legends:    [{ru:'Вызов Легенд',en:'Legends Challenge'}],
+  teams:      [{ru:'Команды',en:'Teams'}],
+  news:       [{ru:'Новости',en:'News'}],
+  events:     [{ru:'Ивенты',en:'Events'}],
+  standings:  [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Таблица',en:'Standings'}],
+  players:    [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Игроки',en:'Players'}],
+  documents:  [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Документы',en:'Documents'}],
+  merch:      [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Атрибутика',en:'Merchandise'}],
+  gallery:    [{ru:'Галерея',en:'Gallery'}],
+  contacts:   [{ru:'Контакты',en:'Contacts'}],
+  sponsors:   [{ru:'Спонсоры',en:'Sponsors'}],
+  about:      [{ru:'О нас',en:'About Us'}],
+  account:    [{ru:'Личный кабинет',en:'Personal Account'}],
+  privacy:    [{ru:'Политика конфиденциальности',en:'Privacy Policy'}],
+};
+
+let _lastBreadcrumbTrail = null;
+
+function renderBreadcrumb(trail){
+  const bar = document.getElementById('breadcrumbBar');
+  if(!bar) return;
+  _lastBreadcrumbTrail = trail;
+
+  if(!trail){ bar.style.display='none'; bar.innerHTML=''; return; }
+  bar.style.display='flex';
+  bar.innerHTML='';
+  const lang = localStorage.getItem('lang') || 'ru';
+
+  const homeSpan = document.createElement('span');
+  homeSpan.className = 'bc-item';
+  homeSpan.textContent = lang==='ru' ? 'Главная' : 'Home';
+  homeSpan.onclick = () => showPage('home');
+  bar.appendChild(homeSpan);
+
+  trail.forEach((seg, i) => {
+    const sep = document.createElement('span');
+    sep.className = 'bc-sep';
+    sep.textContent = '/';
+    bar.appendChild(sep);
+
+    const span = document.createElement('span');
+    const isLast = i === trail.length - 1;
+    span.textContent = lang==='ru' ? seg.ru : seg.en;
+    if(isLast || !seg.action){
+      span.className = 'bc-item bc-current';
+    } else {
+      span.className = 'bc-item';
+      span.onclick = seg.action;
+    }
+    bar.appendChild(span);
+  });
+}
 
 // ── TEAMS DATA & ROSTER ──
 const positionsBySport = {
@@ -1563,6 +1639,7 @@ function showTeamPage(key){
 
   window.scrollTo({top:0,behavior:'smooth'});
   history.pushState({page:'team-'+key},'','#team-'+key);
+  renderBreadcrumb([{ru:'Команды',en:'Teams',action:()=>showPage('teams')}, {ru:team.name, en:team.nameEn}]);
 }
 
 function showPlayerModal(teamKey, playerId){
