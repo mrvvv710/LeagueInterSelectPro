@@ -15,7 +15,7 @@ body{background:var(--bg);color:var(--text);font-family:'Raleway',sans-serif;ove
 /* PRELOADER */
 #preloader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;transition:opacity .6s,visibility .6s;}
 #preloader.hidden{opacity:0;visibility:hidden;pointer-events:none;}
-.pre-logo{width:110px;height:110px;object-fit:contain;border-radius:50%;border:2px solid var(--gold);background:#0f1a1a;padding:6px;animation:pulse 1.5s ease-in-out infinite;}
+.pre-logo{width:110px;height:110px;object-fit:cover;border-radius:50%;border:2px solid var(--gold);animation:pulse 1.5s ease-in-out infinite;}
 .pre-bar{width:180px;height:2px;background:rgba(201,149,106,0.15);border-radius:2px;overflow:hidden;}
 .pre-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));animation:fillBar 1.8s ease forwards;}
 .pre-txt{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;}
@@ -35,7 +35,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(20,24,31,.97);backdrop-
 [data-theme=light] header{background:rgba(240,236,228,.97);}
 .hi{max-width:1400px;margin:0 auto;display:flex;align-items:center;height:64px;gap:.8rem;padding:0 1.5rem;}
 .lw{display:flex;align-items:center;gap:.7rem;cursor:pointer;flex-shrink:0;text-decoration:none;}
-.lw img{height:46px;width:46px;object-fit:contain;border-radius:50%;border:2px solid var(--gold);background:#0f1a1a;padding:3px;transition:box-shadow .3s,transform .3s;}
+.lw img{height:46px;width:46px;object-fit:cover;border-radius:50%;border:2px solid var(--gold);transition:box-shadow .3s,transform .3s;}
 .lw:hover img{box-shadow:0 0 22px rgba(201,149,106,.6);transform:scale(1.07);}
 .lt{font-family:'Cinzel',serif;font-weight:700;font-size:.82rem;line-height:1.2;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.05em;}
 nav{margin-left:auto;display:flex;gap:0;align-items:center;overflow:visible;flex-wrap:nowrap;}
@@ -71,7 +71,7 @@ nav a.active::after{left:8%;right:8%;}
 #heroCanvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(46,74,74,.4) 0%,transparent 70%),var(--bg);z-index:0;}
 .hc2{position:relative;z-index:2;text-align:center;padding:2rem;}
-.hl{width:195px;height:195px;object-fit:contain;border-radius:50%;border:3px solid var(--gold);box-shadow:0 0 60px rgba(201,149,106,.5);background:#0f1a1a;padding:8px;margin-bottom:1.5rem;animation:float 4s ease-in-out infinite;}
+.hl{width:195px;height:195px;object-fit:cover;border-radius:50%;border:3px solid var(--gold);box-shadow:0 0 60px rgba(201,149,106,.5);margin-bottom:1.5rem;animation:float 4s ease-in-out infinite;}
 @keyframes float{0%,100%{transform:translateY(0);box-shadow:0 0 60px rgba(201,149,106,.5)}50%{transform:translateY(-12px);box-shadow:0 0 90px rgba(201,149,106,.7)}}
 .htitle{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(1.8rem,4vw,3.5rem);line-height:1.1;letter-spacing:.06em;background:linear-gradient(135deg,var(--gold3) 0%,var(--gold) 45%,var(--gold2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem;}
 .hsub{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.22em;color:var(--dim);text-transform:uppercase;margin-bottom:1.8rem;}
@@ -657,9 +657,9 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
   </div>
   <div id="sb-hockey" class="spbody">
     <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:1.5rem;" data-ru="Хоккей — один из ключевых видов спорта нашей лиги. Турниры проводятся по профессиональным стандартам с участием ведущих команд региона." data-en="Hockey is one of the key sports of our league. Tournaments are held to professional standards with leading regional teams.">Хоккей — один из ключевых видов спорта нашей лиги. Турниры проводятся по профессиональным стандартам с участием ведущих команд региона.</p>
-    <div class="sr"><span class="srl" data-ru="Команд" data-en="Teams">Команд</span><span class="srv">5</span></div>
-    <div class="sr"><span class="srl" data-ru="Игроков" data-en="Players">Игроков</span><span class="srv">90+</span></div>
-    <div class="sr"><span class="srl" data-ru="Матчей в сезоне" data-en="Games per season">Матчей в сезоне</span><span class="srv">14</span></div>
+    <div class="sr"><span class="srl" data-ru="Команд" data-en="Teams">Команд</span><span class="srv">8+</span></div>
+    <div class="sr"><span class="srl" data-ru="Игроков" data-en="Players">Игроков</span><span class="srv">160+</span></div>
+    <div class="sr"><span class="srl" data-ru="Матчей в сезоне" data-en="Games per season">Матчей в сезоне</span><span class="srv">48+</span></div>
   </div>
   <div id="st-hockey" style="display:none;" class="spbody">
     <div class="stg" id="str-hockey"><div class="stc"><div class="sti">🏒</div><div class="stn">Белые медведи</div></div><div class="stc"><div class="sti">🏒</div><div class="stn">Северные звёзды</div></div><div class="stc"><div class="sti">🏒</div><div class="stn">Академия ISP</div></div><div class="stc"><div class="sti">🏒</div><div class="stn">Ледяные волки</div></div><div class="stc"><div class="sti">🏒</div><div class="stn">Буревестник</div></div></div>
@@ -686,9 +686,9 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
   </div>
   <div id="sb-football" class="spbody">
     <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:1.5rem;" data-ru="Футбольный дивизион лиги включает команды всех возрастов. Соревнования проводятся на профессиональных полях по стандартам FIFA." data-en="The football division includes teams of all ages. Competitions are held on professional fields to FIFA standards.">Футбольный дивизион лиги включает команды всех возрастов. Соревнования проводятся на профессиональных полях по стандартам FIFA.</p>
-    <div class="sr"><span class="srl" data-ru="Команд" data-en="Teams">Команд</span><span class="srv">5</span></div>
-    <div class="sr"><span class="srl" data-ru="Игроков" data-en="Players">Игроков</span><span class="srv">100+</span></div>
-    <div class="sr"><span class="srl" data-ru="Матчей в сезоне" data-en="Games per season">Матчей в сезоне</span><span class="srv">12</span></div>
+    <div class="sr"><span class="srl" data-ru="Команд" data-en="Teams">Команд</span><span class="srv">8+</span></div>
+    <div class="sr"><span class="srl" data-ru="Игроков" data-en="Players">Игроков</span><span class="srv">160+</span></div>
+    <div class="sr"><span class="srl" data-ru="Матчей в сезоне" data-en="Games per season">Матчей в сезоне</span><span class="srv">48+</span></div>
   </div>
   <div id="st-football" style="display:none;" class="spbody">
     <div class="stg" id="str-football"><div class="stc"><div class="sti">⚽</div><div class="stn">Динамо ИСП</div></div><div class="stc"><div class="sti">⚽</div><div class="stn">Атлетик</div></div><div class="stc"><div class="sti">⚽</div><div class="stn">Спартак</div></div><div class="stc"><div class="sti">⚽</div><div class="stn">Локомотив</div></div><div class="stc"><div class="sti">⚽</div><div class="stn">Факел</div></div></div>
@@ -715,9 +715,9 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
   </div>
   <div id="sb-basketball" class="spbody">
     <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:1.5rem;" data-ru="Баскетбольный турнир лиги собирает сильнейшие команды города. Игры проходят в крытых залах по правилам FIBA." data-en="The league basketball tournament brings together the strongest city teams, played indoors to FIBA rules.">Баскетбольный турнир лиги собирает сильнейшие команды города. Игры проходят в крытых залах по правилам FIBA.</p>
-    <div class="sr"><span class="srl" data-ru="Команд" data-en="Teams">Команд</span><span class="srv">4</span></div>
-    <div class="sr"><span class="srl" data-ru="Игроков" data-en="Players">Игроков</span><span class="srv">50+</span></div>
-    <div class="sr"><span class="srl" data-ru="Матчей в сезоне" data-en="Games per season">Матчей в сезоне</span><span class="srv">10</span></div>
+    <div class="sr"><span class="srl" data-ru="Команд" data-en="Teams">Команд</span><span class="srv">8+</span></div>
+    <div class="sr"><span class="srl" data-ru="Игроков" data-en="Players">Игроков</span><span class="srv">160+</span></div>
+    <div class="sr"><span class="srl" data-ru="Матчей в сезоне" data-en="Games per season">Матчей в сезоне</span><span class="srv">48+</span></div>
   </div>
   <div id="st-basketball" style="display:none;" class="spbody">
     <div class="stg" id="str-basketball"><div class="stc"><div class="sti">🏀</div><div class="stn">Академия</div></div><div class="stc"><div class="sti">🏀</div><div class="stn">Спартак</div></div><div class="stc"><div class="sti">🏀</div><div class="stn">Прогресс</div></div><div class="stc"><div class="sti">🏀</div><div class="stn">Зенит</div></div></div>
@@ -744,9 +744,9 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
   </div>
   <div id="sb-waterpolo" class="spbody">
     <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:1.5rem;" data-ru="Водное поло — динамичный и зрелищный вид спорта. Соревнования проходят в олимпийских бассейнах по стандартам FINA." data-en="Water polo is dynamic and spectacular. League competitions are held in Olympic pools to FINA standards.">Водное поло — динамичный и зрелищный вид спорта. Соревнования проходят в олимпийских бассейнах по стандартам FINA.</p>
-    <div class="sr"><span class="srl" data-ru="Команд" data-en="Teams">Команд</span><span class="srv">3</span></div>
-    <div class="sr"><span class="srl" data-ru="Игроков" data-en="Players">Игроков</span><span class="srv">40+</span></div>
-    <div class="sr"><span class="srl" data-ru="Матчей в сезоне" data-en="Games per season">Матчей в сезоне</span><span class="srv">8</span></div>
+    <div class="sr"><span class="srl" data-ru="Команд" data-en="Teams">Команд</span><span class="srv">8+</span></div>
+    <div class="sr"><span class="srl" data-ru="Игроков" data-en="Players">Игроков</span><span class="srv">160+</span></div>
+    <div class="sr"><span class="srl" data-ru="Матчей в сезоне" data-en="Games per season">Матчей в сезоне</span><span class="srv">48+</span></div>
   </div>
   <div id="st-waterpolo" style="display:none;" class="spbody">
     <div class="stg" id="str-waterpolo"><div class="stc"><div class="sti">🤽</div><div class="stn">Нептун ИСП</div></div><div class="stc"><div class="sti">🤽</div><div class="stn">Буревестник</div></div><div class="stc"><div class="sti">🤽</div><div class="stn">Олимп</div></div></div>
@@ -773,9 +773,9 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
   </div>
   <div id="sb-figure" class="spbody">
     <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:1.5rem;" data-ru="Фигурное катание объединяет грацию и атлетизм. Турниры включают одиночное катание, парное и танцы на льду." data-en="Figure skating combines grace and athleticism, including singles, pairs and ice dancing.">Фигурное катание объединяет грацию и атлетизм. Турниры включают одиночное катание, парное и танцы на льду.</p>
-    <div class="sr"><span class="srl" data-ru="Участников" data-en="Athletes">Участников</span><span class="srv">10</span></div>
-    <div class="sr"><span class="srl" data-ru="Программ" data-en="Programs">Программ</span><span class="srv">3</span></div>
-    <div class="sr"><span class="srl" data-ru="Турниров в сезоне" data-en="Tournaments per season">Турниров в сезоне</span><span class="srv">4</span></div>
+    <div class="sr"><span class="srl" data-ru="Команд" data-en="Teams">Команд</span><span class="srv">8</span></div>
+    <div class="sr"><span class="srl" data-ru="Участников" data-en="Athletes">Участников</span><span class="srv">120</span></div>
+    <div class="sr"><span class="srl" data-ru="Ивентов в сезоне" data-en="Events per season">Ивентов в сезоне</span><span class="srv">24</span></div>
   </div>
   <div id="st-figure" style="display:none;" class="spbody">
     <div class="stg" id="str-figure"><div class="stc"><div class="sti">⛸️</div><div class="stn">Команда по ФК</div></div><div class="stc"><div class="sti">⛸️</div><div class="stn">Звёзды льда</div></div></div>
