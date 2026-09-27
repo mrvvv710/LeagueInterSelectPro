@@ -6,7 +6,7 @@
 <title>Inter Select Pro</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#14181f;--bg2:#1a1f2b;--steel:#2e4a4a;--gold:#c9956a;--gold2:#e8c48a;--gold3:#f5deb3;--text:#e8e0d0;--dim:#8a8070;--border:rgba(201,149,106,0.2);--glow:rgba(201,149,106,0.10);}
+:root{--bg:#0c1220;--bg2:#121a2e;--steel:#22344a;--gold:#c9956a;--gold2:#e8c48a;--gold3:#f5deb3;--text:#e8e0d0;--dim:#8a8fa0;--border:rgba(201,149,106,0.14);--glow:rgba(201,149,106,0.10);}
 [data-theme=light]{--bg:#f0ece4;--bg2:#e8e2d8;--gold:#a0703a;--gold2:#b8843a;--gold3:#8a5a20;--text:#1a1510;--dim:#6a6060;--border:rgba(160,112,58,0.25);}
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -15,7 +15,7 @@ body{background:var(--bg);color:var(--text);font-family:'Raleway',sans-serif;ove
 /* PRELOADER */
 #preloader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;transition:opacity .6s,visibility .6s;}
 #preloader.hidden{opacity:0;visibility:hidden;pointer-events:none;}
-.pre-logo{width:110px;height:110px;object-fit:cover;border-radius:50%;border:2px solid var(--gold);animation:pulse 1.5s ease-in-out infinite;}
+.pre-logo{width:110px;height:110px;object-fit:cover;object-position:center 62%;border-radius:50%;border:2px solid var(--gold);animation:pulse 1.5s ease-in-out infinite;}
 .pre-bar{width:180px;height:2px;background:rgba(201,149,106,0.15);border-radius:2px;overflow:hidden;}
 .pre-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));animation:fillBar 1.8s ease forwards;}
 .pre-txt{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;}
@@ -35,11 +35,11 @@ header{position:sticky;top:0;z-index:100;background:rgba(20,24,31,.97);backdrop-
 [data-theme=light] header{background:rgba(240,236,228,.97);}
 .hi{max-width:1400px;margin:0 auto;display:flex;align-items:center;height:64px;gap:.8rem;padding:0 1.5rem;}
 .lw{display:flex;align-items:center;gap:.7rem;cursor:pointer;flex-shrink:0;text-decoration:none;}
-.lw img{height:46px;width:46px;object-fit:cover;border-radius:50%;border:2px solid var(--gold);transition:box-shadow .3s,transform .3s;}
+.lw img{height:46px;width:46px;object-fit:cover;object-position:center 62%;border-radius:50%;border:2px solid var(--gold);transition:box-shadow .3s,transform .3s;}
 .lw:hover img{box-shadow:0 0 22px rgba(201,149,106,.6);transform:scale(1.07);}
 .lt{font-family:'Cinzel',serif;font-weight:700;font-size:.82rem;line-height:1.2;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.05em;}
-nav{margin-left:auto;display:flex;gap:0;align-items:center;overflow:visible;flex-wrap:nowrap;}
-nav a{font-family:'Cinzel',serif;font-size:.63rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--dim);text-decoration:none;padding:.38rem .58rem;border-radius:4px;transition:color .2s,background .2s;cursor:pointer;white-space:nowrap;border:none;background:none;position:relative;}
+nav{margin-left:auto;display:flex;gap:.15rem;align-items:center;overflow:visible;flex-wrap:nowrap;}
+nav a{font-family:'Raleway',sans-serif;font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);text-decoration:none;padding:.5rem .9rem;border-radius:4px;transition:color .2s,background .2s;cursor:pointer;white-space:nowrap;border:none;background:none;position:relative;}
 nav a::after{content:'';position:absolute;bottom:2px;left:50%;right:50%;height:1.5px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:left .25s,right .25s;border-radius:2px;}
 nav a:hover,nav a.active{color:var(--gold2);}
 nav a.active::after{left:8%;right:8%;}
@@ -71,9 +71,9 @@ nav a.active::after{left:8%;right:8%;}
 #heroCanvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(46,74,74,.4) 0%,transparent 70%),var(--bg);z-index:0;}
 .hc2{position:relative;z-index:2;text-align:center;padding:2rem;}
-.hl{width:195px;height:195px;object-fit:cover;border-radius:50%;border:3px solid var(--gold);box-shadow:0 0 60px rgba(201,149,106,.5);margin-bottom:1.5rem;animation:float 4s ease-in-out infinite;}
+.hl{width:195px;height:195px;object-fit:cover;object-position:center 62%;border-radius:50%;border:3px solid var(--gold);box-shadow:0 0 90px rgba(201,149,106,.55),0 0 30px rgba(201,149,106,.4);margin-bottom:1.5rem;animation:float 4s ease-in-out infinite;}
 @keyframes float{0%,100%{transform:translateY(0);box-shadow:0 0 60px rgba(201,149,106,.5)}50%{transform:translateY(-12px);box-shadow:0 0 90px rgba(201,149,106,.7)}}
-.htitle{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(1.8rem,4vw,3.5rem);line-height:1.1;letter-spacing:.06em;background:linear-gradient(135deg,var(--gold3) 0%,var(--gold) 45%,var(--gold2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem;}
+.htitle{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(2.1rem,5.2vw,4.4rem);line-height:1.08;letter-spacing:.07em;background:linear-gradient(135deg,var(--gold3) 0%,var(--gold) 45%,var(--gold2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem;}
 .hsub{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.22em;color:var(--dim);text-transform:uppercase;margin-bottom:1.8rem;}
 .hdiv{width:110px;height:2px;margin:0 auto 1.8rem;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
 .hpills{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;}
@@ -246,12 +246,13 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .mm-sub{padding-left:1.2rem!important;font-size:.7rem!important;opacity:.8;}
 
 /* SPORT CARD HOME (square outline placeholder) */
-.hsports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1.1rem;max-width:900px;margin:0 auto 2rem;}
-.hsport-card{display:flex;flex-direction:column;align-items:center;gap:.6rem;cursor:pointer;transition:transform .25s;}
-.hsport-card:hover{transform:translateY(-5px);}
-.hsport-imgbox{width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:rgba(245,245,240,.06);transition:transform .25s;padding:6%;box-sizing:border-box;}
-.hsport-card:hover .hsport-imgbox{transform:scale(1.06);background:rgba(201,149,106,.09);}
-.hsport-label{font-family:'Cinzel',serif;font-size:.92rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);text-align:center;}
+.hsports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:1.6rem;max-width:960px;margin:0 auto 2rem;}
+.hsport-card{display:flex;flex-direction:column;align-items:center;gap:1rem;cursor:pointer;transition:transform .3s;}
+.hsport-card:hover{transform:translateY(-6px);}
+.hsport-imgbox{width:88%;aspect-ratio:1;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(201,149,106,.12);transition:border-color .3s,box-shadow .3s;box-sizing:border-box;}
+.hsport-card:hover .hsport-imgbox{border-color:var(--gold);box-shadow:0 0 28px rgba(201,149,106,.35),0 10px 30px rgba(0,0,0,.25);}
+.hsport-label{font-family:'Raleway',sans-serif;font-size:.86rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold2);text-align:center;transition:color .3s;}
+.hsport-card:hover .hsport-label{color:var(--gold3);}
 
 /* STAFF (Managers/Coaches) */
 .staff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.4rem;}
@@ -263,9 +264,9 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .staff-contact{font-size:.75rem;color:var(--dim);line-height:1.6;}
 
 /* HOME SECTIONS */
-.home-sec{max-width:1300px;margin:0 auto;padding:3rem 2rem;}
+.home-sec{max-width:1300px;margin:0 auto;padding:4.5rem 2rem;}
 .home-sec-alt{background:var(--bg2);}
-.hs-header{margin-bottom:2rem;}
+.hs-header{margin-bottom:2.6rem;}
 .hs-link{display:inline-block;margin-top:1.2rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;cursor:pointer;border-bottom:1px solid var(--gold);padding-bottom:.15rem;transition:opacity .2s;}
 .hs-link:hover{opacity:.7;}
 
@@ -428,31 +429,36 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     </div>
     <nav id="mainNav">
       <a onclick="showPage('home')" data-ru="Главная" data-en="Home">Главная</a>
-      <div class="nav-item" id="leagueNavItem">
-        <a onclick="toggleDropdown(event,'leagueNavItem')" data-ru="Лига ▾" data-en="League ▾">Лига ▾</a>
-        <div class="dropdown">
-          <a onclick="showPage('league')" data-ru="О лиге" data-en="About League" style="border-bottom:1px solid var(--border);margin-bottom:.3rem;padding-bottom:.6rem!important;">О лиге</a>
-          <a onclick="showPage('calendar')" data-ru="Таблица ивентов" data-en="Events Calendar">Таблица ивентов</a>
-          <a onclick="showPage('partners')" data-ru="Вузы и Лиги" data-en="Universities &amp; Leagues">Вузы и Лиги</a>
-        </div>
-      </div>
-      <a onclick="showPage('academy')" data-ru="Академия" data-en="Academy">Академия</a>
-      <a onclick="showPage('legends')" data-ru="Вызов Легенд" data-en="Legends Challenge">Вызов Легенд</a>
+      <a onclick="showPage('news')" data-ru="Новости" data-en="News">Новости</a>
       <div class="nav-item" id="eventsNavItem">
         <a onclick="toggleDropdown(event,'eventsNavItem')" data-ru="Ивенты ▾" data-en="Events ▾">Ивенты ▾</a>
         <div class="dropdown" id="eventsDropdown">
           <a onclick="showPage('events')" data-ru="Все ивенты" data-en="All Events" style="border-bottom:1px solid var(--border);margin-bottom:.3rem;padding-bottom:.6rem!important;">Все ивенты</a>
-          <a onclick="showPage('standings')" data-ru="Таблица" data-en="Standings">Таблица</a>
+          <a onclick="showPage('calendar')" data-ru="Таблица ивентов" data-en="Events Calendar">Таблица ивентов</a>
+          <a onclick="showPage('standings')" data-ru="Турнирные таблицы" data-en="Standings">Турнирные таблицы</a>
           <a onclick="showPage('teams')" data-ru="Команды" data-en="Teams">Команды</a>
           <a onclick="showPage('players')" data-ru="Игроки" data-en="Players">Игроки</a>
           <a onclick="showPage('documents')" data-ru="Документы" data-en="Documents">Документы</a>
           <a onclick="showPage('merch')" data-ru="Атрибутика" data-en="Merchandise">Атрибутика</a>
         </div>
       </div>
-      <a onclick="showPage('news')" data-ru="Новости" data-en="News">Новости</a>
+      <div class="nav-item" id="sportNavItem">
+        <a onclick="toggleDropdown(event,'sportNavItem')" data-ru="Спорт ▾" data-en="Sport ▾">Спорт ▾</a>
+        <div class="dropdown">
+          <a onclick="showPage('academy')" data-ru="Академия" data-en="Academy" style="border-bottom:1px solid var(--border);margin-bottom:.3rem;padding-bottom:.6rem!important;">Академия</a>
+          <a onclick="showPage('legends')" data-ru="Вызов Легенд" data-en="Legends Challenge">Вызов Легенд</a>
+          <a onclick="showPage('league')" data-ru="О лиге" data-en="About League">О лиге</a>
+          <a onclick="showPage('partners')" data-ru="Вузы и Лиги" data-en="Universities &amp; Leagues">Вузы и Лиги</a>
+        </div>
+      </div>
       <a onclick="showPage('gallery')" data-ru="Галерея" data-en="Gallery">Галерея</a>
-      <a onclick="showPage('contacts')" data-ru="Контакты" data-en="Contacts">Контакты</a>
-      <a onclick="showPage('sponsors')" data-ru="Спонсоры" data-en="Sponsors">Спонсоры</a>
+      <div class="nav-item" id="contactsNavItem">
+        <a onclick="toggleDropdown(event,'contactsNavItem')" data-ru="Контакты ▾" data-en="Contacts ▾">Контакты ▾</a>
+        <div class="dropdown">
+          <a onclick="showPage('contacts')" data-ru="Контакты" data-en="Contacts" style="border-bottom:1px solid var(--border);margin-bottom:.3rem;padding-bottom:.6rem!important;">Контакты</a>
+          <a onclick="showPage('sponsors')" data-ru="Для инвесторов" data-en="For Investors">Для инвесторов</a>
+        </div>
+      </div>
       <a onclick="showPage('account')" class="nav-login" data-ru="Войти" data-en="Login">Войти</a>
     </nav>
     <div class="hc">
@@ -474,21 +480,21 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
   </div>
   <div class="mm" id="mobileMenu">
     <a onclick="showPage('home');toggleMenu()" data-ru="Главная" data-en="Home">Главная</a>
-    <a onclick="showPage('league');toggleMenu()" data-ru="Лига" data-en="League">Лига</a>
-    <a onclick="showPage('calendar');toggleMenu()" class="mm-sub" data-ru="— Таблица ивентов" data-en="— Events Calendar">— Таблица ивентов</a>
-    <a onclick="showPage('partners');toggleMenu()" class="mm-sub" data-ru="— Вузы и Лиги" data-en="— Universities &amp; Leagues">— Вузы и Лиги</a>
-    <a onclick="showPage('academy');toggleMenu()" data-ru="Академия" data-en="Academy">Академия</a>
-    <a onclick="showPage('legends');toggleMenu()" data-ru="Вызов Легенд" data-en="Legends Challenge">Вызов Легенд</a>
+    <a onclick="showPage('news');toggleMenu()" data-ru="Новости" data-en="News">Новости</a>
     <a onclick="showPage('events');toggleMenu()" data-ru="Ивенты" data-en="Events">Ивенты</a>
-    <a onclick="showPage('standings');toggleMenu()" class="mm-sub" data-ru="— Таблица" data-en="— Standings">— Таблица</a>
+    <a onclick="showPage('calendar');toggleMenu()" class="mm-sub" data-ru="— Таблица ивентов" data-en="— Events Calendar">— Таблица ивентов</a>
+    <a onclick="showPage('standings');toggleMenu()" class="mm-sub" data-ru="— Турнирные таблицы" data-en="— Standings">— Турнирные таблицы</a>
     <a onclick="showPage('teams');toggleMenu()" class="mm-sub" data-ru="— Команды" data-en="— Teams">— Команды</a>
     <a onclick="showPage('players');toggleMenu()" class="mm-sub" data-ru="— Игроки" data-en="— Players">— Игроки</a>
     <a onclick="showPage('documents');toggleMenu()" class="mm-sub" data-ru="— Документы" data-en="— Documents">— Документы</a>
     <a onclick="showPage('merch');toggleMenu()" class="mm-sub" data-ru="— Атрибутика" data-en="— Merchandise">— Атрибутика</a>
-    <a onclick="showPage('news');toggleMenu()" data-ru="Новости" data-en="News">Новости</a>
+    <a onclick="showPage('academy');toggleMenu()" data-ru="Спорт" data-en="Sport">Спорт</a>
+    <a onclick="showPage('legends');toggleMenu()" class="mm-sub" data-ru="— Вызов Легенд" data-en="— Legends Challenge">— Вызов Легенд</a>
+    <a onclick="showPage('league');toggleMenu()" class="mm-sub" data-ru="— О лиге" data-en="— About League">— О лиге</a>
+    <a onclick="showPage('partners');toggleMenu()" class="mm-sub" data-ru="— Вузы и Лиги" data-en="— Universities &amp; Leagues">— Вузы и Лиги</a>
     <a onclick="showPage('gallery');toggleMenu()" data-ru="Галерея" data-en="Gallery">Галерея</a>
     <a onclick="showPage('contacts');toggleMenu()" data-ru="Контакты" data-en="Contacts">Контакты</a>
-    <a onclick="showPage('sponsors');toggleMenu()" data-ru="Спонсоры" data-en="Sponsors">Спонсоры</a>
+    <a onclick="showPage('sponsors');toggleMenu()" class="mm-sub" data-ru="— Для инвесторов" data-en="— For Investors">— Для инвесторов</a>
     <a onclick="showPage('account');toggleMenu()" data-ru="Войти" data-en="Login">Войти</a>
   </div>
 </header>
@@ -941,8 +947,8 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 
 <!-- ══ SPONSORS ══ -->
 <div class="page" id="page-sponsors">
-  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Наши партнёры" data-en="Our Partners">Наши партнёры</div><div class="pt" data-ru="Спонсоры" data-en="Sponsors">Спонсоры</div><div class="pd"></div></div></div>
-  <div class="pb"><div class="cs"><div class="cs-i">🤝</div><div class="cs-t" data-ru="Информация о спонсорах скоро появится" data-en="Sponsor info coming soon">Информация о спонсорах скоро появится</div><div class="cs-s" data-ru="Хотите стать партнёром? Свяжитесь с нами" data-en="Want to become a partner? Contact us">Хотите стать партнёром? Свяжитесь с нами</div></div></div>
+  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Инвестиции и партнёрство" data-en="Investment &amp; Partnership">Инвестиции и партнёрство</div><div class="pt" data-ru="Для инвесторов" data-en="For Investors">Для инвесторов</div><div class="pd"></div></div></div>
+  <div class="pb"><div class="cs"><div class="cs-i">🤝</div><div class="cs-t" data-ru="Информация для инвесторов скоро появится" data-en="Investor info coming soon">Информация для инвесторов скоро появится</div><div class="cs-s" data-ru="Хотите стать партнёром? Свяжитесь с нами" data-en="Want to become a partner? Contact us">Хотите стать партнёром? Свяжитесь с нами</div></div></div>
 </div>
 
 <!-- ══ ABOUT ══ -->
@@ -1401,7 +1407,7 @@ function showSportPage(key){
   history.pushState({page:'sport-'+key},'','#sport-'+key);
   const spTitleEl = pg.querySelector('.sp-title');
   const sportLabel = spTitleEl ? {ru:spTitleEl.getAttribute('data-ru'), en:spTitleEl.getAttribute('data-en')} : {ru:key,en:key};
-  renderBreadcrumb([{ru:'Академия',en:'Academy',action:()=>showPage('academy')}, sportLabel]);
+  renderBreadcrumb([{ru:'Спорт',en:'Sport',action:()=>showPage('academy')}, sportLabel]);
 }
 
 function switchSportTab(key,tab,btn){
@@ -1516,21 +1522,21 @@ function animateCounters(){
 
 // ── BREADCRUMBS ──
 const breadcrumbTrails = {
-  league:     [{ru:'Лига',en:'League'}],
-  calendar:   [{ru:'Лига',en:'League',action:()=>showPage('league')},{ru:'Таблица ивентов',en:'Events Calendar'}],
-  partners:   [{ru:'Лига',en:'League',action:()=>showPage('league')},{ru:'Вузы и Лиги',en:'Universities & Leagues'}],
-  academy:    [{ru:'Академия',en:'Academy'}],
-  legends:    [{ru:'Вызов Легенд',en:'Legends Challenge'}],
-  teams:      [{ru:'Команды',en:'Teams'}],
+  league:     [{ru:'Спорт',en:'Sport',action:()=>showPage('academy')},{ru:'О лиге',en:'About League'}],
+  calendar:   [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Таблица ивентов',en:'Events Calendar'}],
+  partners:   [{ru:'Спорт',en:'Sport',action:()=>showPage('academy')},{ru:'Вузы и Лиги',en:'Universities & Leagues'}],
+  academy:    [{ru:'Спорт',en:'Sport'}],
+  legends:    [{ru:'Спорт',en:'Sport',action:()=>showPage('academy')},{ru:'Вызов Легенд',en:'Legends Challenge'}],
+  teams:      [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Команды',en:'Teams'}],
   news:       [{ru:'Новости',en:'News'}],
   events:     [{ru:'Ивенты',en:'Events'}],
-  standings:  [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Таблица',en:'Standings'}],
+  standings:  [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Турнирные таблицы',en:'Standings'}],
   players:    [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Игроки',en:'Players'}],
   documents:  [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Документы',en:'Documents'}],
   merch:      [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Атрибутика',en:'Merchandise'}],
   gallery:    [{ru:'Галерея',en:'Gallery'}],
   contacts:   [{ru:'Контакты',en:'Contacts'}],
-  sponsors:   [{ru:'Спонсоры',en:'Sponsors'}],
+  sponsors:   [{ru:'Контакты',en:'Contacts',action:()=>showPage('contacts')},{ru:'Для инвесторов',en:'For Investors'}],
   about:      [{ru:'О нас',en:'About Us'}],
   account:    [{ru:'Личный кабинет',en:'Personal Account'}],
   privacy:    [{ru:'Политика конфиденциальности',en:'Privacy Policy'}],
@@ -1700,7 +1706,7 @@ const searchIndex = [
   {title:'Атрибутика', titleEn:'Merchandise', icon:'👕', cat:'Страница', catEn:'Page', action:()=>showPage('merch')},
   {title:'Галерея', titleEn:'Gallery', icon:'📸', cat:'Страница', catEn:'Page', action:()=>showPage('gallery')},
   {title:'Контакты', titleEn:'Contacts', icon:'📍', cat:'Страница', catEn:'Page', action:()=>showPage('contacts')},
-  {title:'Спонсоры', titleEn:'Sponsors', icon:'🤝', cat:'Страница', catEn:'Page', action:()=>showPage('sponsors')},
+  {title:'Для инвесторов', titleEn:'For Investors', icon:'🤝', cat:'Страница', catEn:'Page', action:()=>showPage('sponsors')},
   {title:'О нас', titleEn:'About Us', icon:'ℹ️', cat:'Страница', catEn:'Page', action:()=>showPage('about')},
   {title:'Войти', titleEn:'Login', icon:'🔐', cat:'Страница', catEn:'Page', action:()=>showPage('account')},
   {title:'Хоккей', titleEn:'Hockey', icon:'🏒', cat:'Вид спорта', catEn:'Sport', action:()=>showSportPage('hockey')},
