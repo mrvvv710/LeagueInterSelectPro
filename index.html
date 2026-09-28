@@ -15,7 +15,7 @@ body{background:var(--bg);color:var(--text);font-family:'Raleway',sans-serif;ove
 /* PRELOADER */
 #preloader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;transition:opacity .6s,visibility .6s;}
 #preloader.hidden{opacity:0;visibility:hidden;pointer-events:none;}
-.pre-logo{width:110px;height:110px;object-fit:contain;object-position:center center;border-radius:50%;border:2px solid var(--gold);animation:pulse 1.5s ease-in-out infinite;}
+.pre-logo{width:110px;height:110px;object-fit:cover;object-position:center center;background:transparent;border-radius:50%;border:2px solid var(--gold);animation:pulse 1.5s ease-in-out infinite;}
 .pre-bar{width:180px;height:2px;background:rgba(201,149,106,0.15);border-radius:2px;overflow:hidden;}
 .pre-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));animation:fillBar 1.8s ease forwards;}
 .pre-txt{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;}
@@ -35,7 +35,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(20,24,31,.97);backdrop-
 [data-theme=light] header{background:rgba(240,236,228,.97);}
 .hi{max-width:1400px;margin:0 auto;display:flex;align-items:center;height:64px;gap:.8rem;padding:0 1.5rem;}
 .lw{display:flex;align-items:center;gap:.7rem;cursor:pointer;flex-shrink:0;text-decoration:none;}
-.lw img{height:46px;width:46px;object-fit:contain;object-position:center center;border-radius:50%;border:2px solid var(--gold);transition:box-shadow .3s,transform .3s;}
+.lw img{height:46px;width:46px;object-fit:cover;object-position:center center;background:transparent;border-radius:50%;border:2px solid var(--gold);transition:box-shadow .3s,transform .3s;}
 .lw:hover img{box-shadow:0 0 22px rgba(201,149,106,.6);transform:scale(1.07);}
 .lt{font-family:'Cinzel',serif;font-weight:700;font-size:.82rem;line-height:1.2;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.05em;}
 nav{margin-left:auto;display:flex;gap:.15rem;align-items:center;overflow:visible;flex-wrap:nowrap;}
@@ -71,7 +71,7 @@ nav a.active::after{left:8%;right:8%;}
 #heroCanvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(46,74,74,.4) 0%,transparent 70%),var(--bg);z-index:0;}
 .hc2{position:relative;z-index:2;text-align:center;padding:2rem;}
-.hl{width:195px;height:195px;object-fit:contain;object-position:center center;border-radius:50%;border:3px solid var(--gold);box-shadow:0 0 90px rgba(201,149,106,.55),0 0 30px rgba(201,149,106,.4);margin-bottom:1.5rem;animation:float 4s ease-in-out infinite;}
+.hl{width:195px;height:195px;object-fit:cover;object-position:center center;background:transparent;border-radius:50%;border:3px solid var(--gold);box-shadow:0 0 90px rgba(201,149,106,.55),0 0 30px rgba(201,149,106,.4);margin-bottom:1.5rem;animation:float 4s ease-in-out infinite;}
 @keyframes float{0%,100%{transform:translateY(0);box-shadow:0 0 60px rgba(201,149,106,.5)}50%{transform:translateY(-12px);box-shadow:0 0 90px rgba(201,149,106,.7)}}
 .htitle{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(2.1rem,5.2vw,4.4rem);line-height:1.08;letter-spacing:.07em;background:linear-gradient(135deg,var(--gold3) 0%,var(--gold) 45%,var(--gold2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem;}
 .hsub{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.22em;color:var(--dim);text-transform:uppercase;margin-bottom:1.8rem;}
@@ -405,7 +405,7 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 
 <!-- PRELOADER -->
 <div id="preloader">
-  <img class="pre-logo" src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-new.jpg" alt="Inter Select Pro">
+  <img class="pre-logo" src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-new.jpg?v=5" alt="Inter Select Pro">
   <div class="pre-bar"><div class="pre-fill"></div></div>
   <div class="pre-txt" data-ru="Загрузка..." data-en="Loading...">Загрузка...</div>
 </div>
@@ -426,7 +426,7 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 <header>
   <div class="hi">
     <div class="lw" onclick="showPage('home')">
-      <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-new.jpg" alt="Inter Select Pro">
+      <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-new.jpg?v=5" alt="Inter Select Pro">
       <span class="lt">INTER<br>SELECT PRO</span>
     </div>
     <nav id="mainNav">
@@ -509,7 +509,7 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     <div class="hero-bg"></div>
     <canvas id="heroCanvas"></canvas>
     <div class="hc2">
-      <img class="hl" src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-new.jpg" alt="Inter Select Pro">
+      <img class="hl" src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-new.jpg?v=5" alt="Inter Select Pro">
       <div class="htitle">INTER SELECT PRO</div>
       <div class="hsub" data-ru="Международная образовательная и спортивная сеть" data-en="International Educational &amp; Sports Network">Международная образовательная и спортивная сеть</div>
       <div class="hdiv"></div>
