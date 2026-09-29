@@ -309,6 +309,23 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .partner-name{font-family:'Cinzel',serif;font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:.25rem;}
 .partner-type{font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;}
 
+.hreq{list-style:none;display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center;margin:.15rem auto .85rem;max-width:720px;padding:0;}
+.hreq li{font-size:.74rem;letter-spacing:.03em;color:var(--gold2);border:1px solid rgba(201,149,106,.35);border-radius:99px;padding:.32rem .72rem;}
+.rules-link{display:inline-block;margin:.15rem 0 0;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);cursor:pointer;border-bottom:1px solid var(--gold);}
+.rules{max-width:820px;margin:0 auto;}
+.rules h3{font-family:'Cinzel',serif;font-size:.98rem;color:var(--gold2);margin:1.7rem 0 .45rem;font-weight:700;}
+.rules p,.rules li{font-size:.92rem;line-height:1.7;color:var(--text);}
+.rules ul{margin:.25rem 0 .8rem 1.15rem;}
+.rules .note{font-size:.82rem;color:var(--dim);}
+.session-note{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.35rem;margin-bottom:1.3rem;}
+.session-note h3{font-family:'Cinzel',serif;color:var(--gold2);font-size:1rem;margin-bottom:.45rem;}
+.session-note p,.session-note li{font-size:.9rem;line-height:1.65;color:var(--text);}
+.session-note ul{margin:.35rem 0 .4rem 1.1rem;}
+.academy-lead{max-width:740px;margin:0 auto 1.5rem;text-align:center;font-size:.92rem;line-height:1.65;color:var(--text);}
+.sport-facts{margin:.2rem 0 0;padding-left:1.1rem;}
+.sport-facts li{font-size:.9rem;line-height:1.65;color:var(--text);margin:.15rem 0;}
+
+
 .write-box{max-width:520px;margin:0 auto 2rem;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:2rem 1.6rem 1.6rem;text-align:left;}
 .write-box .login-title,.write-box .login-sub{text-align:center;}
 
@@ -464,6 +481,7 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
         <a onclick="toggleDropdown(event,'sportNavItem')" data-ru="Спорт ▾" data-en="Sport ▾">Спорт ▾</a>
         <div class="dropdown">
           <a onclick="showPage('academy')" data-ru="Академия" data-en="Academy" style="border-bottom:1px solid var(--border);margin-bottom:.3rem;padding-bottom:.6rem!important;">Академия</a>
+          <a onclick="showPage('rules')" data-ru="Правила" data-en="Rules">Правила</a>
           <a onclick="showPage('legends')" data-ru="Вызов Легенд" data-en="Legends Challenge">Вызов Легенд</a>
           <a onclick="showPage('league')" data-ru="О лиге" data-en="About League">О лиге</a>
           <a onclick="showPage('partners')" data-ru="Вузы и Лиги" data-en="Universities &amp; Leagues">Вузы и Лиги</a>
@@ -507,6 +525,7 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     <a onclick="showPage('documents');toggleMenu()" class="mm-sub" data-ru="— Документы" data-en="— Documents">— Документы</a>
     <a onclick="showPage('merch');toggleMenu()" class="mm-sub" data-ru="— Атрибутика" data-en="— Merchandise">— Атрибутика</a>
     <a onclick="showPage('academy');toggleMenu()" data-ru="Спорт" data-en="Sport">Спорт</a>
+    <a onclick="showPage('rules');toggleMenu()" class="mm-sub" data-ru="— Правила" data-en="— Rules">— Правила</a>
     <a onclick="showPage('legends');toggleMenu()" class="mm-sub" data-ru="— Вызов Легенд" data-en="— Legends Challenge">— Вызов Легенд</a>
     <a onclick="showPage('league');toggleMenu()" class="mm-sub" data-ru="— О лиге" data-en="— About League">— О лиге</a>
     <a onclick="showPage('partners');toggleMenu()" class="mm-sub" data-ru="— Вузы и Лиги" data-en="— Universities &amp; Leagues">— Вузы и Лиги</a>
@@ -529,6 +548,12 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
       <div class="htitle">INTER SELECT PRO</div>
       <div class="hsub" data-ru="Международная образовательная и спортивная сеть" data-en="International Educational &amp; Sports Network">Международная образовательная и спортивная сеть</div>
       <div class="hdiv"></div>
+      <ul class="hreq">
+        <li data-ru="Участникам от 16 до 25 лет" data-en="Ages 16 to 25">Участникам от 16 до 25 лет</li>
+        <li data-ru="Школьники, студенты и абитуриенты" data-en="School, college and university students">Школьники, студенты и абитуриенты</li>
+        <li data-ru="Без профессионального контракта" data-en="No professional contract">Без профессионального контракта</li>
+      </ul>
+      <div style="text-align:center;margin-bottom:.6rem;"><span class="rules-link" onclick="showPage('rules')" data-ru="Правила участия" data-en="Rules">Правила участия</span></div>
       <div class="hsports-grid">
         <div class="hsport-card" onclick="showSportPage('hockey')"><div class="hsport-imgbox"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/hsport-icon-hockey.png" alt="hockey" style="width:100%;height:100%;object-fit:contain;"></div><div class="hsport-label" data-ru="Хоккей" data-en="Hockey">Хоккей</div></div>
         <div class="hsport-card" onclick="showSportPage('football')"><div class="hsport-imgbox"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/hsport-icon-football.png" alt="football" style="width:100%;height:100%;object-fit:contain;"></div><div class="hsport-label" data-ru="Футбол" data-en="Football">Футбол</div></div>
@@ -638,7 +663,9 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     <div class="pt" data-ru="Академия" data-en="Academy">Академия</div>
     <div class="pd"></div>
   </div></div>
-  <div class="pb"><div class="sg">
+  <div class="pb">
+    <p class="academy-lead"><span data-ru="Академия «Селект Про» принимает школьников, студентов и абитуриентов от 16 до 25 лет без профессионального контракта." data-en="Select Pro Academy is for school students, university students and applicants aged 16 to 25 with no professional contract.">Академия «Селект Про» принимает школьников, студентов и абитуриентов от 16 до 25 лет без профессионального контракта.</span> <a class="rules-link" onclick="showPage('rules')" data-ru="Правила участия" data-en="Rules">Правила участия</a></p>
+    <div class="sg">
     <div class="sc" onclick="showSportPage('hockey')">
       <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/img_07_f84cacce61.png" alt="Хоккей" class="sli">
       <div class="sn" data-ru="Хоккей" data-en="Hockey">Хоккей</div>
@@ -681,10 +708,12 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     <button class="sptab" onclick="switchSportTab('hockey','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
   </div>
   <div id="sb-hockey" class="spbody">
-    <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:1.5rem;" data-ru="Хоккей — один из ключевых видов спорта нашей лиги. Турниры проводятся по профессиональным стандартам с участием ведущих команд региона." data-en="Hockey is one of the key sports of our league. Tournaments are held to professional standards with leading regional teams.">Хоккей — один из ключевых видов спорта нашей лиги. Турниры проводятся по профессиональным стандартам с участием ведущих команд региона.</p>
-    <div class="sr"><span class="srl" data-ru="Команд" data-en="Teams">Команд</span><span class="srv">8+</span></div>
-    <div class="sr"><span class="srl" data-ru="Игроков" data-en="Players">Игроков</span><span class="srv">160+</span></div>
-    <div class="sr"><span class="srl" data-ru="Матчей в сезоне" data-en="Games per season">Матчей в сезоне</span><span class="srv">48+</span></div>
+    <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:.8rem;" data-ru="Хоккей в Select Pro играется любительскими игровыми сессиями, не профессиональным чемпионатом." data-en="Hockey at Select Pro is played in amateur game sessions, not a professional championship.">Хоккей в Select Pro играется любительскими игровыми сессиями, не профессиональным чемпионатом.</p>
+    <ul class="sport-facts">
+      <li data-ru="3 периода по 15 минут грязного времени." data-en="3 periods of 15 minutes, running time.">3 периода по 15 минут грязного времени.</li>
+      <li data-ru="Замены без ограничений." data-en="Unlimited substitutions.">Замены без ограничений.</li>
+      <li data-ru="Состав на ивент: 12–15 человек, минимум две полные пятёрки и один вратарь." data-en="Event roster: 12–15 players, at least two full lines and one goalkeeper.">Состав на ивент: 12–15 человек, минимум две полные пятёрки и один вратарь.</li>
+    </ul>
   </div>
   <div id="st-hockey" style="display:none;" class="spbody">
     <div class="stg" id="str-hockey"><div class="stc"><div class="sti">🏒</div><div class="stn">Белые медведи</div></div><div class="stc"><div class="sti">🏒</div><div class="stn">Северные звёзды</div></div><div class="stc"><div class="sti">🏒</div><div class="stn">Академия ISP</div></div><div class="stc"><div class="sti">🏒</div><div class="stn">Ледяные волки</div></div><div class="stc"><div class="sti">🏒</div><div class="stn">Буревестник</div></div></div>
@@ -710,10 +739,12 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     <button class="sptab" onclick="switchSportTab('football','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
   </div>
   <div id="sb-football" class="spbody">
-    <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:1.5rem;" data-ru="Футбольный дивизион лиги включает команды всех возрастов. Соревнования проводятся на профессиональных полях по стандартам FIFA." data-en="The football division includes teams of all ages. Competitions are held on professional fields to FIFA standards.">Футбольный дивизион лиги включает команды всех возрастов. Соревнования проводятся на профессиональных полях по стандартам FIFA.</p>
-    <div class="sr"><span class="srl" data-ru="Команд" data-en="Teams">Команд</span><span class="srv">8+</span></div>
-    <div class="sr"><span class="srl" data-ru="Игроков" data-en="Players">Игроков</span><span class="srv">160+</span></div>
-    <div class="sr"><span class="srl" data-ru="Матчей в сезоне" data-en="Games per season">Матчей в сезоне</span><span class="srv">48+</span></div>
+    <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:.8rem;" data-ru="Футбол играется полным составом 11 на 11, любительскими сессиями." data-en="Football is played 11 versus 11 in amateur sessions.">Футбол играется полным составом 11 на 11, любительскими сессиями.</p>
+    <ul class="sport-facts">
+      <li data-ru="Два тайма по 25 минут." data-en="Two halves of 25 minutes.">Два тайма по 25 минут.</li>
+      <li data-ru="Летучие замены без остановки времени и без лимита. Игрок может возвращаться на поле. Выход — через специальную зону." data-en="Flying substitutions with no stoppage and no limit. A player may return to the field through a dedicated zone.">Летучие замены без остановки времени и без лимита. Игрок может возвращаться на поле. Выход — через специальную зону.</li>
+      <li data-ru="Состав на ивент: минимум 18 человек (11 на поле и 7 в запасе)." data-en="Event roster: at least 18 players (11 on the field and 7 substitutes).">Состав на ивент: минимум 18 человек (11 на поле и 7 в запасе).</li>
+    </ul>
   </div>
   <div id="st-football" style="display:none;" class="spbody">
     <div class="stg" id="str-football"><div class="stc"><div class="sti">⚽</div><div class="stn">Динамо ИСП</div></div><div class="stc"><div class="sti">⚽</div><div class="stn">Атлетик</div></div><div class="stc"><div class="sti">⚽</div><div class="stn">Спартак</div></div><div class="stc"><div class="sti">⚽</div><div class="stn">Локомотив</div></div><div class="stc"><div class="sti">⚽</div><div class="stn">Факел</div></div></div>
@@ -739,10 +770,11 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     <button class="sptab" onclick="switchSportTab('basketball','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
   </div>
   <div id="sb-basketball" class="spbody">
-    <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:1.5rem;" data-ru="Баскетбольный турнир лиги собирает сильнейшие команды города. Игры проходят в крытых залах по правилам FIBA." data-en="The league basketball tournament brings together the strongest city teams, played indoors to FIBA rules.">Баскетбольный турнир лиги собирает сильнейшие команды города. Игры проходят в крытых залах по правилам FIBA.</p>
-    <div class="sr"><span class="srl" data-ru="Команд" data-en="Teams">Команд</span><span class="srv">8+</span></div>
-    <div class="sr"><span class="srl" data-ru="Игроков" data-en="Players">Игроков</span><span class="srv">160+</span></div>
-    <div class="sr"><span class="srl" data-ru="Матчей в сезоне" data-en="Games per season">Матчей в сезоне</span><span class="srv">48+</span></div>
+    <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:.8rem;" data-ru="Баскетбол проводится игровыми сессиями для студентов и школьников, без профессионального контракта." data-en="Basketball is played in game sessions for students and school players with no professional contract.">Баскетбол проводится игровыми сессиями для студентов и школьников, без профессионального контракта.</p>
+    <ul class="sport-facts">
+      <li data-ru="4 четверти по 10 минут грязного времени. Последняя минута — чистое время." data-en="4 quarters of 10 minutes, running time. The last minute is stopped time.">4 четверти по 10 минут грязного времени. Последняя минута — чистое время.</li>
+      <li data-ru="Состав на ивент: 8–10 человек." data-en="Event roster: 8–10 players.">Состав на ивент: 8–10 человек.</li>
+    </ul>
   </div>
   <div id="st-basketball" style="display:none;" class="spbody">
     <div class="stg" id="str-basketball"><div class="stc"><div class="sti">🏀</div><div class="stn">Академия</div></div><div class="stc"><div class="sti">🏀</div><div class="stn">Спартак</div></div><div class="stc"><div class="sti">🏀</div><div class="stn">Прогресс</div></div><div class="stc"><div class="sti">🏀</div><div class="stn">Зенит</div></div></div>
@@ -768,10 +800,11 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     <button class="sptab" onclick="switchSportTab('waterpolo','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
   </div>
   <div id="sb-waterpolo" class="spbody">
-    <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:1.5rem;" data-ru="Водное поло — динамичный и зрелищный вид спорта. Соревнования проходят в олимпийских бассейнах по стандартам FINA." data-en="Water polo is dynamic and spectacular. League competitions are held in Olympic pools to FINA standards.">Водное поло — динамичный и зрелищный вид спорта. Соревнования проходят в олимпийских бассейнах по стандартам FINA.</p>
-    <div class="sr"><span class="srl" data-ru="Команд" data-en="Teams">Команд</span><span class="srv">8+</span></div>
-    <div class="sr"><span class="srl" data-ru="Игроков" data-en="Players">Игроков</span><span class="srv">160+</span></div>
-    <div class="sr"><span class="srl" data-ru="Матчей в сезоне" data-en="Games per season">Матчей в сезоне</span><span class="srv">48+</span></div>
+    <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:.8rem;" data-ru="Водное поло идёт короткими любительскими сессиями." data-en="Water polo is played in short amateur sessions.">Водное поло идёт короткими любительскими сессиями.</p>
+    <ul class="sport-facts">
+      <li data-ru="4 периода по 7 минут грязного времени." data-en="4 periods of 7 minutes, running time.">4 периода по 7 минут грязного времени.</li>
+      <li data-ru="Состав на ивент: 9–11 человек (7 в воде и 2–4 на замене)." data-en="Event roster: 9–11 players (7 in the water and 2–4 substitutes).">Состав на ивент: 9–11 человек (7 в воде и 2–4 на замене).</li>
+    </ul>
   </div>
   <div id="st-waterpolo" style="display:none;" class="spbody">
     <div class="stg" id="str-waterpolo"><div class="stc"><div class="sti">🤽</div><div class="stn">Нептун ИСП</div></div><div class="stc"><div class="sti">🤽</div><div class="stn">Буревестник</div></div><div class="stc"><div class="sti">🤽</div><div class="stn">Олимп</div></div></div>
@@ -797,10 +830,12 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     <button class="sptab" onclick="switchSportTab('figure','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
   </div>
   <div id="sb-figure" class="spbody">
-    <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:1.5rem;" data-ru="Фигурное катание объединяет грацию и атлетизм. Турниры включают одиночное катание, парное и танцы на льду." data-en="Figure skating combines grace and athleticism, including singles, pairs and ice dancing.">Фигурное катание объединяет грацию и атлетизм. Турниры включают одиночное катание, парное и танцы на льду.</p>
-    <div class="sr"><span class="srl" data-ru="Команд" data-en="Teams">Команд</span><span class="srv">8</span></div>
-    <div class="sr"><span class="srl" data-ru="Участников" data-en="Athletes">Участников</span><span class="srv">120</span></div>
-    <div class="sr"><span class="srl" data-ru="Ивентов в сезоне" data-en="Events per season">Ивентов в сезоне</span><span class="srv">24</span></div>
+    <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:.8rem;" data-ru="Фигурное катание в Select Pro — только командный формат, не одиночные и парные старты." data-en="Figure skating at Select Pro is a team format only, not singles or pairs.">Фигурное катание в Select Pro — только командный формат, не одиночные и парные старты.</p>
+    <ul class="sport-facts">
+      <li data-ru="Состав: от 12 человек." data-en="Roster: at least 12 skaters.">Состав: от 12 человек.</li>
+      <li data-ru="День 1: синхронно-техническая программа и презентационная." data-en="Day 1: a synchronized technical program and a presentation program.">День 1: синхронно-техническая программа и презентационная.</li>
+      <li data-ru="День 2: командно-произвольная программа и шоу-элементы. Всего оцениваются 4 программы." data-en="Day 2: a team free program and show elements. Four programs are judged in total.">День 2: командно-произвольная программа и шоу-элементы. Всего оцениваются 4 программы.</li>
+    </ul>
   </div>
   <div id="st-figure" style="display:none;" class="spbody">
     <div class="stg" id="str-figure"><div class="stc"><div class="sti">⛸️</div><div class="stn">Команда по ФК</div></div><div class="stc"><div class="sti">⛸️</div><div class="stn">Звёзды льда</div></div></div>
@@ -826,10 +861,12 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     <button class="sptab" onclick="switchSportTab('golf','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
   </div>
   <div id="sb-golf" class="spbody">
-    <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:1.5rem;" data-ru="Гольф — спорт точности и стратегии. Лига проводит открытые турниры и корпоративные соревнования на лучших полях." data-en="Golf is a sport of precision and strategy. The league hosts open and corporate tournaments on top courses.">Гольф — спорт точности и стратегии. Лига проводит открытые турниры и корпоративные соревнования на лучших полях.</p>
-    <div class="sr"><span class="srl" data-ru="Участников" data-en="Athletes">Участников</span><span class="srv">8</span></div>
-    <div class="sr"><span class="srl" data-ru="Турниров в год" data-en="Tournaments/yr">Турниров в год</span><span class="srv">3</span></div>
-    <div class="sr"><span class="srl" data-ru="Лунок" data-en="Holes">Лунок</span><span class="srv">18</span></div>
+    <p style="font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:.8rem;" data-ru="Гольф играется в формате Speed Golf / Match Play, рассчитанном на один час." data-en="Golf is played as Speed Golf / Match Play, built to fit one hour.">Гольф играется в формате Speed Golf / Match Play, рассчитанном на один час.</p>
+    <ul class="sport-facts">
+      <li data-ru="6 или 9 экспресс-лунок за 60 минут." data-en="6 or 9 express holes in 60 minutes.">6 или 9 экспресс-лунок за 60 минут.</li>
+      <li data-ru="Счёт — Match Play, по числу выигранных лунок." data-en="Scoring is Match Play, by holes won.">Счёт — Match Play, по числу выигранных лунок.</li>
+      <li data-ru="Состав: 4 человека, две игровые пары." data-en="Roster: 4 players, two pairs.">Состав: 4 человека, две игровые пары.</li>
+    </ul>
   </div>
   <div id="st-golf" style="display:none;" class="spbody">
     <div class="stg" id="str-golf"><div class="stc"><div class="sti">⛳</div><div class="stn">Клуб гольфа ISP</div></div><div class="stc"><div class="sti">⛳</div><div class="stn">Legend Invite Golf</div></div></div>
@@ -906,6 +943,15 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 <div class="page" id="page-events">
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Мероприятия" data-en="Upcoming">Мероприятия</div><div class="pt" data-ru="Ивенты" data-en="Events">Ивенты</div><div class="pd"></div></div></div>
   <div class="pb">
+    <div class="session-note">
+      <h3 data-ru="Как проходят сессии" data-en="How sessions work">Как проходят сессии</h3>
+      <ul>
+        <li data-ru="Игровая сессия длится 60 минут: 10 минут — протокол и разминка, 50 минут — игра или программа, 5 минут — результат." data-en="A game session lasts 60 minutes: 10 minutes for the protocol and warm-up, 50 minutes of play or a program, 5 minutes to record the result.">Игровая сессия длится 60 минут: 10 минут — протокол и разминка, 50 минут — игра или программа, 5 минут — результат.</li>
+        <li data-ru="Уикенд идёт с пятницы по воскресенье. В день минимум две сессии с перерывом не меньше 3 часов. За уикенд команда проводит минимум 6 сессий." data-en="A weekend runs Friday to Sunday. At least two sessions a day, with a break of at least 3 hours. A team plays at least 6 sessions over the weekend.">Уикенд идёт с пятницы по воскресенье. В день минимум две сессии с перерывом не меньше 3 часов. За уикенд команда проводит минимум 6 сессий.</li>
+        <li data-ru="Сессии проходят минимум раз в месяц с сентября по май." data-en="Sessions are held at least once a month from September to May.">Сессии проходят минимум раз в месяц с сентября по май.</li>
+      </ul>
+      <p class="note" style="margin-top:.6rem;"><span class="rules-link" onclick="showPage('rules')" data-ru="Полные правила и взносы" data-en="Full rules and fees">Полные правила и взносы</span></p>
+    </div>
     <div class="cal-wrap">
       <div class="cal-head">
         <button class="cal-nav-btn" onclick="calChangeMonth(-1)">‹</button>
@@ -933,6 +979,92 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 <div class="page" id="page-players">
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Состав" data-en="Roster">Состав</div><div class="pt" data-ru="Игроки" data-en="Players">Игроки</div><div class="pd"></div></div></div>
   <div class="pb"><div class="cs"><div class="cs-i">👤</div><div class="cs-t" data-ru="Профили игроков скоро появятся" data-en="Player profiles coming soon">Профили игроков скоро появятся</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div></div>
+</div>
+
+
+<!-- ══ RULES ══ -->
+<div class="page" id="page-rules">
+  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Лига и Академия" data-en="League and Academy">Лига и Академия</div><div class="pt" data-ru="Правила участия" data-en="Participation rules">Правила участия</div><div class="pd"></div></div></div>
+  <div class="pb">
+    <div class="rules" id="rulesContentRu">
+      <p>Лига «Интер Селект Про» и Академия «Селект Про» поддерживают молодых людей, которые совмещают учёбу и спорт. Ниже — порядок допуска, документы и условия сессий.</p>
+      <h3>1. Кто может участвовать</h3>
+      <p>На момент заявки участнику от 16 до 25 лет включительно. Подойдёт одна из категорий:</p>
+      <ul>
+        <li>студенты вузов, колледжей и техникумов, любая форма обучения;</li>
+        <li>школьники старших классов от 16 лет, учащиеся лицеев и гимназий;</li>
+        <li>абитуриенты: выпускники текущего года, которые подали документы в приёмную комиссию, и кандидаты предотборочных программ.</li>
+      </ul>
+      <p class="note">Участники 16–17 лет регистрируются только с письменным согласием родителей или законных представителей.</p>
+      <h3>2. Только любительский статус</h3>
+      <p>Проект любительский. На момент зачисления у участника не должно быть трудового договора или спортивного контракта с профессиональным клубом, командой или лигой. Ограничение действует для всех видов спорта, включая киберспорт. Организаторы могут проверить спортивную историю по открытым реестрам федераций и лиг.</p>
+      <h3>3. Документы для зачисления</h3>
+      <ul>
+        <li>паспорт: главная страница и страница с регистрацией;</li>
+        <li>подтверждение учёбы: студенческий билет, справка из школы, колледжа или вуза, либо расписка приёмной комиссии;</li>
+        <li>для 16–17 лет — подписанное согласие родителей.</li>
+      </ul>
+      <p class="note">Сканы на этой странице не принимаются. Их нужно будет приложить в заявке, когда откроется защищённая форма регистрации.</p>
+      <h3>4. Если правила нарушены</h3>
+      <ul>
+        <li>регистрация аннулируется сразу;</li>
+        <li>участника дисквалифицируют и вносят в чёрный список проектов Select Pro;</li>
+        <li>результаты сессий с его участием могут пересмотреть, вплоть до технического поражения команды.</li>
+      </ul>
+      <h3>5. Как устроены сессии</h3>
+      <p>Мероприятия проводятся как интенсивные спортивные сессии и игровые сессии. Их ведут игровые эксперты-модераторы.</p>
+      <ul>
+        <li>одна игровая сессия — 60 минут: 10 минут на протокол и разминку, 50 минут на игру или программу, 5 минут на фиксацию результата;</li>
+        <li>уикенд длится с пятницы по воскресенье. В день минимум две сессии, перерыв между ними не меньше 3 часов. За уикенд команда проводит минимум 6 сессий;</li>
+        <li>сессии идут минимум раз в месяц с сентября по май.</li>
+      </ul>
+      <p>Время, состав и формат каждого вида спорта указаны на его странице в Академии.</p>
+      <h3>6. Взносы, ротация и финал</h3>
+      <p><b>Ивенты 1–15.</b> Участвует минимум 8 команд. Четыре сильнейшие по итогам уикенда не платят взнос на следующий ивент. Четыре новые команды взнос платят.</p>
+      <p><b>Март–апрель.</b> Минимум 16 команд: 4 группы по 4. К 16-му ивенту восемь лучших команд рейтинга играют бесплатно, остальные восемь платят взнос.</p>
+      <p><b>Май, финальная сессия.</b> 24 команды. 12 сильнейших сезона выходят бесплатно. 12 остальных оплачивают коммерческий взнос.</p>
+      <p>Призовой фонд финала складывается из 100% взносов этих 12 команд и грантов спонсоров. Распределение: 50% за первое место, 30% за второе, 20% за третье. Это целевые гранты на развитие спорта, международные турне и именные стипендии лучшим игрокам.</p>
+    </div>
+    <div class="rules" id="rulesContentEn" style="display:none;">
+      <p>The Inter Select Pro League and Select Pro Academy support young people who combine studies and sport. These are the eligibility rules, documents and session terms.</p>
+      <h3>1. Who can take part</h3>
+      <p>Applicants must be 16 to 25 years old on the day they apply, and fit one of these groups:</p>
+      <ul>
+        <li>university, college or vocational students, any mode of study;</li>
+        <li>senior school, lyceum or gymnasium students aged 16 or older;</li>
+        <li>this year’s graduates who have submitted admission papers, and candidates in pre-selection programs.</li>
+      </ul>
+      <p class="note">Players aged 16–17 may register only with written consent from a parent or legal guardian.</p>
+      <h3>2. Amateur status only</h3>
+      <p>The project is strictly amateur. At the moment of enrolment a player must not hold an employment contract or a sports contract with a professional club, team or league. This covers every sport, including esports. Organizers may check a candidate’s history in open federation and league registers.</p>
+      <h3>3. Documents</h3>
+      <ul>
+        <li>passport: the main page and the registration page;</li>
+        <li>proof of studies: a student card, a certificate from school, college or university, or an admissions-office receipt;</li>
+        <li>for ages 16–17, a signed parental consent.</li>
+      </ul>
+      <p class="note">Files are not accepted on this page. They will be attached in the application once a secure registration form is open.</p>
+      <h3>4. Breaking the rules</h3>
+      <ul>
+        <li>registration is cancelled immediately;</li>
+        <li>the player is disqualified and added to the Select Pro blacklist;</li>
+        <li>results of sessions that included the player may be revised, up to a forfeit for the team.</li>
+      </ul>
+      <h3>5. How sessions work</h3>
+      <p>Events are held as intensive sports sessions and game sessions, run by game expert moderators.</p>
+      <ul>
+        <li>one game session is 60 minutes: 10 minutes for the protocol and warm-up, 50 minutes of play or a program, 5 minutes to record the result;</li>
+        <li>a weekend runs Friday to Sunday. At least two sessions a day, with at least 3 hours between them. A team plays at least 6 sessions over the weekend;</li>
+        <li>sessions run at least once a month from September through May.</li>
+      </ul>
+      <p>Time, roster size and format for each sport are on that sport’s page in the Academy.</p>
+      <h3>6. Fees, rotation and the final</h3>
+      <p><b>Events 1–15.</b> At least 8 teams. The top 4 of the weekend pay no fee for the next event. Four new teams pay the fee.</p>
+      <p><b>March–April.</b> At least 16 teams, in 4 groups of 4. By event 16, the top 8 in the ranking play free; the other 8 pay the fee.</p>
+      <p><b>May, the final session.</b> 24 teams. The 12 strongest of the season enter free. The other 12 pay a commercial fee.</p>
+      <p>The final prize fund is 100% of those 12 fees plus sponsor grants. It is split 50% for first place, 30% for second and 20% for third: targeted grants for sport development, international tours and named scholarships for the best players.</p>
+    </div>
+  </div>
 </div>
 
 <!-- ══ DOCUMENTS ══ -->
@@ -1377,6 +1509,7 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     <button class="mc" onclick="closeModal()">✕</button>
     <div class="mt" data-ru="Подать заявку" data-en="Apply Now">Подать заявку</div>
     <div class="ms" data-ru="Заполните форму и мы свяжемся с вами" data-en="Fill out the form and we will contact you">Заполните форму и мы свяжемся с вами</div>
+    <p style="margin:-.6rem 0 1rem;"><span class="rules-link" onclick="closeModal();showPage('rules')" data-ru="Сначала прочитайте правила" data-en="Read the rules first">Сначала прочитайте правила</span></p>
     <div class="fg"><label data-ru="Ваше имя" data-en="Your Name">Ваше имя</label><input type="text" class="fi" placeholder="Иван Иванов"></div>
     <div class="fg"><label data-ru="Телефон / Email" data-en="Phone / Email">Телефон / Email</label><input type="text" class="fi" placeholder="+7 (___) ___-__-__"></div>
     <div class="fg"><label data-ru="Вид спорта" data-en="Sport">Вид спорта</label>
@@ -1417,7 +1550,7 @@ window.addEventListener('resize',initCv);
 initCv();drawPts();
 
 // PAGES
-const VALID=['home','league','calendar','partners','academy','legends','teams','news','events','standings','players','documents','merch','gallery','contacts','sponsors','about','account','privacy'];
+const VALID=['home','league','calendar','partners','academy','rules','legends','teams','news','events','standings','players','documents','merch','gallery','contacts','sponsors','about','account','privacy'];
 const SPORTS=['hockey','football','basketball','waterpolo','figure','golf'];
 
 function showPage(id){
@@ -1500,6 +1633,9 @@ function setLang(lang){
   const pRu = document.getElementById('privacyContentRu');
   const pEn = document.getElementById('privacyContentEn');
   if(pRu && pEn){ pRu.style.display = lang==='ru' ? 'block' : 'none'; pEn.style.display = lang==='en' ? 'block' : 'none'; }
+  const rRu = document.getElementById('rulesContentRu');
+  const rEn = document.getElementById('rulesContentEn');
+  if(rRu && rEn){ rRu.style.display = lang==='ru' ? 'block' : 'none'; rEn.style.display = lang==='en' ? 'block' : 'none'; }
   if(_lastBreadcrumbTrail !== undefined) renderBreadcrumb(_lastBreadcrumbTrail);
   document.getElementById('btn-ru').classList.toggle('active',lang==='ru');
   document.getElementById('btn-en').classList.toggle('active',lang==='en');
@@ -1594,6 +1730,7 @@ const breadcrumbTrails = {
   players:    [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Игроки',en:'Players'}],
   documents:  [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Документы',en:'Documents'}],
   merch:      [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Атрибутика',en:'Merchandise'}],
+  rules:      [{ru:'Правила',en:'Rules'}],
   gallery:    [{ru:'Галерея',en:'Gallery'}],
   contacts:   [{ru:'Контакты',en:'Contacts'}],
   sponsors:   [{ru:'Контакты',en:'Contacts',action:()=>showPage('contacts')},{ru:'Для инвесторов',en:'For Investors'}],
@@ -1754,6 +1891,7 @@ const searchIndex = [
   {title:'Главная', titleEn:'Home', icon:'🏠', cat:'Страница', catEn:'Page', action:()=>showPage('home')},
   {title:'Лига', titleEn:'League', icon:'🏛️', cat:'Страница', catEn:'Page', action:()=>showPage('league')},
   {title:'Академия', titleEn:'Academy', icon:'🎓', cat:'Страница', catEn:'Page', action:()=>showPage('academy')},
+  {title:'Правила участия', titleEn:'Participation rules', icon:'📜', cat:'Страница', catEn:'Page', action:()=>showPage('rules')},
   {title:'Вызов Легенд', titleEn:'Legends Challenge', icon:'⚔️', cat:'Страница', catEn:'Page', action:()=>showPage('legends')},
   {title:'Команды', titleEn:'Teams', icon:'👥', cat:'Страница', catEn:'Page', action:()=>showPage('teams')},
   {title:'Новости', titleEn:'News', icon:'📰', cat:'Страница', catEn:'Page', action:()=>showPage('news')},
