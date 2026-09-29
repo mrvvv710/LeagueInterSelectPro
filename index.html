@@ -309,6 +309,15 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .partner-name{font-family:'Cinzel',serif;font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:.25rem;}
 .partner-type{font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;}
 
+.merch-lead{max-width:680px;margin:0 auto 1.5rem;text-align:center;color:var(--dim);font-size:.92rem;line-height:1.65;}
+.merch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.8rem;}
+.merch-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1rem 1.25rem;text-align:center;}
+.merch-card img{width:96px;height:96px;object-fit:contain;margin:0 auto .7rem;display:block;}
+.merch-card h3{font-family:'Cinzel',serif;color:var(--gold2);font-size:1.05rem;margin-bottom:.4rem;font-weight:700;}
+.merch-card p{font-size:.82rem;color:var(--dim);line-height:1.55;margin-bottom:1rem;min-height:2.6em;}
+@media(max-width:860px){.merch-grid{grid-template-columns:1fr;}.merch-card p{min-height:0;}}
+
+
 .hreq{list-style:none;display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center;margin:.15rem auto .85rem;max-width:720px;padding:0;}
 .hreq li{font-size:.74rem;letter-spacing:.03em;color:var(--gold2);border:1px solid rgba(201,149,106,.35);border-radius:99px;padding:.32rem .72rem;}
 .rules-link{display:inline-block;margin:.15rem 0 0;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);cursor:pointer;border-bottom:1px solid var(--gold);}
@@ -1221,7 +1230,62 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 <!-- ══ MERCH (АТРИБУТИКА) ══ -->
 <div class="page" id="page-merch">
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Магазин" data-en="Store">Магазин</div><div class="pt" data-ru="Атрибутика" data-en="Merchandise">Атрибутика</div><div class="pd"></div></div></div>
-  <div class="pb"><div class="cs"><div class="cs-i">👕</div><div class="cs-t" data-ru="Атрибутика скоро появится" data-en="Merchandise coming soon">Атрибутика скоро появится</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div></div>
+  <div class="pb">
+    <p class="merch-lead" data-ru="Один макет: тёмный крой и золотой логотип. Вид спорта и размер выбираются в заявке. Оплата после ответа, цену пришлём в письме." data-en="One design: dark cut and the gold logo. Sport and size are chosen in the order. Payment comes after we reply with the price.">Один макет: тёмный крой и золотой логотип. Вид спорта и размер выбираются в заявке. Оплата после ответа, цену пришлём в письме.</p>
+    <div class="merch-grid">
+      <article class="merch-card">
+        <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt="Inter Select Pro">
+        <h3 data-ru="Футболка" data-en="T-shirt">Футболка</h3>
+        <p data-ru="Базовая вещь линейки." data-en="The base piece.">Базовая вещь линейки.</p>
+        <button class="bgold" type="button" onclick="orderMerch('shirt')" data-ru="Заказать" data-en="Order">Заказать</button>
+      </article>
+      <article class="merch-card">
+        <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt="Inter Select Pro">
+        <h3 data-ru="Худи" data-en="Hoodie">Худи</h3>
+        <p data-ru="Тот же знак, плотнее ткань." data-en="The same mark, heavier fabric.">Тот же знак, плотнее ткань.</p>
+        <button class="bgold" type="button" onclick="orderMerch('hoodie')" data-ru="Заказать" data-en="Order">Заказать</button>
+      </article>
+      <article class="merch-card">
+        <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt="Inter Select Pro">
+        <h3 data-ru="Кепка" data-en="Cap">Кепка</h3>
+        <p data-ru="Знак на тёмной кепке." data-en="The mark on a dark cap.">Знак на тёмной кепке.</p>
+        <button class="bgold" type="button" onclick="orderMerch('cap')" data-ru="Заказать" data-en="Order">Заказать</button>
+      </article>
+    </div>
+    <form id="merchForm" class="write-box" onsubmit="return submitMerch(event)">
+      <div class="login-title" data-ru="Заказ" data-en="Order">Заказ</div>
+      <div class="login-sub" data-ru="Заявка откроется в почте и уйдёт на info@interselectpro.ru" data-en="The request opens in your mail app, addressed to info@interselectpro.ru">Заявка откроется в почте и уйдёт на info@interselectpro.ru</div>
+      <div class="fg"><label data-ru="Вещь" data-en="Item">Вещь</label>
+        <select id="mItem" class="fi" required>
+          <option value="shirt" data-ru="Футболка" data-en="T-shirt">Футболка</option>
+          <option value="hoodie" data-ru="Худи" data-en="Hoodie">Худи</option>
+          <option value="cap" data-ru="Кепка" data-en="Cap">Кепка</option>
+        </select>
+      </div>
+      <div class="fg"><label data-ru="Вид спорта" data-en="Sport">Вид спорта</label>
+        <select id="mSport" class="fi" required>
+          <option value="" data-ru="Выберите" data-en="Choose">Выберите</option>
+          <option value="hockey" data-ru="Хоккей" data-en="Hockey">Хоккей</option>
+          <option value="football" data-ru="Футбол" data-en="Football">Футбол</option>
+          <option value="basketball" data-ru="Баскетбол" data-en="Basketball">Баскетбол</option>
+          <option value="waterpolo" data-ru="Водное поло" data-en="Water Polo">Водное поло</option>
+          <option value="figure" data-ru="Фигурное катание" data-en="Figure skating">Фигурное катание</option>
+          <option value="golf" data-ru="Гольф" data-en="Golf">Гольф</option>
+        </select>
+      </div>
+      <div class="fg"><label data-ru="Размер" data-en="Size">Размер</label>
+        <select id="mSize" class="fi" required>
+          <option value="" data-ru="Выберите" data-en="Choose">Выберите</option>
+          <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+          <option value="one" data-ru="Универсальный" data-en="One size">Универсальный</option>
+        </select>
+      </div>
+      <div class="fg"><label data-ru="Имя" data-en="Name">Имя</label><input id="mName" class="fi" required></div>
+      <div class="fg"><label data-ru="Ваш email" data-en="Your email">Ваш email</label><input id="mEmail" class="fi" type="email" required></div>
+      <div class="fg"><label data-ru="Комментарий" data-en="Comment">Комментарий</label><textarea id="mNote" class="fi" rows="3"></textarea></div>
+      <button class="fsub" type="submit" data-ru="Отправить заявку" data-en="Send order">Отправить заявку</button>
+    </form>
+  </div>
 </div>
 
 <!-- ══ ACCOUNT (ЛИЧНЫЙ КАБИНЕТ) ══ -->
@@ -1677,6 +1741,34 @@ function goWrite(){
   showPage('contacts');
   setTimeout(()=>{const f=document.getElementById('writeForm'); if(f) f.scrollIntoView({behavior:'smooth',block:'center'});},180);
 }
+
+function orderMerch(item){
+  showPage('merch');
+  const sel=document.getElementById('mItem');
+  if(sel) sel.value=item;
+  setTimeout(()=>{const f=document.getElementById('merchForm'); if(f) f.scrollIntoView({behavior:'smooth',block:'center'});},180);
+}
+function merchLabel(id){
+  const el=document.getElementById(id);
+  const opt=el.options[el.selectedIndex];
+  return opt ? opt.textContent.trim() : '';
+}
+function submitMerch(e){
+  e.preventDefault();
+  const body=[
+    'Вещь: '+merchLabel('mItem'),
+    'Вид спорта: '+merchLabel('mSport'),
+    'Размер: '+merchLabel('mSize'),
+    'Имя: '+document.getElementById('mName').value.trim(),
+    'Email: '+document.getElementById('mEmail').value.trim(),
+    '',
+    document.getElementById('mNote').value.trim()
+  ].join('\n');
+  const subject=encodeURIComponent('Заказ атрибутики Inter Select Pro');
+  window.location.href='mailto:info@interselectpro.ru?subject='+subject+'&body='+encodeURIComponent(body);
+  return false;
+}
+
 function submitWrite(e){
   e.preventDefault();
   const name=document.getElementById('wName').value.trim();
