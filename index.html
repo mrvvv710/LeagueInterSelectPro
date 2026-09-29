@@ -314,8 +314,10 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 
 .merch-lead{max-width:680px;margin:0 auto 1.5rem;text-align:center;color:var(--dim);font-size:.92rem;line-height:1.65;}
 .merch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.8rem;}
-.merch-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1rem 1.25rem;text-align:center;}
-.merch-card img{width:96px;height:96px;object-fit:contain;margin:0 auto .7rem;display:block;}
+.merch-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:0 0 1.15rem;text-align:center;overflow:hidden;}
+.merch-card img{width:100%;height:250px;object-fit:cover;object-position:center 35%;margin:0 0 .85rem;display:block;}
+.merch-card h3,.merch-card p{padding:0 1rem;}
+.merch-card .bgold{margin:0 1rem;}
 .merch-card h3{font-family:'Cinzel',serif;color:var(--gold2);font-size:1.05rem;margin-bottom:.4rem;font-weight:700;}
 .merch-card p{font-size:.82rem;color:var(--dim);line-height:1.55;margin-bottom:.35rem;min-height:0;}
 .merch-sport{color:var(--gold2)!important;margin-bottom:1rem!important;}
@@ -1273,21 +1275,21 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     </div>
     <div class="merch-grid">
       <article class="merch-card" data-type="shirt" data-price="">
-        <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt="Inter Select Pro">
+        <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/merch-shirt.jpg?v=1" alt="Футболка Inter Select Pro">
         <h3 data-ru="Футболка" data-en="T-shirt">Футболка</h3>
         <p class="merch-sport" data-ru="Все виды спорта" data-en="All sports">Все виды спорта</p>
         <p class="merch-price" data-ru="Цена по запросу" data-en="Price on request">Цена по запросу</p>
         <button class="bgold" type="button" onclick="orderMerch('shirt')" data-ru="Заказать" data-en="Order">Заказать</button>
       </article>
       <article class="merch-card" data-type="hoodie" data-price="">
-        <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt="Inter Select Pro">
+        <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/merch-hoodie.jpg?v=1" alt="Худи Inter Select Pro">
         <h3 data-ru="Худи" data-en="Hoodie">Худи</h3>
         <p class="merch-sport" data-ru="Все виды спорта" data-en="All sports">Все виды спорта</p>
         <p class="merch-price" data-ru="Цена по запросу" data-en="Price on request">Цена по запросу</p>
         <button class="bgold" type="button" onclick="orderMerch('hoodie')" data-ru="Заказать" data-en="Order">Заказать</button>
       </article>
       <article class="merch-card" data-type="cap" data-price="">
-        <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt="Inter Select Pro">
+        <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/merch-cap.jpg?v=1" alt="Кепка Inter Select Pro">
         <h3 data-ru="Кепка" data-en="Cap">Кепка</h3>
         <p class="merch-sport" data-ru="Все виды спорта" data-en="All sports">Все виды спорта</p>
         <p class="merch-price" data-ru="Цена по запросу" data-en="Price on request">Цена по запросу</p>
