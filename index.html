@@ -309,6 +309,10 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .partner-name{font-family:'Cinzel',serif;font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:.25rem;}
 .partner-type{font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;}
 
+.write-box{max-width:520px;margin:0 auto 2rem;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:2rem 1.6rem 1.6rem;text-align:left;}
+.write-box .login-title,.write-box .login-sub{text-align:center;}
+
+
 /* GALLERY */
 .gal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.3rem;}
 .gal-card{display:block;background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .25s,transform .25s,box-shadow .25s;}
@@ -536,6 +540,7 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
       <div class="hbtns">
         <button class="bgold" onclick="showPage('events')" data-ru="Ивенты" data-en="Events">Ивенты</button>
         <button class="boutline" onclick="openModal()" data-ru="Подать заявку" data-en="Apply Now">Подать заявку</button>
+        <button class="boutline" onclick="goWrite()" data-ru="Написать" data-en="Write">Написать</button>
       </div>
     </div>
   </section>
@@ -960,6 +965,17 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 <div class="page" id="page-contacts">
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Связаться с нами" data-en="Get in Touch">Связаться с нами</div><div class="pt" data-ru="Контакты" data-en="Contacts">Контакты</div><div class="pd"></div></div></div>
   <div class="pb">
+    <div style="text-align:center;margin-bottom:1.6rem;">
+      <button class="bgold" type="button" onclick="goWrite()" data-ru="Написать" data-en="Write">Написать</button>
+    </div>
+    <form id="writeForm" class="write-box" onsubmit="return submitWrite(event)">
+      <div class="login-title" data-ru="Написать" data-en="Write">Написать</div>
+      <div class="login-sub" data-ru="Откроется почта с готовым письмом на info@interselectpro.ru" data-en="Your mail app will open with a message to info@interselectpro.ru">Откроется почта с готовым письмом на info@interselectpro.ru</div>
+      <div class="fg"><label data-ru="Имя" data-en="Name">Имя</label><input id="wName" class="fi" required></div>
+      <div class="fg"><label data-ru="Ваш email" data-en="Your email">Ваш email</label><input id="wEmail" class="fi" type="email" required></div>
+      <div class="fg"><label data-ru="Сообщение" data-en="Message">Сообщение</label><textarea id="wMsg" class="fi" rows="5" required></textarea></div>
+      <button class="fsub" type="submit" data-ru="Отправить" data-en="Send">Отправить</button>
+    </form>
     <div class="cg">
       <div class="ccard"><span class="cci">📍</span><div><div class="ccl" data-ru="Адрес" data-en="Address">Адрес</div><div class="ccv" data-ru="Укажите ваш адрес" data-en="Your address here">Укажите ваш адрес</div></div></div>
       <div class="ccard"><span class="cci">📞</span><div><div class="ccl" data-ru="Телефон" data-en="Phone">Телефон</div><div class="ccv">+7 (___) ___-__-__</div></div></div>
@@ -1516,6 +1532,22 @@ document.addEventListener('click', (e) => {
 });
 
 // MODAL
+
+function goWrite(){
+  showPage('contacts');
+  setTimeout(()=>{const f=document.getElementById('writeForm'); if(f) f.scrollIntoView({behavior:'smooth',block:'center'});},180);
+}
+function submitWrite(e){
+  e.preventDefault();
+  const name=document.getElementById('wName').value.trim();
+  const email=document.getElementById('wEmail').value.trim();
+  const msg=document.getElementById('wMsg').value.trim();
+  const subject=encodeURIComponent('Сообщение с сайта Inter Select Pro');
+  const body=encodeURIComponent('Имя: '+name+'\nEmail: '+email+'\n\n'+msg);
+  window.location.href='mailto:info@interselectpro.ru?subject='+subject+'&body='+body;
+  return false;
+}
+
 function openModal(){document.getElementById('appModal').classList.add('open');document.body.style.overflow='hidden';}
 function closeModal(){document.getElementById('appModal').classList.remove('open');document.body.style.overflow='';}
 function submitApp(){
