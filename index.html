@@ -486,7 +486,6 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
           <a onclick="showPage('teams')" data-ru="Команды" data-en="Teams">Команды</a>
           <a onclick="showPage('players')" data-ru="Игроки" data-en="Players">Игроки</a>
           <a onclick="showPage('documents')" data-ru="Документы" data-en="Documents">Документы</a>
-          <a onclick="showPage('merch')" data-ru="Атрибутика" data-en="Merchandise">Атрибутика</a>
         </div>
       </div>
       <div class="nav-item" id="sportNavItem">
@@ -500,6 +499,7 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
         </div>
       </div>
       <a onclick="showPage('gallery')" data-ru="Галерея" data-en="Gallery">Галерея</a>
+      <a onclick="showPage('merch')" data-ru="Атрибутика" data-en="Merchandise">Атрибутика</a>
       <div class="nav-item" id="contactsNavItem">
         <a onclick="toggleDropdown(event,'contactsNavItem')" data-ru="Контакты ▾" data-en="Contacts ▾">Контакты ▾</a>
         <div class="dropdown">
@@ -535,13 +535,13 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
     <a onclick="showPage('teams');toggleMenu()" class="mm-sub" data-ru="— Команды" data-en="— Teams">— Команды</a>
     <a onclick="showPage('players');toggleMenu()" class="mm-sub" data-ru="— Игроки" data-en="— Players">— Игроки</a>
     <a onclick="showPage('documents');toggleMenu()" class="mm-sub" data-ru="— Документы" data-en="— Documents">— Документы</a>
-    <a onclick="showPage('merch');toggleMenu()" class="mm-sub" data-ru="— Атрибутика" data-en="— Merchandise">— Атрибутика</a>
     <a onclick="showPage('academy');toggleMenu()" data-ru="Спорт" data-en="Sport">Спорт</a>
     <a onclick="showPage('rules');toggleMenu()" class="mm-sub" data-ru="— Правила" data-en="— Rules">— Правила</a>
     <a onclick="showPage('legends');toggleMenu()" class="mm-sub" data-ru="— Вызов Легенд" data-en="— Legends Challenge">— Вызов Легенд</a>
     <a onclick="showPage('league');toggleMenu()" class="mm-sub" data-ru="— О лиге" data-en="— About League">— О лиге</a>
     <a onclick="showPage('partners');toggleMenu()" class="mm-sub" data-ru="— Вузы и Лиги" data-en="— Universities &amp; Leagues">— Вузы и Лиги</a>
     <a onclick="showPage('gallery');toggleMenu()" data-ru="Галерея" data-en="Gallery">Галерея</a>
+    <a onclick="showPage('merch');toggleMenu()" data-ru="Атрибутика" data-en="Merchandise">Атрибутика</a>
     <a onclick="showPage('contacts');toggleMenu()" data-ru="Контакты" data-en="Contacts">Контакты</a>
     <a onclick="showPage('sponsors');toggleMenu()" class="mm-sub" data-ru="— Для инвесторов" data-en="— For Investors">— Для инвесторов</a>
     <a onclick="showPage('account');toggleMenu()" data-ru="Войти" data-en="Login">Войти</a>
@@ -1851,7 +1851,7 @@ const breadcrumbTrails = {
   standings:  [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Турнирные таблицы',en:'Standings'}],
   players:    [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Игроки',en:'Players'}],
   documents:  [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Документы',en:'Documents'}],
-  merch:      [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Атрибутика',en:'Merchandise'}],
+  merch:      [{ru:'Атрибутика',en:'Merchandise'}],
   rules:      [{ru:'Правила',en:'Rules'}],
   gallery:    [{ru:'Галерея',en:'Gallery'}],
   contacts:   [{ru:'Контакты',en:'Contacts'}],
