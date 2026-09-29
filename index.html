@@ -317,8 +317,14 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .merch-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1rem 1.25rem;text-align:center;}
 .merch-card img{width:96px;height:96px;object-fit:contain;margin:0 auto .7rem;display:block;}
 .merch-card h3{font-family:'Cinzel',serif;color:var(--gold2);font-size:1.05rem;margin-bottom:.4rem;font-weight:700;}
-.merch-card p{font-size:.82rem;color:var(--dim);line-height:1.55;margin-bottom:1rem;min-height:2.6em;}
-@media(max-width:860px){.merch-grid{grid-template-columns:1fr;}.merch-card p{min-height:0;}}
+.merch-card p{font-size:.82rem;color:var(--dim);line-height:1.55;margin-bottom:.35rem;min-height:0;}
+.merch-sport{color:var(--gold2)!important;margin-bottom:1rem!important;}
+.merch-filters{max-width:920px;margin:0 auto 1.2rem;display:flex;flex-direction:column;gap:.65rem;}
+.merch-filter-row{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;justify-content:center;}
+.merch-filter-label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-right:.25rem;}
+.mf{font-family:'Raleway',sans-serif;font-size:.78rem;color:var(--text);background:transparent;border:1px solid var(--border);border-radius:99px;padding:.34rem .72rem;cursor:pointer;}
+.mf.active{color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold2));border-color:transparent;font-weight:700;}
+@media(max-width:860px){.merch-grid{grid-template-columns:1fr;}}
 
 
 .hreq{list-style:none;display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center;margin:.15rem auto .85rem;max-width:720px;padding:0;}
@@ -1235,24 +1241,43 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 <div class="page" id="page-merch">
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Магазин" data-en="Store">Магазин</div><div class="pt" data-ru="Атрибутика" data-en="Merchandise">Атрибутика</div><div class="pd"></div></div></div>
   <div class="pb">
-    <p class="merch-lead" data-ru="Один макет: тёмный крой и золотой логотип. Вид спорта и размер выбираются в заявке. Оплата после ответа, цену пришлём в письме." data-en="One design: dark cut and the gold logo. Sport and size are chosen in the order. Payment comes after we reply with the price.">Один макет: тёмный крой и золотой логотип. Вид спорта и размер выбираются в заявке. Оплата после ответа, цену пришлём в письме.</p>
+    <p class="merch-lead" data-ru="Один макет: тёмный крой и золотой логотип. Отфильтруй вещь и вид спорта. Размер — в заявке. Оплата после ответа." data-en="One design: dark cut and the gold logo. Filter by item and sport. Size is chosen in the order. Payment comes after we reply.">Один макет: тёмный крой и золотой логотип. Отфильтруй вещь и вид спорта. Размер — в заявке. Оплата после ответа.</p>
+    <div class="merch-filters">
+      <div class="merch-filter-row" id="merchTypeFilters">
+        <span class="merch-filter-label" data-ru="Вещь" data-en="Item">Вещь</span>
+        <button type="button" class="mf active" onclick="setMerchFilter('type','all',this)" data-ru="Все" data-en="All">Все</button>
+        <button type="button" class="mf" onclick="setMerchFilter('type','shirt',this)" data-ru="Футболка" data-en="T-shirt">Футболка</button>
+        <button type="button" class="mf" onclick="setMerchFilter('type','hoodie',this)" data-ru="Худи" data-en="Hoodie">Худи</button>
+        <button type="button" class="mf" onclick="setMerchFilter('type','cap',this)" data-ru="Кепка" data-en="Cap">Кепка</button>
+      </div>
+      <div class="merch-filter-row" id="merchSportFilters">
+        <span class="merch-filter-label" data-ru="Спорт" data-en="Sport">Спорт</span>
+        <button type="button" class="mf active" onclick="setMerchFilter('sport','all',this)" data-ru="Все" data-en="All">Все</button>
+        <button type="button" class="mf" onclick="setMerchFilter('sport','hockey',this)" data-ru="Хоккей" data-en="Hockey">Хоккей</button>
+        <button type="button" class="mf" onclick="setMerchFilter('sport','football',this)" data-ru="Футбол" data-en="Football">Футбол</button>
+        <button type="button" class="mf" onclick="setMerchFilter('sport','basketball',this)" data-ru="Баскетбол" data-en="Basketball">Баскетбол</button>
+        <button type="button" class="mf" onclick="setMerchFilter('sport','waterpolo',this)" data-ru="Водное поло" data-en="Water Polo">Водное поло</button>
+        <button type="button" class="mf" onclick="setMerchFilter('sport','figure',this)" data-ru="Фигурное катание" data-en="Figure skating">Фигурное катание</button>
+        <button type="button" class="mf" onclick="setMerchFilter('sport','golf',this)" data-ru="Гольф" data-en="Golf">Гольф</button>
+      </div>
+    </div>
     <div class="merch-grid">
-      <article class="merch-card">
+      <article class="merch-card" data-type="shirt">
         <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt="Inter Select Pro">
         <h3 data-ru="Футболка" data-en="T-shirt">Футболка</h3>
-        <p data-ru="Базовая вещь линейки." data-en="The base piece.">Базовая вещь линейки.</p>
+        <p class="merch-sport" data-ru="Все виды спорта" data-en="All sports">Все виды спорта</p>
         <button class="bgold" type="button" onclick="orderMerch('shirt')" data-ru="Заказать" data-en="Order">Заказать</button>
       </article>
-      <article class="merch-card">
+      <article class="merch-card" data-type="hoodie">
         <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt="Inter Select Pro">
         <h3 data-ru="Худи" data-en="Hoodie">Худи</h3>
-        <p data-ru="Тот же знак, плотнее ткань." data-en="The same mark, heavier fabric.">Тот же знак, плотнее ткань.</p>
+        <p class="merch-sport" data-ru="Все виды спорта" data-en="All sports">Все виды спорта</p>
         <button class="bgold" type="button" onclick="orderMerch('hoodie')" data-ru="Заказать" data-en="Order">Заказать</button>
       </article>
-      <article class="merch-card">
+      <article class="merch-card" data-type="cap">
         <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt="Inter Select Pro">
         <h3 data-ru="Кепка" data-en="Cap">Кепка</h3>
-        <p data-ru="Знак на тёмной кепке." data-en="The mark on a dark cap.">Знак на тёмной кепке.</p>
+        <p class="merch-sport" data-ru="Все виды спорта" data-en="All sports">Все виды спорта</p>
         <button class="bgold" type="button" onclick="orderMerch('cap')" data-ru="Заказать" data-en="Order">Заказать</button>
       </article>
     </div>
@@ -1712,6 +1737,7 @@ function setLang(lang){
   const rRu = document.getElementById('rulesContentRu');
   const rEn = document.getElementById('rulesContentEn');
   if(rRu && rEn){ rRu.style.display = lang==='ru' ? 'block' : 'none'; rEn.style.display = lang==='en' ? 'block' : 'none'; }
+  if(typeof applyMerchFilters==='function') applyMerchFilters();
   if(_lastBreadcrumbTrail !== undefined) renderBreadcrumb(_lastBreadcrumbTrail);
   document.getElementById('btn-ru').classList.toggle('active',lang==='ru');
   document.getElementById('btn-en').classList.toggle('active',lang==='en');
@@ -1750,10 +1776,42 @@ function goWrite(){
   setTimeout(()=>{const f=document.getElementById('writeForm'); if(f) f.scrollIntoView({behavior:'smooth',block:'center'});},180);
 }
 
+let merchType='all', merchSport='all';
+const merchSportNames={
+  all:{ru:'Все виды спорта',en:'All sports'},
+  hockey:{ru:'Хоккей',en:'Hockey'},
+  football:{ru:'Футбол',en:'Football'},
+  basketball:{ru:'Баскетбол',en:'Basketball'},
+  waterpolo:{ru:'Водное поло',en:'Water Polo'},
+  figure:{ru:'Фигурное катание',en:'Figure skating'},
+  golf:{ru:'Гольф',en:'Golf'}
+};
+function setMerchFilter(kind, value, btn){
+  if(kind==='type') merchType=value; else merchSport=value;
+  const row=btn.parentElement;
+  row.querySelectorAll('.mf').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  applyMerchFilters();
+}
+function applyMerchFilters(){
+  const lang=localStorage.getItem('lang')||'ru';
+  const name=(merchSportNames[merchSport]||merchSportNames.all)[lang==='en'?'en':'ru'];
+  document.querySelectorAll('.merch-card').forEach(card=>{
+    card.style.display=(merchType==='all'||card.dataset.type===merchType)?'':'none';
+    const tag=card.querySelector('.merch-sport');
+    if(tag){
+      tag.textContent=name;
+      tag.setAttribute('data-ru', (merchSportNames[merchSport]||merchSportNames.all).ru);
+      tag.setAttribute('data-en', (merchSportNames[merchSport]||merchSportNames.all).en);
+    }
+  });
+}
 function orderMerch(item){
   showPage('merch');
   const sel=document.getElementById('mItem');
   if(sel) sel.value=item;
+  const sport=document.getElementById('mSport');
+  if(sport && merchSport!=='all') sport.value=merchSport;
   setTimeout(()=>{const f=document.getElementById('merchForm'); if(f) f.scrollIntoView({behavior:'smooth',block:'center'});},180);
 }
 function merchLabel(id){
