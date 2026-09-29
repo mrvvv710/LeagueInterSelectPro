@@ -324,6 +324,8 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .merch-filter-label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-right:.25rem;}
 .mf{font-family:'Raleway',sans-serif;font-size:.78rem;color:var(--text);background:transparent;border:1px solid var(--border);border-radius:99px;padding:.34rem .72rem;cursor:pointer;}
 .mf.active{color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold2));border-color:transparent;font-weight:700;}
+.merch-sort{background:var(--bg2);color:var(--text);border-radius:8px;padding:.38rem .7rem;}
+.merch-price{font-family:'Cinzel',serif;color:var(--gold)!important;font-size:.84rem!important;margin-bottom:.85rem!important;}
 @media(max-width:860px){.merch-grid{grid-template-columns:1fr;}}
 
 
@@ -1260,24 +1262,35 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
         <button type="button" class="mf" onclick="setMerchFilter('sport','figure',this)" data-ru="Фигурное катание" data-en="Figure skating">Фигурное катание</button>
         <button type="button" class="mf" onclick="setMerchFilter('sport','golf',this)" data-ru="Гольф" data-en="Golf">Гольф</button>
       </div>
+      <div class="merch-filter-row">
+        <span class="merch-filter-label" data-ru="Цена" data-en="Price">Цена</span>
+        <select id="merchSort" class="mf merch-sort" onchange="setMerchSort(this.value)">
+          <option value="default" data-ru="Как в каталоге" data-en="Catalog order">Как в каталоге</option>
+          <option value="asc" data-ru="Сначала дешевле" data-en="Lowest price">Сначала дешевле</option>
+          <option value="desc" data-ru="Сначала дороже" data-en="Highest price">Сначала дороже</option>
+        </select>
+      </div>
     </div>
     <div class="merch-grid">
-      <article class="merch-card" data-type="shirt">
+      <article class="merch-card" data-type="shirt" data-price="">
         <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt="Inter Select Pro">
         <h3 data-ru="Футболка" data-en="T-shirt">Футболка</h3>
         <p class="merch-sport" data-ru="Все виды спорта" data-en="All sports">Все виды спорта</p>
+        <p class="merch-price" data-ru="Цена по запросу" data-en="Price on request">Цена по запросу</p>
         <button class="bgold" type="button" onclick="orderMerch('shirt')" data-ru="Заказать" data-en="Order">Заказать</button>
       </article>
-      <article class="merch-card" data-type="hoodie">
+      <article class="merch-card" data-type="hoodie" data-price="">
         <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt="Inter Select Pro">
         <h3 data-ru="Худи" data-en="Hoodie">Худи</h3>
         <p class="merch-sport" data-ru="Все виды спорта" data-en="All sports">Все виды спорта</p>
+        <p class="merch-price" data-ru="Цена по запросу" data-en="Price on request">Цена по запросу</p>
         <button class="bgold" type="button" onclick="orderMerch('hoodie')" data-ru="Заказать" data-en="Order">Заказать</button>
       </article>
-      <article class="merch-card" data-type="cap">
+      <article class="merch-card" data-type="cap" data-price="">
         <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt="Inter Select Pro">
         <h3 data-ru="Кепка" data-en="Cap">Кепка</h3>
         <p class="merch-sport" data-ru="Все виды спорта" data-en="All sports">Все виды спорта</p>
+        <p class="merch-price" data-ru="Цена по запросу" data-en="Price on request">Цена по запросу</p>
         <button class="bgold" type="button" onclick="orderMerch('cap')" data-ru="Заказать" data-en="Order">Заказать</button>
       </article>
     </div>
@@ -1793,10 +1806,21 @@ function setMerchFilter(kind, value, btn){
   btn.classList.add('active');
   applyMerchFilters();
 }
+let merchSort='default';
+function setMerchSort(value){
+  merchSort=value;
+  applyMerchFilters();
+}
+function merchPrice(card){
+  const n=Number(card.dataset.price);
+  return Number.isFinite(n)&&n>0?n:null;
+}
 function applyMerchFilters(){
   const lang=localStorage.getItem('lang')||'ru';
   const name=(merchSportNames[merchSport]||merchSportNames.all)[lang==='en'?'en':'ru'];
-  document.querySelectorAll('.merch-card').forEach(card=>{
+  const grid=document.querySelector('.merch-grid');
+  const cards=[...document.querySelectorAll('.merch-card')];
+  cards.forEach(card=>{
     card.style.display=(merchType==='all'||card.dataset.type===merchType)?'':'none';
     const tag=card.querySelector('.merch-sport');
     if(tag){
@@ -1804,7 +1828,22 @@ function applyMerchFilters(){
       tag.setAttribute('data-ru', (merchSportNames[merchSport]||merchSportNames.all).ru);
       tag.setAttribute('data-en', (merchSportNames[merchSport]||merchSportNames.all).en);
     }
+    const priceEl=card.querySelector('.merch-price');
+    const n=merchPrice(card);
+    if(priceEl){
+      priceEl.textContent=n?new Intl.NumberFormat('ru-RU').format(n)+' ₽':(lang==='en'?'Price on request':'Цена по запросу');
+    }
   });
+  if(grid && (merchSort==='asc'||merchSort==='desc')){
+    cards.sort((a,b)=>{
+      const pa=merchPrice(a), pb=merchPrice(b);
+      if(pa==null && pb==null) return 0;
+      if(pa==null) return 1;
+      if(pb==null) return -1;
+      return merchSort==='asc'?pa-pb:pb-pa;
+    });
+    cards.forEach(card=>grid.appendChild(card));
+  }
 }
 function orderMerch(item){
   showPage('merch');
