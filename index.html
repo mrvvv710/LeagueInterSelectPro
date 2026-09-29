@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Inter Select Pro</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -56,7 +56,7 @@ nav a.active::after{left:8%;right:8%;}
 .mm.open{display:flex;}
 .mm a{font-family:'Cinzel',serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);text-decoration:none;padding:.5rem 0;border-bottom:1px solid var(--border);transition:color .2s;cursor:pointer;background:none;border-left:none;border-right:none;border-top:none;}
 .mm a:hover{color:var(--gold2);}
-@media(max-width:1020px){nav{display:none;}.burger{display:flex;}}
+@media(max-width:1200px){nav{display:none;}.burger{display:flex;}}
 
 /* PAGES */
 .page{display:none;min-height:80vh;animation:fadeP .4s ease both;}
@@ -461,6 +461,40 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .bc-item.bc-current{color:var(--gold);cursor:default;}
 .bc-item.bc-current:hover{color:var(--gold);}
 .bc-sep{color:var(--border);}
+
+
+/* PHONE / IN-APP */
+@media(max-width:1200px){
+  nav{display:none;}
+  .burger{display:flex;}
+}
+@media(max-width:700px){
+  .lt{display:none;}
+  .hi{height:56px;padding:0 .75rem;gap:.35rem;}
+  .lw img{width:40px;height:40px;padding:3px;}
+  .hc{gap:.35rem;margin-left:auto;}
+  .search-input-wrap.open{max-width:120px;}
+  .search-input{width:112px;}
+  .search-results{width:min(280px,calc(100vw - 1.5rem));}
+  .hero{min-height:0;padding:1.2rem 0 1.6rem;overflow:hidden;}
+  .hc2{padding:1rem .75rem;}
+  .hl{width:128px;height:128px;padding:10px;margin-bottom:1rem;}
+  .hsub{letter-spacing:.08em;font-size:.68rem;margin-bottom:1rem;}
+  .hreq{margin-bottom:.6rem;}
+  .hbtns{gap:.5rem;}
+  .bgold,.boutline{padding:.72rem 1rem;letter-spacing:.06em;}
+  .hsports-grid{grid-template-columns:repeat(2,1fr)!important;max-width:420px;gap:1rem .7rem;padding:0;}
+  .hsport-imgbox{width:78%;}
+  .hsport-label{font-size:.75rem;letter-spacing:.04em;}
+  .pb{padding:1.5rem 1rem 2rem;}
+  .ph,.sph{padding:1.6rem 1rem;}
+  .breadcrumb-bar{padding:.7rem 1rem;}
+  .write-box{padding:1.2rem 1rem;}
+  .mm a{padding:.85rem 0;}
+  .merch-card img{height:210px;}
+  .fbtns{right:.8rem;bottom:calc(.8rem + env(safe-area-inset-bottom));}
+}
+header{padding-top:env(safe-area-inset-top);}
 
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
