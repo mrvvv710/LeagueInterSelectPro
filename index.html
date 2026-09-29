@@ -328,6 +328,15 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .mf.active{color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold2));border-color:transparent;font-weight:700;}
 .merch-sort{background:var(--bg2);color:var(--text);border-radius:8px;padding:.38rem .7rem;}
 .merch-price{font-family:'Cinzel',serif;color:var(--gold)!important;font-size:.84rem!important;margin-bottom:.85rem!important;}
+.inv-lead{max-width:720px;margin:0 auto 1.5rem;text-align:center;color:var(--dim);font-size:.95rem;line-height:1.65;}
+.inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:920px;margin:0 auto 1.4rem;}
+.inv-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.35rem 1.25rem 1.3rem;}
+.inv-card h3{font-family:'Cinzel',serif;color:var(--gold2);font-size:1.05rem;margin-bottom:.8rem;}
+.inv-card li{font-size:.9rem;line-height:1.55;color:var(--text);margin:.45rem 0 .45rem 1rem;}
+.inv-card .bgold{margin-top:.9rem;}
+.inv-foot{max-width:720px;margin:0 auto;text-align:center;color:var(--dim);font-size:.9rem;line-height:1.6;}
+.inv-foot a{color:var(--gold);}
+@media(max-width:800px){.inv-grid{grid-template-columns:1fr;}}
 @media(max-width:860px){.merch-grid{grid-template-columns:1fr;}}
 
 
@@ -1150,8 +1159,32 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 
 <!-- ══ SPONSORS ══ -->
 <div class="page" id="page-sponsors">
-  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Инвестиции и партнёрство" data-en="Investment &amp; Partnership">Инвестиции и партнёрство</div><div class="pt" data-ru="Для инвесторов" data-en="For Investors">Для инвесторов</div><div class="pd"></div></div></div>
-  <div class="pb"><div class="cs"><div class="cs-i">🤝</div><div class="cs-t" data-ru="Информация для инвесторов скоро появится" data-en="Investor info coming soon">Информация для инвесторов скоро появится</div><div class="cs-s" data-ru="Хотите стать партнёром? Свяжитесь с нами" data-en="Want to become a partner? Contact us">Хотите стать партнёром? Свяжитесь с нами</div></div></div>
+  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Инвестиции" data-en="Investment">Инвестиции</div><div class="pt" data-ru="Для инвесторов" data-en="For Investors">Для инвесторов</div><div class="pd"></div></div></div>
+  <div class="pb">
+    <p class="inv-lead" data-ru="Два разных разговора: спонсорство лиги для студентов и отдельный контур спортивно-образовательного кластера. Доходность на этой странице не обещаем." data-en="Two separate conversations: sponsoring the student league, and a separate sports-and-education cluster. This page does not promise a return.">Два разных разговора: спонсорство лиги для студентов и отдельный контур спортивно-образовательного кластера. Доходность на этой странице не обещаем.</p>
+    <div class="inv-grid">
+      <article class="inv-card">
+        <h3 data-ru="Спонсор лиги" data-en="League sponsor">Спонсор лиги</h3>
+        <ul>
+          <li data-ru="Участники 16–25 лет: школа и вуз, без профессионального контракта." data-en="Players aged 16–25: school and university, no professional contract.">Участники 16–25 лет: школа и вуз, без профессионального контракта.</li>
+          <li data-ru="Сезон с сентября по май, шесть видов спорта." data-en="Season from September to May, six sports.">Сезон с сентября по май, шесть видов спорта.</li>
+          <li data-ru="Деньги идут на экипировку, сборы и призовой фонд финала." data-en="Money goes to kit, training camps and the final prize fund.">Деньги идут на экипировку, сборы и призовой фонд финала.</li>
+          <li data-ru="Имя спонсора — на форме, в галерее и на финале." data-en="The sponsor’s name goes on the kit, in the gallery and at the final.">Имя спонсора — на форме, в галерее и на финале.</li>
+        </ul>
+        <button class="bgold" type="button" onclick="askInvestor('league')" data-ru="Обсудить спонсорство" data-en="Discuss sponsorship">Обсудить спонсорство</button>
+      </article>
+      <article class="inv-card">
+        <h3 data-ru="Инвестор кластера" data-en="Cluster investor">Инвестор кластера</h3>
+        <ul>
+          <li data-ru="Средства — на объект культурного наследия и спортивно-образовательный кластер." data-en="Funds go to a heritage building and a sports-and-education cluster.">Средства — на объект культурного наследия и спортивно-образовательный кластер.</li>
+          <li data-ru="Условия дохода — в решении о выпуске, не на этой странице." data-en="The terms of any return are in the issue decision, not on this page.">Условия дохода — в решении о выпуске, не на этой странице.</li>
+          <li data-ru="Эмитента и реквизиты пришлём в материалах." data-en="The issuer and the company details are sent with the materials.">Эмитента и реквизиты пришлём в материалах.</li>
+        </ul>
+        <button class="bgold" type="button" onclick="askInvestor('cluster')" data-ru="Запросить материалы" data-en="Request materials">Запросить материалы</button>
+      </article>
+    </div>
+    <p class="inv-foot"><span data-ru="По вопросам: " data-en="Contact: ">По вопросам: </span><a href="mailto:info@interselectpro.ru">info@interselectpro.ru</a></p>
+  </div>
 </div>
 
 <!-- ══ ABOUT ══ -->
@@ -1789,6 +1822,20 @@ document.addEventListener('click', (e) => {
 function goWrite(){
   showPage('contacts');
   setTimeout(()=>{const f=document.getElementById('writeForm'); if(f) f.scrollIntoView({behavior:'smooth',block:'center'});},180);
+}
+function askInvestor(kind){
+  showPage('contacts');
+  setTimeout(()=>{
+    const box=document.getElementById('wMsg');
+    const lang=localStorage.getItem('lang')||'ru';
+    if(box && !box.value.trim()){
+      box.value = kind==='cluster'
+        ? (lang==='en' ? 'Please send the cluster materials.' : 'Прошу материалы по кластеру.')
+        : (lang==='en' ? 'I want to discuss league sponsorship.' : 'Хочу обсудить спонсорство лиги.');
+    }
+    const f=document.getElementById('writeForm');
+    if(f) f.scrollIntoView({behavior:'smooth',block:'center'});
+  },180);
 }
 
 let merchType='all', merchSport='all';
