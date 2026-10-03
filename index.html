@@ -75,6 +75,7 @@ nav a.active::after{left:8%;right:8%;}
 @keyframes float{0%,100%{transform:translateY(0);box-shadow:0 0 60px rgba(201,149,106,.5)}50%{transform:translateY(-12px);box-shadow:0 0 90px rgba(201,149,106,.7)}}
 .htitle{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(2.1rem,5.2vw,4.4rem);line-height:1.08;letter-spacing:.07em;background:linear-gradient(135deg,var(--gold3) 0%,var(--gold) 45%,var(--gold2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem;}
 .hsub{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.22em;color:var(--dim);text-transform:uppercase;margin-bottom:1.8rem;}
+.hslogan{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(1.15rem,2.6vw,1.7rem);letter-spacing:.03em;line-height:1.35;color:var(--gold2);max-width:18em;margin:0 auto 1.5rem;}
 .hdiv{width:110px;height:2px;margin:0 auto 1.8rem;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
 .hpills{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;}
 .pill{font-family:'Cinzel',serif;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border);border-radius:2px;padding:.3rem .8rem;background:rgba(201,149,106,.05);cursor:pointer;transition:all .2s;}
@@ -611,14 +612,8 @@ header{padding-top:env(safe-area-inset-top);}
     <div class="hc2">
       <img class="hl" src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt="Inter Select Pro">
       <div class="htitle">INTER SELECT PRO</div>
-      <div class="hsub" data-ru="Международная образовательная и спортивная сеть" data-en="International Educational &amp; Sports Network">Международная образовательная и спортивная сеть</div>
+      <div class="hslogan" data-ru="Хочешь стать легендой? Мы тебя ждём." data-en="Want to become a legend? We're waiting.">Хочешь стать легендой? Мы тебя ждём.</div>
       <div class="hdiv"></div>
-      <ul class="hreq">
-        <li data-ru="Участникам от 16 до 25 лет" data-en="Ages 16 to 25">Участникам от 16 до 25 лет</li>
-        <li data-ru="Школьники, студенты и абитуриенты" data-en="School, college and university students">Школьники, студенты и абитуриенты</li>
-        <li data-ru="Без профессионального контракта" data-en="No professional contract">Без профессионального контракта</li>
-      </ul>
-      <div style="text-align:center;margin-bottom:.6rem;"><span class="rules-link" onclick="showPage('rules')" data-ru="Правила участия" data-en="Rules">Правила участия</span></div>
       <div class="hsports-grid">
         <div class="hsport-card" onclick="showSportPage('hockey')"><div class="hsport-imgbox"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/hsport-icon-hockey.png" alt="hockey" style="width:100%;height:100%;object-fit:contain;"></div><div class="hsport-label" data-ru="Хоккей" data-en="Hockey">Хоккей</div></div>
         <div class="hsport-card" onclick="showSportPage('football')"><div class="hsport-imgbox"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/hsport-icon-football.png" alt="football" style="width:100%;height:100%;object-fit:contain;"></div><div class="hsport-label" data-ru="Футбол" data-en="Football">Футбол</div></div>
@@ -1017,7 +1012,13 @@ header{padding-top:env(safe-area-inset-top);}
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Мероприятия" data-en="Upcoming">Мероприятия</div><div class="pt" data-ru="Ивенты" data-en="Events">Ивенты</div><div class="pd"></div></div></div>
   <div class="pb">
     <div class="session-note">
-      <p class="note"><span class="rules-link" onclick="showPage('rules')" data-ru="Правила сессий и взносы" data-en="Session rules and fees">Правила сессий и взносы</span></p>
+      <h3 data-ru="Кто может участвовать" data-en="Who can take part">Кто может участвовать</h3>
+      <ul>
+        <li data-ru="Участникам от 16 до 25 лет." data-en="Ages 16 to 25.">Участникам от 16 до 25 лет.</li>
+        <li data-ru="Школьники, студенты и абитуриенты." data-en="School pupils, students and applicants.">Школьники, студенты и абитуриенты.</li>
+        <li data-ru="Без профессионального контракта." data-en="No professional contract.">Без профессионального контракта.</li>
+      </ul>
+      <p class="note"><span class="rules-link" onclick="showPage('rules')" data-ru="Полные правила и взносы" data-en="Full rules and fees">Полные правила и взносы</span></p>
     </div>
     <div class="cal-wrap">
       <div class="cal-head">
