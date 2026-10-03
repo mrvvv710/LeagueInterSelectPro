@@ -75,6 +75,7 @@ nav a.active::after{left:8%;right:8%;}
 @keyframes float{0%,100%{transform:translateY(0);box-shadow:0 0 60px rgba(201,149,106,.5)}50%{transform:translateY(-12px);box-shadow:0 0 90px rgba(201,149,106,.7)}}
 .htitle{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(2.1rem,5.2vw,4.4rem);line-height:1.08;letter-spacing:.07em;background:linear-gradient(135deg,var(--gold3) 0%,var(--gold) 45%,var(--gold2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem;}
 .hsub{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.22em;color:var(--dim);text-transform:uppercase;margin-bottom:1.8rem;}
+.hslogan{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(1.15rem,2.6vw,1.7rem);letter-spacing:.03em;line-height:1.35;color:var(--gold2);max-width:18em;margin:0 auto 1.5rem;}
 .hdiv{width:110px;height:2px;margin:0 auto 1.8rem;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
 .hpills{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;}
 .pill{font-family:'Cinzel',serif;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border);border-radius:2px;padding:.3rem .8rem;background:rgba(201,149,106,.05);cursor:pointer;transition:all .2s;}
@@ -611,14 +612,8 @@ header{padding-top:env(safe-area-inset-top);}
     <div class="hc2">
       <img class="hl" src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt="Inter Select Pro">
       <div class="htitle">INTER SELECT PRO</div>
-      <div class="hsub" data-ru="Международная образовательная и спортивная сеть" data-en="International Educational &amp; Sports Network">Международная образовательная и спортивная сеть</div>
+      <div class="hslogan" data-ru="Хочешь стать легендой? Мы тебя ждём." data-en="Want to become a legend? We're waiting.">Хочешь стать легендой? Мы тебя ждём.</div>
       <div class="hdiv"></div>
-      <ul class="hreq">
-        <li data-ru="Участникам от 16 до 25 лет" data-en="Ages 16 to 25">Участникам от 16 до 25 лет</li>
-        <li data-ru="Школьники, студенты и абитуриенты" data-en="School, college and university students">Школьники, студенты и абитуриенты</li>
-        <li data-ru="Без профессионального контракта" data-en="No professional contract">Без профессионального контракта</li>
-      </ul>
-      <div style="text-align:center;margin-bottom:.6rem;"><span class="rules-link" onclick="showPage('rules')" data-ru="Правила участия" data-en="Rules">Правила участия</span></div>
       <div class="hsports-grid">
         <div class="hsport-card" onclick="showSportPage('hockey')"><div class="hsport-imgbox"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/hsport-icon-hockey.png" alt="hockey" style="width:100%;height:100%;object-fit:contain;"></div><div class="hsport-label" data-ru="Хоккей" data-en="Hockey">Хоккей</div></div>
         <div class="hsport-card" onclick="showSportPage('football')"><div class="hsport-imgbox"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/hsport-icon-football.png" alt="football" style="width:100%;height:100%;object-fit:contain;"></div><div class="hsport-label" data-ru="Футбол" data-en="Football">Футбол</div></div>
@@ -676,6 +671,354 @@ header{padding-top:env(safe-area-inset-top);}
       <div class="sec-label" data-ru="Не пропустите" data-en="Don't Miss">Не пропустите</div>
       <div class="sec-title" data-ru="Ближайшие ивенты" data-en="Upcoming Events">Ближайшие ивенты</div>
       <div class="sec-line"></div>
+    </div>
+    <div class="cal-wrap">
+      <div class="cal-head">
+        <button class="cal-nav-btn" onclick="calChangeMonth(-1)">‹</button>
+        <div class="calMonthLabelEl cal-month"></div>
+        <button class="cal-nav-btn" onclick="calChangeMonth(1)">›</button>
+      </div>
+      <div class="calGridEl cal-grid"></div>
+      <div class="cal-legend">
+        <span class="cal-legend-dot"></span><span data-ru="Дни с ивентами" data-en="Event days">Дни с ивентами</span>
+        <span class="cal-legend-dot cal-legend-today"></span><span data-ru="Сегодня" data-en="Today">Сегодня</span>
+      </div>
+    </div>
+    <a class="hs-link" onclick="showPage('events')" data-ru="Все ивенты →" data-en="All Events →">Все ивенты →</a>
+  </div>
+
+  <div class="gd"></div>
+
+  <!-- СПОНСОРЫ -->
+  <div class="home-sec home-sec-alt">
+    <div class="hs-header">
+      <div class="sec-label" data-ru="Наши партнёры" data-en="Our Partners">Наши партнёры</div>
+      <div class="sec-title" data-ru="Спонсоры" data-en="Sponsors">Спонсоры</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="cs"><div class="cs-i">🤝</div><div class="cs-t" data-ru="Информация о спонсорах скоро появится" data-en="Sponsor info coming soon">Информация о спонсорах скоро появится</div><div class="cs-s" data-ru="Хотите стать партнёром? Свяжитесь с нами" data-en="Want to become a partner? Contact us">Хотите стать партнёром? Свяжитесь с нами</div></div>
+    <a class="hs-link" onclick="showPage('sponsors')" data-ru="Все спонсоры →" data-en="All Sponsors →">Все спонсоры →</a>
+  </div>
+
+  <div class="gd"></div>
+
+  <!-- О НАС -->
+  <div class="home-sec">
+    <div class="hs-header">
+      <div class="sec-label" data-ru="Наша история" data-en="Our Story">Наша история</div>
+      <div class="sec-title" data-ru="О нас" data-en="About Us">О нас</div>
+      <div class="sec-line"></div>
+    </div>
+    <p class="ap" data-ru="Inter Select Pro — международная образовательная и спортивная сеть, основанная в 2023 году в Калининграде. Мы объединяем спортсменов, тренеров и команды по шести видам спорта, создавая платформу для честной конкуренции и профессионального роста." data-en="Inter Select Pro is an international educational and sports network founded in 2023 in Kaliningrad. We unite athletes, coaches and teams across six sports, creating a platform for fair competition and professional growth.">Inter Select Pro — международная образовательная и спортивная сеть, основанная в 2023 году в Калининграде. Мы объединяем спортсменов, тренеров и команды по шести видам спорта, создавая платформу для честной конкуренции и профессионального роста.</p>
+    <a class="hs-link" onclick="showPage('about')" data-ru="Подробнее о нас →" data-en="More About Us →">Подробнее о нас →</a>
+  </div>
+
+  <div class="gd"></div>
+</div>
+
+<!-- ══ ACADEMY ══ -->
+<div class="page" id="page-academy">
+  <div class="ph"><div class="ph-in">
+    <div class="pl" data-ru="Направления" data-en="Directions">Направления</div>
+    <div class="pt" data-ru="Академия" data-en="Academy">Академия</div>
+    <div class="pd"></div>
+  </div></div>
+  <div class="pb">
+    <p class="academy-lead"><a class="rules-link" onclick="showPage('rules')" data-ru="Правила участия" data-en="Rules">Правила участия</a></p>
+    <div class="sg">
+    <div class="sc" onclick="showSportPage('hockey')">
+      <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/img_07_f84cacce61.png" alt="Хоккей" class="sli">
+      <div class="sn" data-ru="Хоккей" data-en="Hockey">Хоккей</div>
+    </div>
+    <div class="sc" onclick="showSportPage('football')">
+      <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/img_08_cefc63ce74.png" alt="Футбол" class="sli">
+      <div class="sn" data-ru="Футбол" data-en="Football">Футбол</div>
+    </div>
+    <div class="sc" onclick="showSportPage('basketball')">
+      <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/img_09_38a23794f3.png" alt="Баскетбол" class="sli">
+      <div class="sn" data-ru="Баскетбол" data-en="Basketball">Баскетбол</div>
+    </div>
+    <div class="sc" onclick="showSportPage('waterpolo')">
+      <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/img_10_892cd56483.png" alt="Водное поло" class="sli">
+      <div class="sn" data-ru="Водное поло" data-en="Water Polo">Водное поло</div>
+    </div>
+    <div class="sc" onclick="showSportPage('figure')">
+      <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/img_11_560285e15c.png" alt="Фигурное катание" class="sli">
+      <div class="sn" data-ru="Фигурное катание" data-en="Figure Skating">Фигурное катание</div>
+    </div>
+    <div class="sc" onclick="showSportPage('golf')">
+      <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/img_12_f153447da4.png" alt="Гольф" class="sli">
+      <div class="sn" data-ru="Гольф" data-en="Golf">Гольф</div>
+    </div>
+  </div></div>
+</div>
+<!-- SPORT: HOCKEY -->
+<div class="page" id="page-sport-hockey">
+  <div class="sph"><div class="sph-in">
+    <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/img_07_f84cacce61.png" alt="Хоккей" class="sp-logo">
+    <div>
+      <div class="sp-title" data-ru="Хоккей" data-en="Hockey">Хоккей</div>
+      <div class="sp-sub">Inter Select Pro · <span data-ru="Хоккей" data-en="Hockey">Хоккей</span></div>
+      <button class="sp-back" onclick="showPage('academy')" data-ru="← Назад к Академии" data-en="← Back to Academy">← Назад к Академии</button>
+    </div>
+  </div></div>
+  <div class="sptabs">
+    <button class="sptab active" onclick="switchSportTab('hockey','info',this)" data-ru="О дисциплине" data-en="About">О дисциплине</button>
+    <button class="sptab" onclick="switchSportTab('hockey','teams',this)" data-ru="Команды" data-en="Teams">Команды</button>
+    <button class="sptab" onclick="switchSportTab('hockey','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
+  </div>
+  <div id="sb-hockey" class="spbody">
+
+    <ul class="sport-facts">
+      <li data-ru="3 периода по 15 минут грязного времени." data-en="3 periods of 15 minutes, running time.">3 периода по 15 минут грязного времени.</li>
+      <li data-ru="Замены без ограничений по ходу сессии." data-en="Unlimited substitutions during the session.">Замены без ограничений по ходу сессии.</li>
+      <li data-ru="Состав: 12–15 человек, минимум две полные пятёрки и один вратарь." data-en="Roster: 12–15 players, at least two full lines and one goalkeeper.">Состав: 12–15 человек, минимум две полные пятёрки и один вратарь.</li>
+    </ul>
+    <p class="note" style="margin-top:.8rem;"><span class="rules-link" onclick="showPage('rules')" data-ru="Общий регламент — в правилах" data-en="Shared rules">Общий регламент — в правилах</span></p>
+  </div>
+  <div id="st-hockey" style="display:none;" class="spbody">
+    <div class="stg" id="str-hockey"><div class="stc"><div class="sti">🏒</div><div class="stn">Белые медведи</div></div><div class="stc"><div class="sti">🏒</div><div class="stn">Северные звёзды</div></div><div class="stc"><div class="sti">🏒</div><div class="stn">Академия ISP</div></div><div class="stc"><div class="sti">🏒</div><div class="stn">Ледяные волки</div></div><div class="stc"><div class="sti">🏒</div><div class="stn">Буревестник</div></div></div>
+    <div class="stg" id="ste-hockey" style="display:none"><div class="stc"><div class="sti">🏒</div><div class="stn">White Bears</div></div><div class="stc"><div class="sti">🏒</div><div class="stn">Northern Stars</div></div><div class="stc"><div class="sti">🏒</div><div class="stn">Academy ISP</div></div><div class="stc"><div class="sti">🏒</div><div class="stn">Ice Wolves</div></div><div class="stc"><div class="sti">🏒</div><div class="stn">Petrel</div></div></div>
+  </div>
+  <div id="se-hockey" style="display:none;" class="spbody">
+    <div class="cs"><div class="cs-i">🗓️</div><div class="cs-t" data-ru="Ивенты скоро появятся" data-en="Events coming soon">Ивенты скоро появятся</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div>
+  </div>
+</div>
+<!-- SPORT: FOOTBALL -->
+<div class="page" id="page-sport-football">
+  <div class="sph"><div class="sph-in">
+    <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/img_08_cefc63ce74.png" alt="Футбол" class="sp-logo">
+    <div>
+      <div class="sp-title" data-ru="Футбол" data-en="Football">Футбол</div>
+      <div class="sp-sub">Inter Select Pro · <span data-ru="Футбол" data-en="Football">Футбол</span></div>
+      <button class="sp-back" onclick="showPage('academy')" data-ru="← Назад к Академии" data-en="← Back to Academy">← Назад к Академии</button>
+    </div>
+  </div></div>
+  <div class="sptabs">
+    <button class="sptab active" onclick="switchSportTab('football','info',this)" data-ru="О дисциплине" data-en="About">О дисциплине</button>
+    <button class="sptab" onclick="switchSportTab('football','teams',this)" data-ru="Команды" data-en="Teams">Команды</button>
+    <button class="sptab" onclick="switchSportTab('football','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
+  </div>
+  <div id="sb-football" class="spbody">
+
+    <ul class="sport-facts">
+      <li data-ru="Полное поле, 11 на 11. Два тайма по 25 минут." data-en="Full field, 11 versus 11. Two halves of 25 minutes.">Полное поле, 11 на 11. Два тайма по 25 минут.</li>
+      <li data-ru="Летучие замены без лимита и без остановки времени, через техническую зону. Игрок может возвращаться на поле." data-en="Flying substitutions with no limit and no stoppage, through a technical zone. A player may return to the field.">Летучие замены без лимита и без остановки времени, через техническую зону. Игрок может возвращаться на поле.</li>
+      <li data-ru="Заявка минимум 18 человек: 11 на поле и минимум 7 на замене. Команду с меньшим составом к сессии не допускают." data-en="At least 18 players: 11 on the field and at least 7 substitutes. A smaller squad is not admitted.">Заявка минимум 18 человек: 11 на поле и минимум 7 на замене. Команду с меньшим составом к сессии не допускают.</li>
+    </ul>
+    <p class="note" style="margin-top:.8rem;"><span class="rules-link" onclick="showPage('rules')" data-ru="Общий регламент — в правилах" data-en="Shared rules">Общий регламент — в правилах</span></p>
+  </div>
+  <div id="st-football" style="display:none;" class="spbody">
+    <div class="stg" id="str-football"><div class="stc"><div class="sti">⚽</div><div class="stn">Динамо ИСП</div></div><div class="stc"><div class="sti">⚽</div><div class="stn">Атлетик</div></div><div class="stc"><div class="sti">⚽</div><div class="stn">Спартак</div></div><div class="stc"><div class="sti">⚽</div><div class="stn">Локомотив</div></div><div class="stc"><div class="sti">⚽</div><div class="stn">Факел</div></div></div>
+    <div class="stg" id="ste-football" style="display:none"><div class="stc"><div class="sti">⚽</div><div class="stn">Dynamo ISP</div></div><div class="stc"><div class="sti">⚽</div><div class="stn">Athletic</div></div><div class="stc"><div class="sti">⚽</div><div class="stn">Spartak</div></div><div class="stc"><div class="sti">⚽</div><div class="stn">Lokomotiv</div></div><div class="stc"><div class="sti">⚽</div><div class="stn">Fakel</div></div></div>
+  </div>
+  <div id="se-football" style="display:none;" class="spbody">
+    <div class="cs"><div class="cs-i">🗓️</div><div class="cs-t" data-ru="Ивенты скоро появятся" data-en="Events coming soon">Ивенты скоро появятся</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div>
+  </div>
+</div>
+<!-- SPORT: BASKETBALL -->
+<div class="page" id="page-sport-basketball">
+  <div class="sph"><div class="sph-in">
+    <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/img_09_38a23794f3.png" alt="Баскетбол" class="sp-logo">
+    <div>
+      <div class="sp-title" data-ru="Баскетбол" data-en="Basketball">Баскетбол</div>
+      <div class="sp-sub">Inter Select Pro · <span data-ru="Баскетбол" data-en="Basketball">Баскетбол</span></div>
+      <button class="sp-back" onclick="showPage('academy')" data-ru="← Назад к Академии" data-en="← Back to Academy">← Назад к Академии</button>
+    </div>
+  </div></div>
+  <div class="sptabs">
+    <button class="sptab active" onclick="switchSportTab('basketball','info',this)" data-ru="О дисциплине" data-en="About">О дисциплине</button>
+    <button class="sptab" onclick="switchSportTab('basketball','teams',this)" data-ru="Команды" data-en="Teams">Команды</button>
+    <button class="sptab" onclick="switchSportTab('basketball','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
+  </div>
+  <div id="sb-basketball" class="spbody">
+
+    <ul class="sport-facts">
+      <li data-ru="4 четверти по 10 минут грязного времени. Последняя минута четвёртой четверти — чистое время." data-en="4 quarters of 10 minutes, running time. The last minute of the fourth quarter is stopped time.">4 четверти по 10 минут грязного времени. Последняя минута четвёртой четверти — чистое время.</li>
+      <li data-ru="Состав: 8–10 человек." data-en="Roster: 8–10 players.">Состав: 8–10 человек.</li>
+    </ul>
+    <p class="note" style="margin-top:.8rem;"><span class="rules-link" onclick="showPage('rules')" data-ru="Общий регламент — в правилах" data-en="Shared rules">Общий регламент — в правилах</span></p>
+  </div>
+  <div id="st-basketball" style="display:none;" class="spbody">
+    <div class="stg" id="str-basketball"><div class="stc"><div class="sti">🏀</div><div class="stn">Академия</div></div><div class="stc"><div class="sti">🏀</div><div class="stn">Спартак</div></div><div class="stc"><div class="sti">🏀</div><div class="stn">Прогресс</div></div><div class="stc"><div class="sti">🏀</div><div class="stn">Зенит</div></div></div>
+    <div class="stg" id="ste-basketball" style="display:none"><div class="stc"><div class="sti">🏀</div><div class="stn">Academy</div></div><div class="stc"><div class="sti">🏀</div><div class="stn">Spartak</div></div><div class="stc"><div class="sti">🏀</div><div class="stn">Progress</div></div><div class="stc"><div class="sti">🏀</div><div class="stn">Zenit</div></div></div>
+  </div>
+  <div id="se-basketball" style="display:none;" class="spbody">
+    <div class="cs"><div class="cs-i">🗓️</div><div class="cs-t" data-ru="Ивенты скоро появятся" data-en="Events coming soon">Ивенты скоро появятся</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div>
+  </div>
+</div>
+<!-- SPORT: WATERPOLO -->
+<div class="page" id="page-sport-waterpolo">
+  <div class="sph"><div class="sph-in">
+    <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/img_10_892cd56483.png" alt="Водное поло" class="sp-logo">
+    <div>
+      <div class="sp-title" data-ru="Водное поло" data-en="Water Polo">Водное поло</div>
+      <div class="sp-sub">Inter Select Pro · <span data-ru="Водное поло" data-en="Water Polo">Водное поло</span></div>
+      <button class="sp-back" onclick="showPage('academy')" data-ru="← Назад к Академии" data-en="← Back to Academy">← Назад к Академии</button>
+    </div>
+  </div></div>
+  <div class="sptabs">
+    <button class="sptab active" onclick="switchSportTab('waterpolo','info',this)" data-ru="О дисциплине" data-en="About">О дисциплине</button>
+    <button class="sptab" onclick="switchSportTab('waterpolo','teams',this)" data-ru="Команды" data-en="Teams">Команды</button>
+    <button class="sptab" onclick="switchSportTab('waterpolo','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
+  </div>
+  <div id="sb-waterpolo" class="spbody">
+
+    <ul class="sport-facts">
+      <li data-ru="4 периода по 7 минут грязного времени." data-en="4 periods of 7 minutes, running time.">4 периода по 7 минут грязного времени.</li>
+      <li data-ru="Состав: 9–11 человек, 7 в воде и минимум 2–4 на замене." data-en="Roster: 9–11 players, 7 in the water and at least 2–4 substitutes.">Состав: 9–11 человек, 7 в воде и минимум 2–4 на замене.</li>
+    </ul>
+    <p class="note" style="margin-top:.8rem;"><span class="rules-link" onclick="showPage('rules')" data-ru="Общий регламент — в правилах" data-en="Shared rules">Общий регламент — в правилах</span></p>
+  </div>
+  <div id="st-waterpolo" style="display:none;" class="spbody">
+    <div class="stg" id="str-waterpolo"><div class="stc"><div class="sti">🤽</div><div class="stn">Нептун ИСП</div></div><div class="stc"><div class="sti">🤽</div><div class="stn">Буревестник</div></div><div class="stc"><div class="sti">🤽</div><div class="stn">Олимп</div></div></div>
+    <div class="stg" id="ste-waterpolo" style="display:none"><div class="stc"><div class="sti">🤽</div><div class="stn">Neptune ISP</div></div><div class="stc"><div class="sti">🤽</div><div class="stn">Petrel</div></div><div class="stc"><div class="sti">🤽</div><div class="stn">Olymp</div></div></div>
+  </div>
+  <div id="se-waterpolo" style="display:none;" class="spbody">
+    <div class="cs"><div class="cs-i">🗓️</div><div class="cs-t" data-ru="Ивенты скоро появятся" data-en="Events coming soon">Ивенты скоро появятся</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div>
+  </div>
+</div>
+<!-- SPORT: FIGURE -->
+<div class="page" id="page-sport-figure">
+  <div class="sph"><div class="sph-in">
+    <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/img_11_560285e15c.png" alt="Фигурное катание" class="sp-logo">
+    <div>
+      <div class="sp-title" data-ru="Фигурное катание" data-en="Figure Skating">Фигурное катание</div>
+      <div class="sp-sub">Inter Select Pro · <span data-ru="Фигурное катание" data-en="Figure Skating">Фигурное катание</span></div>
+      <button class="sp-back" onclick="showPage('academy')" data-ru="← Назад к Академии" data-en="← Back to Academy">← Назад к Академии</button>
+    </div>
+  </div></div>
+  <div class="sptabs">
+    <button class="sptab active" onclick="switchSportTab('figure','info',this)" data-ru="О дисциплине" data-en="About">О дисциплине</button>
+    <button class="sptab" onclick="switchSportTab('figure','teams',this)" data-ru="Команды" data-en="Teams">Команды</button>
+    <button class="sptab" onclick="switchSportTab('figure','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
+  </div>
+  <div id="sb-figure" class="spbody">
+
+    <ul class="sport-facts">
+      <li data-ru="Личного зачёта нет." data-en="There is no individual ranking.">Личного зачёта нет.</li>
+      <li data-ru="Состав строго от 12 человек, включая синхронные группы." data-en="The team is at least 12 skaters, including synchronized groups.">Состав строго от 12 человек, включая синхронные группы.</li>
+      <li data-ru="День 1: синхронно-техническая и презентационная программы. День 2, финал: командно-произвольная программа и шоу-элементы." data-en="Day 1: synchronized technical and presentation programs. Day 2, the final: a team free program and show elements.">День 1: синхронно-техническая и презентационная программы. День 2, финал: командно-произвольная программа и шоу-элементы.</li>
+      <li data-ru="Балл наставника — сумма оценок экспертов за все 4 программы." data-en="The mentor’s score is the sum of the experts’ marks for all 4 programs.">Балл наставника — сумма оценок экспертов за все 4 программы.</li>
+    </ul>
+    <p class="note" style="margin-top:.8rem;"><span class="rules-link" onclick="showPage('rules')" data-ru="Общий регламент — в правилах" data-en="Shared rules">Общий регламент — в правилах</span></p>
+  </div>
+  <div id="st-figure" style="display:none;" class="spbody">
+    <div class="stg" id="str-figure"><div class="stc"><div class="sti">⛸️</div><div class="stn">Команда по ФК</div></div><div class="stc"><div class="sti">⛸️</div><div class="stn">Звёзды льда</div></div></div>
+    <div class="stg" id="ste-figure" style="display:none"><div class="stc"><div class="sti">⛸️</div><div class="stn">Figure Skating Team</div></div><div class="stc"><div class="sti">⛸️</div><div class="stn">Ice Stars</div></div></div>
+  </div>
+  <div id="se-figure" style="display:none;" class="spbody">
+    <div class="cs"><div class="cs-i">🗓️</div><div class="cs-t" data-ru="Ивенты скоро появятся" data-en="Events coming soon">Ивенты скоро появятся</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div>
+  </div>
+</div>
+<!-- SPORT: GOLF -->
+<div class="page" id="page-sport-golf">
+  <div class="sph"><div class="sph-in">
+    <img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/img_12_f153447da4.png" alt="Гольф" class="sp-logo">
+    <div>
+      <div class="sp-title" data-ru="Гольф" data-en="Golf">Гольф</div>
+      <div class="sp-sub">Inter Select Pro · <span data-ru="Гольф" data-en="Golf">Гольф</span></div>
+      <button class="sp-back" onclick="showPage('academy')" data-ru="← Назад к Академии" data-en="← Back to Academy">← Назад к Академии</button>
+    </div>
+  </div></div>
+  <div class="sptabs">
+    <button class="sptab active" onclick="switchSportTab('golf','info',this)" data-ru="О дисциплине" data-en="About">О дисциплине</button>
+    <button class="sptab" onclick="switchSportTab('golf','teams',this)" data-ru="Команды" data-en="Teams">Команды</button>
+    <button class="sptab" onclick="switchSportTab('golf','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
+  </div>
+  <div id="sb-golf" class="spbody">
+
+    <ul class="sport-facts">
+      <li data-ru="Не 18 лунок, а 6 или 9 экспресс-лунок." data-en="Not 18 holes: 6 or 9 express holes.">Не 18 лунок, а 6 или 9 экспресс-лунок.</li>
+      <li data-ru="Счёт Match Play — по числу выигранных лунок." data-en="Match Play scoring, by holes won.">Счёт Match Play — по числу выигранных лунок.</li>
+      <li data-ru="Состав: 4 человека, две игровые пары." data-en="Roster: 4 players, two pairs.">Состав: 4 человека, две игровые пары.</li>
+      <li data-ru="6 сессий на выбывание." data-en="6 knockout sessions.">6 сессий на выбывание.</li>
+    </ul>
+    <p class="note" style="margin-top:.8rem;"><span class="rules-link" onclick="showPage('rules')" data-ru="Общий регламент — в правилах" data-en="Shared rules">Общий регламент — в правилах</span></p>
+  </div>
+  <div id="st-golf" style="display:none;" class="spbody">
+    <div class="stg" id="str-golf"><div class="stc"><div class="sti">⛳</div><div class="stn">Клуб гольфа ISP</div></div><div class="stc"><div class="sti">⛳</div><div class="stn">Legend Invite Golf</div></div></div>
+    <div class="stg" id="ste-golf" style="display:none"><div class="stc"><div class="sti">⛳</div><div class="stn">ISP Golf Club</div></div><div class="stc"><div class="sti">⛳</div><div class="stn">Legend Invite Golf</div></div></div>
+  </div>
+  <div id="se-golf" style="display:none;" class="spbody">
+    <div class="cs"><div class="cs-i">🗓️</div><div class="cs-t" data-ru="Ивенты скоро появятся" data-en="Events coming soon">Ивенты скоро появятся</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div>
+  </div>
+</div>
+
+<!-- ══ TEAM DETAIL ══ -->
+<div class="page" id="page-team">
+  <div class="sph">
+    <div class="sph-in">
+      <div class="sp-logo" id="teamEmblem" style="display:flex;align-items:center;justify-content:center;font-size:3rem;">🏒</div>
+      <div>
+        <div class="sp-title" id="teamTitle">—</div>
+        <div class="sp-sub" id="teamSub">—</div>
+        <button class="sp-back" onclick="showPage('teams')" data-ru="← Назад к командам" data-en="← Back to Teams">← Назад к командам</button>
+      </div>
+    </div>
+  </div>
+  <div class="pb">
+    <div class="hs-header">
+      <div class="sec-label" data-ru="Состав команды" data-en="Team Roster">Состав команды</div>
+      <div class="sec-title" data-ru="Игроки" data-en="Players">Игроки</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="roster-grid" id="rosterGrid"></div>
+  </div>
+</div>
+
+<!-- ══ TEAMS ══ -->
+<div class="page" id="page-teams">
+  <div class="ph"><div class="ph-in">
+    <div class="pl" data-ru="Участники" data-en="Participants">Участники</div>
+    <div class="pt" data-ru="Команды" data-en="Teams">Команды</div>
+    <div class="pd"></div>
+  </div></div>
+  <div class="pb">
+    <div class="tf">
+      <button class="fb active" onclick="filterTeams(this,'all')" data-ru="Все" data-en="All">Все</button>
+      <button class="fb" onclick="filterTeams(this,'hockey')" data-ru="Хоккей" data-en="Hockey">Хоккей</button>
+      <button class="fb" onclick="filterTeams(this,'football')" data-ru="Футбол" data-en="Football">Футбол</button>
+      <button class="fb" onclick="filterTeams(this,'basketball')" data-ru="Баскетбол" data-en="Basketball">Баскетбол</button>
+      <button class="fb" onclick="filterTeams(this,'waterpolo')" data-ru="Водное поло" data-en="Water Polo">Водное поло</button>
+      <button class="fb" onclick="filterTeams(this,'figure')" data-ru="Фиг. катание" data-en="Figure Skating">Фиг. катание</button>
+      <button class="fb" onclick="filterTeams(this,'golf')" data-ru="Гольф" data-en="Golf">Гольф</button>
+    </div>
+    <div class="tg">
+      <div class="tc" data-sport="hockey" onclick="showTeamPage('bears')"><div class="te">🏒</div><div class="tn">Белые медведи</div><div class="tsp" data-ru="Хоккей" data-en="Hockey">Хоккей</div><div class="ts2" data-ru="Игроков: 20" data-en="Players: 20">Игроков: 20</div></div>
+      <div class="tc" data-sport="hockey" onclick="showTeamPage('stars')"><div class="te">🏒</div><div class="tn">Северные звёзды</div><div class="tsp" data-ru="Хоккей" data-en="Hockey">Хоккей</div><div class="ts2" data-ru="Игроков: 18" data-en="Players: 18">Игроков: 18</div></div>
+      <div class="tc" data-sport="football" onclick="showTeamPage('dynamo')"><div class="te">⚽</div><div class="tn">Динамо ИСП</div><div class="tsp" data-ru="Футбол" data-en="Football">Футбол</div><div class="ts2" data-ru="Игроков: 22" data-en="Players: 22">Игроков: 22</div></div>
+      <div class="tc" data-sport="football" onclick="showTeamPage('athletic')"><div class="te">⚽</div><div class="tn">Атлетик</div><div class="tsp" data-ru="Футбол" data-en="Football">Футбол</div><div class="ts2" data-ru="Игроков: 20" data-en="Players: 20">Игроков: 20</div></div>
+      <div class="tc" data-sport="basketball" onclick="showTeamPage('academy')"><div class="te">🏀</div><div class="tn">Академия ISP</div><div class="tsp" data-ru="Баскетбол" data-en="Basketball">Баскетбол</div><div class="ts2" data-ru="Игроков: 12" data-en="Players: 12">Игроков: 12</div></div>
+      <div class="tc" data-sport="waterpolo" onclick="showTeamPage('neptune')"><div class="te">🤽</div><div class="tn">Нептун ИСП</div><div class="tsp" data-ru="Водное поло" data-en="Water Polo">Водное поло</div><div class="ts2" data-ru="Игроков: 13" data-en="Players: 13">Игроков: 13</div></div>
+      <div class="tc" data-sport="figure" onclick="showTeamPage('figureteam')"><div class="te">⛸️</div><div class="tn" data-ru="Команда по ФК" data-en="Figure Skating Team">Команда по ФК</div><div class="tsp" data-ru="Фиг. катание" data-en="Figure Skating">Фиг. катание</div><div class="ts2" data-ru="Участников: 10" data-en="Athletes: 10">Участников: 10</div></div>
+      <div class="tc" data-sport="golf" onclick="showTeamPage('golfclub')"><div class="te">⛳</div><div class="tn" data-ru="Клуб гольфа ISP" data-en="ISP Golf Club">Клуб гольфа ISP</div><div class="tsp" data-ru="Гольф" data-en="Golf">Гольф</div><div class="ts2" data-ru="Участников: 8" data-en="Athletes: 8">Участников: 8</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NEWS ══ -->
+<div class="page" id="page-news">
+  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Последние события" data-en="Latest Events">Последние события</div><div class="pt" data-ru="Новости" data-en="News">Новости</div><div class="pd"></div></div></div>
+  <div class="pb"><div class="ng">
+    <div class="nc"><div class="ni">📰</div><div class="nb"><div class="nm">— · —</div><div class="nh" data-ru="Новость скоро появится" data-en="News coming soon">Новость скоро появится</div><div class="ne" data-ru="Здесь будут публиковаться последние новости академии." data-en="The latest news will be published here.">Здесь будут публиковаться последние новости академии.</div></div></div>
+    <div class="nc"><div class="ni">📰</div><div class="nb"><div class="nm">— · —</div><div class="nh" data-ru="Новость скоро появится" data-en="News coming soon">Новость скоро появится</div><div class="ne" data-ru="Здесь будут публиковаться последние новости академии." data-en="The latest news will be published here.">Здесь будут публиковаться последние новости академии.</div></div></div>
+    <div class="nc"><div class="ni">📰</div><div class="nb"><div class="nm">— · —</div><div class="nh" data-ru="Новость скоро появится" data-en="News coming soon">Новость скоро появится</div><div class="ne" data-ru="Здесь будут публиковаться последние новости академии." data-en="The latest news will be published here.">Здесь будут публиковаться последние новости академии.</div></div></div>
+  </div></div>
+</div>
+
+<!-- ══ EVENTS ══ -->
+<div class="page" id="page-events">
+  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Мероприятия" data-en="Upcoming">Мероприятия</div><div class="pt" data-ru="Ивенты" data-en="Events">Ивенты</div><div class="pd"></div></div></div>
+  <div class="pb">
+    <div class="session-note">
+      <h3 data-ru="Кто может участвовать" data-en="Who can take part">Кто может участвовать</h3>
+      <ul>
+        <li data-ru="Участникам от 16 до 25 лет." data-en="Ages 16 to 25.">Участникам от 16 до 25 лет.</li>
+        <li data-ru="Школьники, студенты и абитуриенты." data-en="School pupils, students and applicants.">Школьники, студенты и абитуриенты.</li>
+        <li data-ru="Без профессионального контракта." data-en="No professional contract.">Без профессионального контракта.</li>
+      </ul>
+      <p class="note"><span class="rules-link" onclick="showPage('rules')" data-ru="Полные правила и взносы" data-en="Full rules and fees">Полные правила и взносы</span></p>
     </div>
     <div class="cal-wrap">
       <div class="cal-head">
