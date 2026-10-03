@@ -67,7 +67,7 @@ nav a.active::after{left:8%;right:8%;}
 .gd{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),var(--gold),transparent);opacity:.25;}
 
 /* HERO */
-.hero{position:relative;min-height:92vh;display:flex;align-items:center;justify-content:center;overflow:visible;padding:2rem 0;}
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:2rem 0;}
 #heroCanvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(46,74,74,.4) 0%,transparent 70%),var(--bg);z-index:0;}
 .hc2{position:relative;z-index:2;text-align:center;padding:2rem;}
@@ -1701,6 +1701,35 @@ header{padding-top:env(safe-area-inset-top);}
 
 <script>
 // PRELOADER
+
+(function(){
+  const hero=document.querySelector('.hero');
+  const bg=document.querySelector('.hero-bg');
+  const canvas=document.getElementById('heroCanvas');
+  const content=document.querySelector('.hc2');
+  const sports=document.querySelector('.hsports-grid');
+  if(!hero||!content) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let tx=0,ty=0,x=0,y=0,sc=0;
+  hero.addEventListener('mousemove',e=>{
+    const r=hero.getBoundingClientRect();
+    tx=(e.clientX-r.left)/r.width-0.5;
+    ty=(e.clientY-r.top)/r.height-0.5;
+  });
+  hero.addEventListener('mouseleave',()=>{tx=0;ty=0;});
+  window.addEventListener('scroll',()=>{sc=window.scrollY||0;},{passive:true});
+  function frame(){
+    x+=(tx-x)*0.07;
+    y+=(ty-y)*0.07;
+    if(bg) bg.style.transform='translate3d('+(x*-16)+'px,'+(y*-10+sc*0.22)+'px,0) scale(1.12)';
+    if(canvas) canvas.style.transform='translate3d('+(x*-8)+'px,'+(y*-6+sc*0.12)+'px,0) scale(1.08)';
+    content.style.transform='translate3d('+(x*12)+'px,'+(y*8)+'px,0)';
+    if(sports) sports.style.transform='translate3d('+(x*10)+'px,'+(y*8)+'px,0)';
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
 window.addEventListener('load',()=>setTimeout(()=>document.getElementById('preloader').classList.add('hidden'),1900));
 
 // PARTICLES
