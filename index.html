@@ -124,6 +124,21 @@ nav a.active::after{left:8%;right:8%;}
 .cs-s{font-size:.8rem;color:var(--dim);letter-spacing:.1em;}
 
 /* NEWS */
+
+.news-app{max-width:760px;margin:0 auto;}
+.news-feature{background:var(--bg2);border:1px solid var(--border);border-radius:18px;overflow:hidden;}
+.news-feature-photo{height:320px;display:flex;align-items:center;justify-content:center;background:
+  radial-gradient(circle at 50% 42%, rgba(201,149,106,.22), transparent 46%),
+  linear-gradient(165deg,#1a2438 0%,#0c1220 70%);}
+.news-feature-photo img{width:148px;height:148px;object-fit:contain;border-radius:50%;border:2px solid var(--gold);padding:10px;box-shadow:0 0 40px rgba(201,149,106,.28);}
+.news-feature-body{padding:1.25rem 1.4rem 1.45rem;}
+.news-feature-body h3{font-family:'Cinzel',serif;font-size:1.35rem;font-weight:700;color:var(--text);margin:.35rem 0 .4rem;}
+.news-feature-body p{font-size:.95rem;line-height:1.6;color:var(--dim);max-width:36em;}
+.nc{border-radius:16px;}
+.ni{height:180px;background:#10182a center/cover no-repeat;}
+.ne{font-style:normal;}
+@media(max-width:700px){.news-feature-photo{height:220px;}.news-feature-photo img{width:112px;height:112px;}}
+
 .ng{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
 .nc{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;cursor:pointer;}
 .nc:hover{transform:translateY(-5px);border-color:var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.3);}
@@ -959,7 +974,16 @@ header{padding-top:env(safe-area-inset-top);}
 <!-- ══ NEWS ══ -->
 <div class="page" id="page-news">
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Последние события" data-en="Latest Events">Последние события</div><div class="pt" data-ru="Новости" data-en="News">Новости</div><div class="pd"></div></div></div>
-  <div class="pb"><div class="cs"><div class="cs-t" data-ru="Новостей пока нет" data-en="No news yet">Новостей пока нет</div><div class="cs-s" data-ru="Когда появится новость, здесь будет текст и фото." data-en="When there is news, the text and a photo will be here.">Когда появится новость, здесь будет текст и фото.</div></div></div>
+  <div class="pb"><div class="news-app">
+    <article class="news-feature">
+      <div class="news-feature-photo"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt=""></div>
+      <div class="news-feature-body">
+        <div class="nm" data-ru="Лента" data-en="Feed">Лента</div>
+        <h3 data-ru="Новостей пока нет" data-en="No news yet">Новостей пока нет</h3>
+        <p data-ru="Когда появится событие, здесь будет фото и короткая заметка." data-en="When something happens, a photo and a short note will be here.">Когда появится событие, здесь будет фото и короткая заметка.</p>
+      </div>
+    </article>
+  </div></div>
 
 
 <!-- ══ EVENTS ══ -->
