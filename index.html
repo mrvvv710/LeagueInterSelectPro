@@ -71,11 +71,16 @@ nav a.active::after{left:8%;right:8%;}
 #heroCanvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(46,74,74,.4) 0%,transparent 70%),var(--bg);z-index:0;}
 .hc2{position:relative;z-index:2;text-align:center;padding:2rem;}
-.hl{width:195px;height:195px;object-fit:contain;object-position:center center;background:transparent;padding:16px;border-radius:50%;border:3px solid var(--gold);box-shadow:0 0 90px rgba(201,149,106,.55),0 0 30px rgba(201,149,106,.4);margin-bottom:1.5rem;animation:float 4s ease-in-out infinite;}
+.hl{width:195px;height:195px;object-fit:contain;object-position:center center;background:transparent;padding:16px;border-radius:50%;border:3px solid var(--gold);box-shadow:0 0 90px rgba(201,149,106,.55),0 0 30px rgba(201,149,106,.4);margin-bottom:1.5rem;}
 @keyframes float{0%,100%{transform:translateY(0);box-shadow:0 0 60px rgba(201,149,106,.5)}50%{transform:translateY(-12px);box-shadow:0 0 90px rgba(201,149,106,.7)}}
-.htitle{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(2.1rem,5.2vw,4.4rem);line-height:1.08;letter-spacing:.07em;background:linear-gradient(135deg,var(--gold3) 0%,var(--gold) 45%,var(--gold2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem;}
+.htitle{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(2.1rem,5.2vw,4.4rem);line-height:1.08;letter-spacing:.07em;color:var(--gold2);margin-bottom:.5rem;}
 .hsub{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.22em;color:var(--dim);text-transform:uppercase;margin-bottom:1.8rem;}
-.hslogan{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(1.15rem,2.6vw,1.7rem);letter-spacing:.03em;line-height:1.35;color:var(--gold2);max-width:18em;margin:0 auto 1.5rem;}
+.hslogan{font-family:'Cinzel',serif;font-weight:600;font-size:clamp(1.35rem,3.1vw,2.05rem);letter-spacing:.01em;line-height:1.45;color:var(--gold2);max-width:12em;margin:1.15rem auto 1.7rem;text-transform:none;}
+.home-film{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;max-width:880px;margin:.2rem auto 1.5rem;}
+.home-film a{position:relative;display:block;border-radius:10px;overflow:hidden;aspect-ratio:16/9;border:1px solid var(--border);}
+.home-film img{width:100%;height:100%;object-fit:cover;display:block;}
+.home-film i{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:rgba(12,18,32,.72);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:.85rem;}
+
 .hdiv{width:110px;height:2px;margin:0 auto 1.8rem;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
 .hpills{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;}
 .pill{font-family:'Cinzel',serif;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border);border-radius:2px;padding:.3rem .8rem;background:rgba(201,149,106,.05);cursor:pointer;transition:all .2s;}
@@ -108,7 +113,7 @@ nav a.active::after{left:8%;right:8%;}
 .ph{padding:3rem 2rem 2.5rem;background:linear-gradient(135deg,rgba(46,74,74,.2),var(--bg2));border-bottom:1px solid var(--border);}
 .ph-in{max-width:1300px;margin:0 auto;}
 .pl{font-family:'Cinzel',serif;font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;}
-.pt{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(1.6rem,3vw,2.7rem);letter-spacing:.06em;background:linear-gradient(135deg,var(--gold3),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.pt{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(1.6rem,3vw,2.7rem);letter-spacing:.06em;color:var(--text);}
 .pd{width:48px;height:2px;margin:.8rem 0 0;background:linear-gradient(90deg,var(--gold),transparent);}
 .pb{max-width:1300px;margin:0 auto;padding:3rem 2rem;}
 
@@ -272,7 +277,10 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 /* HOME SECTIONS */
 .home-sec{max-width:1300px;margin:0 auto;padding:4.5rem 2rem;}
 .home-sec-alt{background:var(--bg2);}
-.hs-header{margin-bottom:2.6rem;}
+.hs-header{margin-bottom:2.2rem;}
+.sec-label{font-family:'Cinzel',serif;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;}
+.sec-title{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(1.45rem,2.6vw,2.1rem);color:var(--text);letter-spacing:.03em;}
+.sec-line{width:42px;height:2px;margin-top:.7rem;background:linear-gradient(90deg,var(--gold),transparent);}
 .hs-link{display:inline-block;margin-top:1.2rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;cursor:pointer;border-bottom:1px solid var(--gold);padding-bottom:.15rem;transition:opacity .2s;}
 .hs-link:hover{opacity:.7;}
 
@@ -469,7 +477,7 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
   nav{display:none;}
   .burger{display:flex;}
 }
-@media(max-width:700px){
+@media(max-width:700px){.home-film{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto;}
   .lt{display:none;}
   .hi{height:56px;padding:0 .75rem;gap:.35rem;}
   .lw img{width:40px;height:40px;padding:3px;}
@@ -622,50 +630,17 @@ header{padding-top:env(safe-area-inset-top);}
         <div class="hsport-card" onclick="showSportPage('figure')"><div class="hsport-imgbox"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/hsport-icon-figure.png" alt="figure" style="width:100%;height:100%;object-fit:contain;"></div><div class="hsport-label" data-ru="Фигурное катание" data-en="Figure Skating">Фигурное катание</div></div>
         <div class="hsport-card" onclick="showSportPage('golf')"><div class="hsport-imgbox"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/hsport-icon-golf.png" alt="golf" style="width:100%;height:100%;object-fit:contain;"></div><div class="hsport-label" data-ru="Гольф" data-en="Golf">Гольф</div></div>
       </div>
+      <div class="home-film">
+        <a href="https://www.youtube.com/watch?v=2mdQpYh0n94" target="_blank" rel="noopener noreferrer"><img src="https://i.ytimg.com/vi/2mdQpYh0n94/hqdefault.jpg" alt=""><i>▶</i></a>
+        <a href="https://www.youtube.com/watch?v=in0WbN8VBm8" target="_blank" rel="noopener noreferrer"><img src="https://i.ytimg.com/vi/in0WbN8VBm8/hqdefault.jpg" alt=""><i>▶</i></a>
+        <a href="https://www.youtube.com/watch?v=2dKoViusmkU" target="_blank" rel="noopener noreferrer"><img src="https://i.ytimg.com/vi/2dKoViusmkU/hqdefault.jpg" alt=""><i>▶</i></a>
+      </div>
       <div class="hbtns">
-        <button class="bgold" onclick="showPage('events')" data-ru="Ивенты" data-en="Events">Ивенты</button>
-        <button class="boutline" onclick="openModal()" data-ru="Подать заявку" data-en="Apply Now">Подать заявку</button>
-        <button class="boutline" onclick="goWrite()" data-ru="Написать" data-en="Write">Написать</button>
+        <button class="bgold" onclick="openModal()" data-ru="Подать заявку" data-en="Apply Now">Подать заявку</button>
       </div>
     </div>
   </section>
-  <div class="gd"></div>
 
-  <!-- НОВОСТИ (preview) -->
-  <div class="home-sec">
-    <div class="hs-header">
-      <div class="sec-label" data-ru="Последние события" data-en="Latest Events">Последние события</div>
-      <div class="sec-title" data-ru="Новости" data-en="News">Новости</div>
-      <div class="sec-line"></div>
-    </div>
-    <div class="ng">
-      <div class="nc" onclick="showPage('news')"><div class="ni">📰</div><div class="nb"><div class="nm">— · —</div><div class="nh" data-ru="Новость скоро появится" data-en="News coming soon">Новость скоро появится</div><div class="ne" data-ru="Здесь будут публиковаться последние новости академии." data-en="The latest news will be published here.">Здесь будут публиковаться последние новости академии.</div></div></div>
-      <div class="nc" onclick="showPage('news')"><div class="ni">📰</div><div class="nb"><div class="nm">— · —</div><div class="nh" data-ru="Новость скоро появится" data-en="News coming soon">Новость скоро появится</div><div class="ne" data-ru="Здесь будут публиковаться последние новости академии." data-en="The latest news will be published here.">Здесь будут публиковаться последние новости академии.</div></div></div>
-      <div class="nc" onclick="showPage('news')"><div class="ni">📰</div><div class="nb"><div class="nm">— · —</div><div class="nh" data-ru="Новость скоро появится" data-en="News coming soon">Новость скоро появится</div><div class="ne" data-ru="Здесь будут публиковаться последние новости академии." data-en="The latest news will be published here.">Здесь будут публиковаться последние новости академии.</div></div></div>
-    </div>
-    <a class="hs-link" onclick="showPage('news')" data-ru="Все новости →" data-en="All News →">Все новости →</a>
-  </div>
-
-  <div class="gd"></div>
-
-  <!-- МЕНЕДЖЕРЫ / ТРЕНЕРЫ -->
-  <div class="home-sec home-sec-alt">
-    <div class="hs-header">
-      <div class="sec-label" data-ru="Наша команда" data-en="Our Team">Наша команда</div>
-      <div class="sec-title" data-ru="Менеджеры и тренеры" data-en="Managers &amp; Coaches">Менеджеры и тренеры</div>
-      <div class="sec-line"></div>
-    </div>
-    <div class="staff-grid">
-      <div class="staff-card"><div class="staff-photo">👤</div><div class="staff-name" data-ru="Имя Фамилия" data-en="Full Name">Имя Фамилия</div><div class="staff-role" data-ru="Директор лиги" data-en="League Director">Директор лиги</div><div class="staff-contact">+7 (___) ___-__-__<br>email@interselectpro.ru</div></div>
-      <div class="staff-card"><div class="staff-photo">👤</div><div class="staff-name" data-ru="Имя Фамилия" data-en="Full Name">Имя Фамилия</div><div class="staff-role" data-ru="Тренер · Хоккей" data-en="Coach · Hockey">Тренер · Хоккей</div><div class="staff-contact">+7 (___) ___-__-__<br>email@interselectpro.ru</div></div>
-      <div class="staff-card"><div class="staff-photo">👤</div><div class="staff-name" data-ru="Имя Фамилия" data-en="Full Name">Имя Фамилия</div><div class="staff-role" data-ru="Тренер · Футбол" data-en="Coach · Football">Тренер · Футбол</div><div class="staff-contact">+7 (___) ___-__-__<br>email@interselectpro.ru</div></div>
-      <div class="staff-card"><div class="staff-photo">👤</div><div class="staff-name" data-ru="Имя Фамилия" data-en="Full Name">Имя Фамилия</div><div class="staff-role" data-ru="Менеджер по спорту" data-en="Sports Manager">Менеджер по спорту</div><div class="staff-contact">+7 (___) ___-__-__<br>email@interselectpro.ru</div></div>
-    </div>
-  </div>
-
-  <div class="gd"></div>
-
-  <!-- БЛИЖАЙШИЕ ИВЕНТЫ -->
   <div class="home-sec">
     <div class="hs-header">
       <div class="sec-label" data-ru="Не пропустите" data-en="Don't Miss">Не пропустите</div>
@@ -687,23 +662,7 @@ header{padding-top:env(safe-area-inset-top);}
     <a class="hs-link" onclick="showPage('events')" data-ru="Все ивенты →" data-en="All Events →">Все ивенты →</a>
   </div>
 
-  <div class="gd"></div>
-
-  <!-- СПОНСОРЫ -->
   <div class="home-sec home-sec-alt">
-    <div class="hs-header">
-      <div class="sec-label" data-ru="Наши партнёры" data-en="Our Partners">Наши партнёры</div>
-      <div class="sec-title" data-ru="Спонсоры" data-en="Sponsors">Спонсоры</div>
-      <div class="sec-line"></div>
-    </div>
-    <div class="cs"><div class="cs-i">🤝</div><div class="cs-t" data-ru="Информация о спонсорах скоро появится" data-en="Sponsor info coming soon">Информация о спонсорах скоро появится</div><div class="cs-s" data-ru="Хотите стать партнёром? Свяжитесь с нами" data-en="Want to become a partner? Contact us">Хотите стать партнёром? Свяжитесь с нами</div></div>
-    <a class="hs-link" onclick="showPage('sponsors')" data-ru="Все спонсоры →" data-en="All Sponsors →">Все спонсоры →</a>
-  </div>
-
-  <div class="gd"></div>
-
-  <!-- О НАС -->
-  <div class="home-sec">
     <div class="hs-header">
       <div class="sec-label" data-ru="Наша история" data-en="Our Story">Наша история</div>
       <div class="sec-title" data-ru="О нас" data-en="About Us">О нас</div>
@@ -712,8 +671,6 @@ header{padding-top:env(safe-area-inset-top);}
     <p class="ap" data-ru="Inter Select Pro — международная образовательная и спортивная сеть, основанная в 2023 году в Калининграде. Мы объединяем спортсменов, тренеров и команды по шести видам спорта, создавая платформу для честной конкуренции и профессионального роста." data-en="Inter Select Pro is an international educational and sports network founded in 2023 in Kaliningrad. We unite athletes, coaches and teams across six sports, creating a platform for fair competition and professional growth.">Inter Select Pro — международная образовательная и спортивная сеть, основанная в 2023 году в Калининграде. Мы объединяем спортсменов, тренеров и команды по шести видам спорта, создавая платформу для честной конкуренции и профессионального роста.</p>
     <a class="hs-link" onclick="showPage('about')" data-ru="Подробнее о нас →" data-en="More About Us →">Подробнее о нас →</a>
   </div>
-
-  <div class="gd"></div>
 </div>
 
 <!-- ══ ACADEMY ══ -->
