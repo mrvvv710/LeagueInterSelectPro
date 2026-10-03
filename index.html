@@ -387,6 +387,7 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 
 
 /* GALLERY */
+.photo-view{position:fixed;inset:0;z-index:90;background:rgba(6,10,18,.9);display:none;align-items:center;justify-content:center;padding:1.5rem;cursor:pointer;}.photo-view.open{display:flex;}.photo-view img{max-width:min(1100px,94vw);max-height:88vh;object-fit:contain;border-radius:8px;cursor:default;}
 .gal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.3rem;}
 .gal-card{display:block;background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .25s,transform .25s,box-shadow .25s;}
 .gal-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.25);}
@@ -529,6 +530,7 @@ header{padding-top:env(safe-area-inset-top);}
 <body>
 
 <!-- PRELOADER -->
+<div id="photoView" class="photo-view" onclick="closePhoto()"><img id="photoViewImg" alt=""></div>
 <div id="preloader">
   <img class="pre-logo" src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt="Inter Select Pro">
   <div class="pre-bar"><div class="pre-fill"></div></div>
@@ -1103,6 +1105,26 @@ header{padding-top:env(safe-area-inset-top);}
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Фото и видео" data-en="Photos & Videos">Фото и видео</div><div class="pt" data-ru="Галерея" data-en="Gallery">Галерея</div><div class="pd"></div></div></div>
   <div class="pb">
     <div class="gal-grid">
+      <div class="gal-card" onclick="openPhoto('https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-01.jpg')">
+        <div class="gal-thumb"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-01.jpg" alt="Круглый стол"></div>
+        <div class="gal-title" data-ru="Круглый стол" data-en="Round table">Круглый стол</div>
+      </div>
+      <div class="gal-card" onclick="openPhoto('https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-02.jpg')">
+        <div class="gal-thumb"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-02.jpg" alt="Конференция"></div>
+        <div class="gal-title" data-ru="Конференция" data-en="Conference">Конференция</div>
+      </div>
+      <div class="gal-card" onclick="openPhoto('https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-03.jpg')">
+        <div class="gal-thumb"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-03.jpg" alt="Командное фото"></div>
+        <div class="gal-title" data-ru="Командное фото" data-en="Team photo">Командное фото</div>
+      </div>
+      <div class="gal-card" onclick="openPhoto('https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-04.jpg')">
+        <div class="gal-thumb"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-04.jpg" alt="Кубок на льду"></div>
+        <div class="gal-title" data-ru="Кубок на льду" data-en="Trophy on the ice">Кубок на льду</div>
+      </div>
+      <div class="gal-card" onclick="openPhoto('https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-05.jpg')">
+        <div class="gal-thumb"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-05.jpg" alt="Кубок и медали"></div>
+        <div class="gal-title" data-ru="Кубок и медали" data-en="Trophy and medals">Кубок и медали</div>
+      </div>
       <div class="gal-card" onclick="playSiteVideo(this,'2mdQpYh0n94')">
         <div class="gal-thumb"><img src="https://i.ytimg.com/vi/2mdQpYh0n94/hqdefault.jpg" alt="BAUER TRETYAK RUSSIA INVITE 2011"><span class="gal-play"><i>▶</i></span></div>
         <div class="gal-title" data-ru="BAUER TRETYAK RUSSIA INVITE 2011" data-en="BAUER TRETYAK RUSSIA INVITE 2011">BAUER TRETYAK RUSSIA INVITE 2011</div>
@@ -1810,6 +1832,8 @@ document.addEventListener('click', (e) => {
 
 // MODAL
 
+function openPhoto(src){var box=document.getElementById('photoView');document.getElementById('photoViewImg').src=src;box.classList.add('open');}
+function closePhoto(){var box=document.getElementById('photoView');box.classList.remove('open');document.getElementById('photoViewImg').src='';}
 function playSiteVideo(el,id){
   document.querySelectorAll('.gal-thumb iframe,.home-film iframe').forEach(f=>f.remove());
   const box=el.querySelector('.gal-thumb')||el;
