@@ -77,7 +77,6 @@ nav a.active::after{left:8%;right:8%;}
 .hsub{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.22em;color:var(--dim);text-transform:uppercase;margin-bottom:1.8rem;}
 .hslogan{font-family:'Cinzel',serif;font-weight:600;font-size:clamp(1.35rem,3.1vw,2.05rem);letter-spacing:.01em;line-height:1.45;color:#9d9488;max-width:12em;margin:.35rem auto 1rem;text-transform:none;}
 .home-film-sec{padding-top:1.6rem;padding-bottom:.4rem;}
-.home-photos{margin-bottom:1rem;}
 .home-film{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;max-width:880px;margin:.2rem auto 1.5rem;}
 .home-film .vslot{cursor:pointer;position:relative;display:block;border-radius:10px;overflow:hidden;aspect-ratio:16/9;border:1px solid var(--border);}
 .home-film img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -656,14 +655,7 @@ header{padding-top:env(safe-area-inset-top);}
   </section>
 
   <div class="home-sec home-film-sec">
-    <div class="home-film home-photos">
-        <div class="vslot" onclick="openPhoto('https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-01.jpg')"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-01.jpg" alt="Круглый стол"></div>
-        <div class="vslot" onclick="openPhoto('https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-02.jpg')"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-02.jpg" alt="Конференция"></div>
-        <div class="vslot" onclick="openPhoto('https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-03.jpg')"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-03.jpg" alt="Командное фото"></div>
-        <div class="vslot" onclick="openPhoto('https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-04.jpg')"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-04.jpg" alt="Кубок на льду"></div>
-        <div class="vslot" onclick="openPhoto('https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-05.jpg')"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-05.jpg" alt="Кубок и медали"></div>
-      </div>
-      <div class="home-film">
+    <div class="home-film">
         <div class="vslot" onclick="playSiteVideo(this,'2mdQpYh0n94')"><img src="https://i.ytimg.com/vi/2mdQpYh0n94/hqdefault.jpg" alt=""><i>▶</i></div>
         <div class="vslot" onclick="playSiteVideo(this,'in0WbN8VBm8')"><img src="https://i.ytimg.com/vi/in0WbN8VBm8/hqdefault.jpg" alt=""><i>▶</i></div>
         <div class="vslot" onclick="playSiteVideo(this,'2dKoViusmkU')"><img src="https://i.ytimg.com/vi/2dKoViusmkU/hqdefault.jpg" alt=""><i>▶</i></div>
@@ -1113,24 +1105,24 @@ header{padding-top:env(safe-area-inset-top);}
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Фото и видео" data-en="Photos & Videos">Фото и видео</div><div class="pt" data-ru="Галерея" data-en="Gallery">Галерея</div><div class="pd"></div></div></div>
   <div class="pb">
     <div class="gal-grid">
-      <div class="gal-card" onclick="openPhoto('https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-01.jpg')">
-        <div class="gal-thumb"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-01.jpg" alt="Круглый стол"></div>
+      <div class="gal-card" onclick="openPhoto('assets/gal-01.jpg')">
+        <div class="gal-thumb"><img src="assets/gal-01.jpg" alt="Круглый стол"></div>
         <div class="gal-title" data-ru="Круглый стол" data-en="Round table">Круглый стол</div>
       </div>
-      <div class="gal-card" onclick="openPhoto('https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-02.jpg')">
-        <div class="gal-thumb"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-02.jpg" alt="Конференция"></div>
+      <div class="gal-card" onclick="openPhoto('assets/gal-02.jpg')">
+        <div class="gal-thumb"><img src="assets/gal-02.jpg" alt="Конференция"></div>
         <div class="gal-title" data-ru="Конференция" data-en="Conference">Конференция</div>
       </div>
-      <div class="gal-card" onclick="openPhoto('https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-03.jpg')">
-        <div class="gal-thumb"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-03.jpg" alt="Командное фото"></div>
+      <div class="gal-card" onclick="openPhoto('assets/gal-03.jpg')">
+        <div class="gal-thumb"><img src="assets/gal-03.jpg" alt="Командное фото"></div>
         <div class="gal-title" data-ru="Командное фото" data-en="Team photo">Командное фото</div>
       </div>
-      <div class="gal-card" onclick="openPhoto('https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-04.jpg')">
-        <div class="gal-thumb"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-04.jpg" alt="Кубок на льду"></div>
+      <div class="gal-card" onclick="openPhoto('assets/gal-04.jpg')">
+        <div class="gal-thumb"><img src="assets/gal-04.jpg" alt="Кубок на льду"></div>
         <div class="gal-title" data-ru="Кубок на льду" data-en="Trophy on the ice">Кубок на льду</div>
       </div>
-      <div class="gal-card" onclick="openPhoto('https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-05.jpg')">
-        <div class="gal-thumb"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/gal-05.jpg" alt="Кубок и медали"></div>
+      <div class="gal-card" onclick="openPhoto('assets/gal-05.jpg')">
+        <div class="gal-thumb"><img src="assets/gal-05.jpg" alt="Кубок и медали"></div>
         <div class="gal-title" data-ru="Кубок и медали" data-en="Trophy and medals">Кубок и медали</div>
       </div>
       <div class="gal-card" onclick="playSiteVideo(this,'2mdQpYh0n94')">
