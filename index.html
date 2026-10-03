@@ -69,18 +69,7 @@ nav a.active::after{left:8%;right:8%;}
 /* HERO */
 .hero{position:relative;min-height:92vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:2rem 0;}
 #heroCanvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;}
-.hero-bg{position:absolute;inset:0;z-index:0;background:#070b14;}
-.hero-athletes{position:absolute;inset:0;z-index:0;display:grid;grid-template-columns:repeat(6,1fr);pointer-events:none;}
-.hero-athlete{background:#070b14;border-right:1px solid rgba(255,255,255,.045);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;}
-.hero-athlete:last-child{border-right:0;}
-.hero-athlete img{height:52%;width:auto;max-width:78%;object-fit:contain;object-position:center bottom;opacity:.72;filter:brightness(.62);animation:figFloat 6s ease-in-out infinite;}
-.hero-athlete:nth-child(4) img{height:30%;}
-.hero-athlete:nth-child(2) img{animation-delay:-1.1s;}
-.hero-athlete:nth-child(3) img{animation-delay:-2.2s;}
-.hero-athlete:nth-child(4) img{animation-delay:-.6s;animation-duration:7s;}
-.hero-athlete:nth-child(5) img{animation-delay:-3s;}
-.hero-athlete:nth-child(6) img{animation-delay:-1.8s;animation-duration:6.6s;}
-@keyframes figFloat{0%,100%{transform:translateY(6px)}50%{transform:translateY(-8px)}}
+.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(46,74,74,.28) 0%,transparent 70%),var(--bg);}
 .hc2{position:relative;z-index:2;text-align:center;padding:2rem;}
 .hl{width:195px;height:195px;object-fit:contain;object-position:center center;background:transparent;padding:16px;border-radius:50%;border:2px solid rgba(232,196,138,.9);box-shadow:0 0 0 7px rgba(18,28,44,.92),0 0 0 8px rgba(176,198,220,.5),0 16px 36px rgba(0,0,0,.35);margin-bottom:1.5rem;animation:logoFloat 5.5s ease-in-out infinite;}@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @keyframes float{0%,100%{transform:translateY(0);box-shadow:0 0 60px rgba(201,149,106,.5)}50%{transform:translateY(-12px);box-shadow:0 0 90px rgba(201,149,106,.7)}}
@@ -645,14 +634,6 @@ header{padding-top:env(safe-area-inset-top);}
 <div class="page active" id="page-home">
   <section class="hero">
     <div class="hero-bg"></div>
-    <div class="hero-athletes" aria-hidden="true">
-      <div class="hero-athlete"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/hero-fig-0.png" alt=""></div>
-      <div class="hero-athlete"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/hero-fig-1.png" alt=""></div>
-      <div class="hero-athlete"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/hero-fig-2.png" alt=""></div>
-      <div class="hero-athlete"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/hero-fig-3.png" alt=""></div>
-      <div class="hero-athlete"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/hero-fig-4.png" alt=""></div>
-      <div class="hero-athlete"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/hero-fig-5.png" alt=""></div>
-    </div>
     <canvas id="heroCanvas"></canvas>
     <div class="hc2">
       <img class="hl" src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt="Inter Select Pro">
