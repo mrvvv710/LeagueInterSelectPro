@@ -11,20 +11,19 @@ function dropCard(html, id) {
   var token = "playSiteVideo(this,'" + id + "')";
   var i = html.indexOf(token);
   while (i !== -1) {
-    var from = html.lastIndexOf("<div", i);
+    var a = html.lastIndexOf('<div class="vslot"', i);
+    var b = html.lastIndexOf('<div class="gal-card"', i);
+    var from = Math.max(a, b);
+    if (from < 0 || i - from > 80) break;
     var pos = from, depth = 0, end = -1;
     while (pos < html.length) {
       var open = html.indexOf("<div", pos);
       var close = html.indexOf("</div>", pos);
-      if (close === -1) break;
+      if (close < 0) break;
       if (open !== -1 && open < close) { depth++; pos = open + 4; }
-      else {
-        depth--;
-        pos = close + 6;
-        if (depth === 0) { end = pos; break; }
-      }
+      else { depth--; pos = close + 6; if (depth === 0) { end = pos; break; } }
     }
-    if (from < 0 || end < 0 || end - from > 1200) break;
+    if (end < 0 || end - from > 900) break;
     html = html.slice(0, from) + html.slice(end);
     i = html.indexOf(token);
   }
@@ -38,13 +37,6 @@ fetch("https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/1bac70fed
     document.open();
     document.write(html);
     document.close();
-    var scripts = document.querySelectorAll("script");
-    scripts.forEach(function(old){
-      if (old.src) return;
-      var s = document.createElement("script");
-      s.text = old.textContent;
-      old.parentNode.replaceChild(s, old);
-    });
   })
   .catch(function(){ document.body.textContent = "Не удалось загрузить страницу."; });
 </script>
