@@ -28,7 +28,8 @@ fetch("https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/1bac70fed
   .then(function(r){ return r.text(); })
   .then(function(html){
     ["2mdQpYh0n94", "in0WbN8VBm8"].forEach(function(id){
-      html = cutDiv(html, "playSiteVideo(this,'" + id + "')");
+      html = cutDiv(html, '<div class="vslot" onclick="playSiteVideo(this,\'' + id + '\')">');
+      html = cutDiv(html, '<div class="gal-card" onclick="playSiteVideo(this,\'' + id + '\')">');
     });
     document.open();
     document.write(html);
