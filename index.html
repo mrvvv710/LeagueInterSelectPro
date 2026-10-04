@@ -1,1 +1,27 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inter Select Pro</title>
+</head>
+<body>
+<script>
+fetch("https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/1bac70fedfbee5824ec27146943557881d026d45/index.html")
+  .then(function(r){ return r.text(); })
+  .then(function(html){
+    var drop = ["2mdQpYh0n94", "in0WbN8VBm8"];
+    drop.forEach(function(id){
+      html = html.replace(new RegExp('<div class="vslot" onclick="playSiteVideo\\(this,\\'' + id + '\\'\\)">[\\s\\S]*?<\\/div>\\s*', "g"), "");
+      html = html.replace(new RegExp('<div class="gal-card" onclick="playSiteVideo\\(this,\\'' + id + '\\'\\)">[\\s\\S]*?<\\/div>\\s*<\\/div>\\s*', "g"), "");
+    });
+    document.open();
+    document.write(html);
+    document.close();
+  })
+  .catch(function(){
+    document.body.textContent = "Не удалось загрузить страницу.";
+  });
+</script>
+</body>
+</html>
