@@ -7,21 +7,28 @@
 </head>
 <body>
 <script>
+function cutBlock(html, start, endTag) {
+  var i = html.indexOf(start);
+  while (i !== -1) {
+    var j = html.indexOf(endTag, i);
+    if (j === -1) break;
+    html = html.slice(0, i) + html.slice(j + endTag.length);
+    i = html.indexOf(start);
+  }
+  return html;
+}
 fetch("https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/1bac70fedfbee5824ec27146943557881d026d45/index.html")
   .then(function(r){ return r.text(); })
   .then(function(html){
-    var drop = ["2mdQpYh0n94", "in0WbN8VBm8"];
-    drop.forEach(function(id){
-      html = html.replace(new RegExp('<div class="vslot" onclick="playSiteVideo\\(this,\\'' + id + '\\'\\)">[\\s\\S]*?<\\/div>\\s*', "g"), "");
-      html = html.replace(new RegExp('<div class="gal-card" onclick="playSiteVideo\\(this,\\'' + id + '\\'\\)">[\\s\\S]*?<\\/div>\\s*<\\/div>\\s*', "g"), "");
+    ["2mdQpYh0n94", "in0WbN8VBm8"].forEach(function(id){
+      html = cutBlock(html, '<div class="vslot" onclick="playSiteVideo(this,\'' + id + '\')">', "</div>");
+      html = cutBlock(html, '<div class="gal-card" onclick="playSiteVideo(this,\'' + id + '\')">', "</div>\n      </div>");
     });
     document.open();
     document.write(html);
     document.close();
   })
-  .catch(function(){
-    document.body.textContent = "Не удалось загрузить страницу.";
-  });
+  .catch(function(){ document.body.textContent = "Не удалось загрузить страницу."; });
 </script>
 </body>
 </html>
