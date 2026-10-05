@@ -59,9 +59,8 @@ nav a.active::after{left:8%;right:8%;}
 @media(max-width:1200px){nav{display:none;}.burger{display:flex;}}
 
 /* PAGES */
-.page{display:none;min-height:80vh;animation:fadeP .4s ease both;}
-.page.active{display:block;}
-@keyframes fadeP{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page{display:none;min-height:80vh;opacity:1;}
+.page.active{display:block;opacity:1;}
 
 /* DIVIDER */
 .gd{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),var(--gold),transparent);opacity:.25;}
@@ -1097,15 +1096,15 @@ header{padding-top:env(safe-area-inset-top);}
   <div class="pb">
     <div class="gal-grid">
       <div class="gal-card gal-video">
-        <div class="gal-thumb"><iframe src="https://www.youtube-nocookie.com/embed/2mdQpYh0n94" title="BAUER TRETYAK RUSSIA INVITE 2011" allow="accelerometer; autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="gal-thumb"><iframe data-src="https://www.youtube-nocookie.com/embed/2mdQpYh0n94" title="BAUER TRETYAK RUSSIA INVITE 2011" allow="accelerometer; autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
         <div class="gal-title" data-ru="BAUER TRETYAK RUSSIA INVITE 2011" data-en="BAUER TRETYAK RUSSIA INVITE 2011">BAUER TRETYAK RUSSIA INVITE 2011</div>
       </div>
       <div class="gal-card gal-video">
-        <div class="gal-thumb"><iframe src="https://www.youtube-nocookie.com/embed/in0WbN8VBm8" title="Открытие турнира BAUER TRETYAK LATVIA INVITE 2012" allow="accelerometer; autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="gal-thumb"><iframe data-src="https://www.youtube-nocookie.com/embed/in0WbN8VBm8" title="Открытие турнира BAUER TRETYAK LATVIA INVITE 2012" allow="accelerometer; autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
         <div class="gal-title" data-ru="Открытие турнира BAUER TRETYAK LATVIA INVITE 2012" data-en="Opening of BAUER TRETYAK LATVIA INVITE 2012">Открытие турнира BAUER TRETYAK LATVIA INVITE 2012</div>
       </div>
       <div class="gal-card gal-video">
-        <div class="gal-thumb"><iframe src="https://www.youtube-nocookie.com/embed/2dKoViusmkU" title="На пьедестале. 2015-05-05" allow="accelerometer; autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="gal-thumb"><iframe data-src="https://www.youtube-nocookie.com/embed/2dKoViusmkU" title="На пьедестале. 2015-05-05" allow="accelerometer; autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
         <div class="gal-title" data-ru="На пьедестале. 2015-05-05" data-en="On the podium. 2015-05-05">На пьедестале. 2015-05-05</div>
       </div>
       <div class="gal-card" onclick="openPhoto('https://interselectpro.ru/assets/gal-01.jpg')">
@@ -1691,7 +1690,7 @@ header{padding-top:env(safe-area-inset-top);}
 <script>
 // PRELOADER
 
-window.addEventListener('load',()=>setTimeout(()=>document.getElementById('preloader').classList.add('hidden'),1900));
+setTimeout(()=>{var el=document.getElementById('preloader');if(el)el.classList.add('hidden');},400);
 
 // PARTICLES
 const cv=document.getElementById('heroCanvas');
@@ -1718,6 +1717,7 @@ function showPage(id){
   window.scrollTo({top:0,behavior:'smooth'});
   history.pushState({page:id},'','#'+id);
   if(id==='home'){cntDone=false;animateCounters();}
+  if(id==='gallery'){document.querySelectorAll('#page-gallery iframe[data-src]').forEach(function(f){if(!f.getAttribute('src'))f.setAttribute('src',f.getAttribute('data-src'));});}
   if(id==='calendar'||id==='league'||id==='events'||id==='home'){renderCalendar();}
   if(id==='account'){ispCheckSession();}
   renderBreadcrumb(breadcrumbTrails[id] || null);
