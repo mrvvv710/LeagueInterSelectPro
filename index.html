@@ -407,6 +407,8 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 .gal-card{display:block;background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .25s,transform .25s,box-shadow .25s;}
 .gal-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.25);}
 .gal-thumb{position:relative;aspect-ratio:16/9;min-height:180px;background:#000;overflow:hidden;}
+.gal-thumb video{width:100%;height:100%;object-fit:contain;display:block;background:#000;}
+.gal-card.gal-video{cursor:default;}
 .gal-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
 .gal-thumb iframe,.home-film iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
 .gal-card{cursor:pointer;}
@@ -1122,6 +1124,10 @@ header{padding-top:env(safe-area-inset-top);}
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Фото и видео" data-en="Photos & Videos">Фото и видео</div><div class="pt" data-ru="Галерея" data-en="Gallery">Галерея</div><div class="pd"></div></div></div>
   <div class="pb">
     <div class="gal-grid">
+      <div class="gal-card gal-video">
+        <div class="gal-thumb"><video src="assets/tallin-kings-spb.mp4" controls playsinline preload="metadata"></video></div>
+        <div class="gal-title" data-ru="Tallin Kings Saint-Petersburg" data-en="Tallin Kings Saint-Petersburg">Tallin Kings Saint-Petersburg</div>
+      </div>
       <div class="gal-card" onclick="openPhoto('https://interselectpro.ru/assets/gal-01.jpg')">
         <div class="gal-thumb"><img src="https://interselectpro.ru/assets/gal-01.jpg" alt="Круглый стол"></div>
         <div class="gal-title" data-ru="Круглый стол" data-en="Round table">Круглый стол</div>
