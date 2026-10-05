@@ -125,6 +125,22 @@ nav a.active::after{left:8%;right:8%;}
 
 /* NEWS */
 
+.news-list{display:flex;flex-direction:column;gap:.8rem;max-width:760px;margin:0 auto;}
+.news-card{display:grid;grid-template-columns:148px 1fr;gap:0;background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.news-card.no-photo{grid-template-columns:1fr;}
+.news-card img{width:100%;height:100%;min-height:110px;object-fit:cover;display:block;}
+.news-card-body{padding:.9rem 1rem 1rem;}
+.news-meta{display:flex;gap:.6rem;align-items:center;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;}
+.news-badge{color:#1a120c;background:var(--gold2);border-radius:99px;padding:.12rem .45rem;font-weight:700;letter-spacing:.06em;}
+.news-card h3{font-family:'Cinzel',serif;font-size:1.05rem;color:var(--text);margin:0 0 .35rem;}
+.news-card p{font-size:.9rem;line-height:1.55;color:var(--dim);margin:0;}
+.news-empty{text-align:center;color:var(--dim);padding:1.2rem 0 0;}
+.news-form{max-width:760px;margin:0 auto 1.4rem;display:flex;flex-direction:column;gap:.55rem;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1rem;}
+.news-form-title{font-family:'Cinzel',serif;color:var(--gold2);}
+.news-form .fi{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:.7rem .8rem;font-family:inherit;}
+.news-form-note{font-size:.78rem;color:var(--dim);}
+.news-form .bgold{align-self:flex-start;}
+@media(max-width:700px){.news-card{grid-template-columns:1fr;}.news-card img{height:160px;}}
 .news-app{max-width:760px;margin:0 auto;}
 .news-feature{background:var(--bg2);border:1px solid var(--border);border-radius:18px;overflow:hidden;}
 .news-feature-photo{height:320px;display:flex;align-items:center;justify-content:center;background:
@@ -653,6 +669,16 @@ header{padding-top:env(safe-area-inset-top);}
     </div>
   </section>
 
+  <div class="home-sec" id="homeNews">
+    <div class="hs-header">
+      <div class="sec-label" data-ru="Лента" data-en="Feed">Лента</div>
+      <div class="sec-title" data-ru="Новости" data-en="News">Новости</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="news-list" id="homeNewsList"></div>
+    <a class="hs-link" onclick="showPage('news')" data-ru="Все новости →" data-en="All news →">Все новости →</a>
+  </div>
+
   <div class="home-sec">
     <a class="hs-link" onclick="showPage('about')" data-ru="Подробнее о нас →" data-en="More About Us →">Подробнее о нас →</a>
   </div>
@@ -942,18 +968,17 @@ header{padding-top:env(safe-area-inset-top);}
 <!-- ══ NEWS ══ -->
 <div class="page" id="page-news">
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Последние события" data-en="Latest Events">Последние события</div><div class="pt" data-ru="Новости" data-en="News">Новости</div><div class="pd"></div></div></div>
-  <div class="pb"><div class="news-app">
-    <article class="news-feature">
-      <div class="news-feature-photo"><img src="https://raw.githubusercontent.com/mrvvv710/LeagueInterSelectPro/main/assets/logo-badge.png?v=6" alt=""></div>
-      <div class="news-feature-body">
-        <div class="nm" data-ru="Лента" data-en="Feed">Лента</div>
-        <h3 data-ru="Новостей пока нет" data-en="No news yet">Новостей пока нет</h3>
-        <p data-ru="Когда появится событие, здесь будет фото и короткая заметка." data-en="When something happens, a photo and a short note will be here.">Когда появится событие, здесь будет фото и короткая заметка.</p>
-      </div>
-    </article>
-  </div></div>
-
-
+  <div class="pb">
+    <form class="news-form" id="newsForm" onsubmit="return publishNews(event)">
+      <div class="news-form-title" data-ru="Новая новость" data-en="New post">Новая новость</div>
+      <input class="fi" id="newsTitle" required placeholder="Заголовок">
+      <textarea class="fi" id="newsText" rows="4" required placeholder="Текст"></textarea>
+      <input class="fi" id="newsImage" placeholder="Ссылка на фото, если есть">
+      <button class="bgold" type="submit" data-ru="Опубликовать" data-en="Publish">Опубликовать</button>
+      <div class="news-form-note" data-ru="Новость сразу появится первой и будет отмечена как новая." data-en="The post appears first right away and is marked as new.">Новость сразу появится первой и будет отмечена как новая.</div>
+    </form>
+    <div class="news-list" id="newsList"></div>
+  </div>
 </div>
 
 <!-- ══ EVENTS ══ -->
@@ -1695,6 +1720,50 @@ initCv();drawPts();
 const VALID=['home','league','calendar','partners','academy','rules','legends','teams','news','events','standings','players','documents','merch','gallery','contacts','sponsors','about','account','privacy'];
 const SPORTS=['hockey','football','basketball','waterpolo','figure','golf'];
 
+
+const NEWS_KEY='isp-news';
+function newsEscape(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&','<':'<','>':'>','"':'"',"'":'&#39;'}[c]));}
+function readLocalNews(){try{return JSON.parse(localStorage.getItem(NEWS_KEY)||'[]');}catch(e){return [];}}
+function newsStamp(ts){try{return new Date(ts).toLocaleDateString('ru-RU',{day:'numeric',month:'long',year:'numeric'});}catch(e){return '';}}
+function newsCard(n){
+  const fresh=Date.now()-n.ts<14*24*60*60*1000;
+  const img=n.image?'<img src="'+newsEscape(n.image)+'" alt="">':'';
+  return '<article class="news-card'+(n.image?'':' no-photo')+'">'
+    +img
+    +'<div class="news-card-body"><div class="news-meta"><span>'+newsEscape(newsStamp(n.ts))+'</span>'
+    +(fresh?'<span class="news-badge" data-ru="Новое" data-en="New">Новое</span>':'')
+    +'</div><h3>'+newsEscape(n.title)+'</h3><p>'+newsEscape(n.text)+'</p></div></article>';
+}
+function paintNews(items){
+  const home=document.getElementById('homeNewsList');
+  const page=document.getElementById('newsList');
+  const empty='<div class="news-empty" data-ru="Новостей пока нет" data-en="No news yet">Новостей пока нет</div>';
+  if(home) home.innerHTML=items.length?items.slice(0,3).map(newsCard).join(''):empty;
+  if(page) page.innerHTML=items.length?items.map(newsCard).join(''):empty;
+}
+function renderNews(){
+  const local=readLocalNews();
+  fetch('assets/news.json?v='+Date.now()).then(r=>r.ok?r.json():[]).catch(()=>[]).then(remote=>{
+    const map=new Map();
+    (Array.isArray(remote)?remote:[]).concat(local).forEach(n=>{if(n&&n.id)map.set(String(n.id),n);});
+    const items=[...map.values()].sort((a,b)=>(b.ts||0)-(a.ts||0));
+    paintNews(items);
+  });
+}
+function publishNews(e){
+  e.preventDefault();
+  const title=document.getElementById('newsTitle').value.trim();
+  const text=document.getElementById('newsText').value.trim();
+  const image=document.getElementById('newsImage').value.trim();
+  if(!title||!text)return false;
+  const item={id:Date.now().toString(36),ts:Date.now(),title:title,text:text,image:image};
+  const all=readLocalNews();
+  all.unshift(item);
+  localStorage.setItem(NEWS_KEY, JSON.stringify(all));
+  document.getElementById('newsForm').reset();
+  renderNews();
+  return false;
+}
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   const pg=document.getElementById('page-'+id);
@@ -1707,6 +1776,7 @@ function showPage(id){
   window.scrollTo({top:0,behavior:'smooth'});
   history.pushState({page:id},'','#'+id);
   if(id==='home'){cntDone=false;animateCounters();}
+  if(id==='home'||id==='news'){renderNews();}
   if(id==='gallery'){document.querySelectorAll('#page-gallery iframe[data-src]').forEach(function(f){if(!f.getAttribute('src'))f.setAttribute('src',f.getAttribute('data-src'));});}
   if(id==='calendar'||id==='league'||id==='events'||id==='home'){renderCalendar();}
   if(id==='account'){ispCheckSession();}
