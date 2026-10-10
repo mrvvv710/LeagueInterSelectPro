@@ -445,6 +445,8 @@ footer{background:rgba(0,0,0,.5);border-top:1px solid var(--border);padding:2.3r
 
 
 /* ROSTER / PLAYER */
+.players-block{margin:0 0 2.2rem;}
+.players-block h3{font-family:'Cinzel',serif;font-size:1.05rem;color:var(--gold2);margin:0 0 .9rem;}
 .roster-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1.2rem;}
 .player-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1rem;text-align:center;cursor:pointer;transition:all .25s;}
 .player-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 8px 25px rgba(0,0,0,.2);}
@@ -581,20 +583,19 @@ header{padding-top:env(safe-area-inset-top);}
         <div class="dropdown" id="eventsDropdown">
           <a onclick="showPage('events')" data-ru="Все ивенты" data-en="All Events" style="border-bottom:1px solid var(--border);margin-bottom:.3rem;padding-bottom:.6rem!important;">Все ивенты</a>
           <a onclick="showPage('calendar')" data-ru="Таблица ивентов" data-en="Events Calendar">Таблица ивентов</a>
-          <a onclick="showPage('standings')" data-ru="Турнирные таблицы" data-en="Standings">Турнирные таблицы</a>
+          <a onclick="showPage('standings')" data-ru="Сессии" data-en="Sessions">Сессии</a>
           <a onclick="showPage('teams')" data-ru="Команды" data-en="Teams">Команды</a>
           <a onclick="showPage('players')" data-ru="Игроки" data-en="Players">Игроки</a>
-          <a onclick="showPage('documents')" data-ru="Документы" data-en="Documents">Документы</a>
         </div>
       </div>
       <div class="nav-item" id="sportNavItem">
         <a onclick="toggleDropdown(event,'sportNavItem')" data-ru="Спорт ▾" data-en="Sport ▾">Спорт ▾</a>
         <div class="dropdown">
-          <a onclick="showPage('academy')" data-ru="Академия" data-en="Academy" style="border-bottom:1px solid var(--border);margin-bottom:.3rem;padding-bottom:.6rem!important;">Академия</a>
-          <a onclick="showPage('rules')" data-ru="Правила" data-en="Rules">Правила</a>
+          <a onclick="showPage('league')" data-ru="Лига ISP" data-en="ISP League" style="border-bottom:1px solid var(--border);margin-bottom:.3rem;padding-bottom:.6rem!important;">Лига ISP</a>
+          <a onclick="showPage('academy')" data-ru="Академия Select Pro" data-en="Select Pro Academy">Академия Select Pro</a>
           <a onclick="showPage('legends')" data-ru="Вызов Легенд" data-en="Legends Challenge">Вызов Легенд</a>
-          <a onclick="showPage('league')" data-ru="О лиге" data-en="About League">О лиге</a>
-          <a onclick="showPage('partners')" data-ru="Вузы и Лиги" data-en="Universities &amp; Leagues">Вузы и Лиги</a>
+          <a onclick="showPage('partners')" data-ru="Вузы и Лиги" data-en="Universities & Leagues">Вузы и Лиги</a>
+          <a onclick="showPage('rules')" data-ru="Регламент" data-en="Regulations">Регламент</a>
         </div>
       </div>
       <a onclick="showPage('gallery')" data-ru="Галерея" data-en="Gallery">Галерея</a>
@@ -630,15 +631,15 @@ header{padding-top:env(safe-area-inset-top);}
     <a onclick="showPage('news');toggleMenu()" data-ru="Новости" data-en="News">Новости</a>
     <a onclick="showPage('events');toggleMenu()" data-ru="Ивенты" data-en="Events">Ивенты</a>
     <a onclick="showPage('calendar');toggleMenu()" class="mm-sub" data-ru="— Таблица ивентов" data-en="— Events Calendar">— Таблица ивентов</a>
-    <a onclick="showPage('standings');toggleMenu()" class="mm-sub" data-ru="— Турнирные таблицы" data-en="— Standings">— Турнирные таблицы</a>
+    <a onclick="showPage('standings');toggleMenu()" class="mm-sub" data-ru="— Сессии" data-en="— Sessions">— Сессии</a>
     <a onclick="showPage('teams');toggleMenu()" class="mm-sub" data-ru="— Команды" data-en="— Teams">— Команды</a>
     <a onclick="showPage('players');toggleMenu()" class="mm-sub" data-ru="— Игроки" data-en="— Players">— Игроки</a>
-    <a onclick="showPage('documents');toggleMenu()" class="mm-sub" data-ru="— Документы" data-en="— Documents">— Документы</a>
     <a onclick="showPage('academy');toggleMenu()" data-ru="Спорт" data-en="Sport">Спорт</a>
-    <a onclick="showPage('rules');toggleMenu()" class="mm-sub" data-ru="— Правила" data-en="— Rules">— Правила</a>
+    <a onclick="showPage('league');toggleMenu()" class="mm-sub" data-ru="— Лига ISP" data-en="— ISP League">— Лига ISP</a>
+    <a onclick="showPage('academy');toggleMenu()" class="mm-sub" data-ru="— Академия Select Pro" data-en="— Select Pro Academy">— Академия Select Pro</a>
     <a onclick="showPage('legends');toggleMenu()" class="mm-sub" data-ru="— Вызов Легенд" data-en="— Legends Challenge">— Вызов Легенд</a>
-    <a onclick="showPage('league');toggleMenu()" class="mm-sub" data-ru="— О лиге" data-en="— About League">— О лиге</a>
-    <a onclick="showPage('partners');toggleMenu()" class="mm-sub" data-ru="— Вузы и Лиги" data-en="— Universities &amp; Leagues">— Вузы и Лиги</a>
+    <a onclick="showPage('partners');toggleMenu()" class="mm-sub" data-ru="— Вузы и Лиги" data-en="— Universities & Leagues">— Вузы и Лиги</a>
+    <a onclick="showPage('rules');toggleMenu()" class="mm-sub" data-ru="— Регламент" data-en="— Regulations">— Регламент</a>
     <a onclick="showPage('gallery');toggleMenu()" data-ru="Галерея" data-en="Gallery">Галерея</a>
     <a onclick="showPage('merch');toggleMenu()" data-ru="Атрибутика" data-en="Merchandise">Атрибутика</a>
     <a onclick="showPage('contacts');toggleMenu()" data-ru="Контакты" data-en="Contacts">Контакты</a>
@@ -690,7 +691,7 @@ header{padding-top:env(safe-area-inset-top);}
 <div class="page" id="page-academy">
   <div class="ph"><div class="ph-in">
     <div class="pl" data-ru="Направления" data-en="Directions">Направления</div>
-    <div class="pt" data-ru="Академия Селект Про" data-en="Select Pro Academy">Академия Селект Про</div>
+    <div class="pt" data-ru="Академия Select Pro" data-en="Select Pro Academy">Академия Select Pro</div>
     <div class="pd"></div>
   </div></div>
   <div class="pb">
@@ -733,7 +734,7 @@ header{padding-top:env(safe-area-inset-top);}
     </div>
   </div></div>
   <div class="sptabs">
-    <button class="sptab active" onclick="switchSportTab('hockey','info',this)" data-ru="О дисциплине" data-en="About">О дисциплине</button>
+    <button class="sptab active" onclick="switchSportTab('hockey','info',this)" data-ru="Регламент" data-en="Regulations">Регламент</button>
     <button class="sptab" onclick="switchSportTab('hockey','teams',this)" data-ru="Команды" data-en="Teams">Команды</button>
     <button class="sptab" onclick="switchSportTab('hockey','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
   </div>
@@ -765,7 +766,7 @@ header{padding-top:env(safe-area-inset-top);}
     </div>
   </div></div>
   <div class="sptabs">
-    <button class="sptab active" onclick="switchSportTab('football','info',this)" data-ru="О дисциплине" data-en="About">О дисциплине</button>
+    <button class="sptab active" onclick="switchSportTab('football','info',this)" data-ru="Регламент" data-en="Regulations">Регламент</button>
     <button class="sptab" onclick="switchSportTab('football','teams',this)" data-ru="Команды" data-en="Teams">Команды</button>
     <button class="sptab" onclick="switchSportTab('football','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
   </div>
@@ -797,7 +798,7 @@ header{padding-top:env(safe-area-inset-top);}
     </div>
   </div></div>
   <div class="sptabs">
-    <button class="sptab active" onclick="switchSportTab('basketball','info',this)" data-ru="О дисциплине" data-en="About">О дисциплине</button>
+    <button class="sptab active" onclick="switchSportTab('basketball','info',this)" data-ru="Регламент" data-en="Regulations">Регламент</button>
     <button class="sptab" onclick="switchSportTab('basketball','teams',this)" data-ru="Команды" data-en="Teams">Команды</button>
     <button class="sptab" onclick="switchSportTab('basketball','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
   </div>
@@ -828,7 +829,7 @@ header{padding-top:env(safe-area-inset-top);}
     </div>
   </div></div>
   <div class="sptabs">
-    <button class="sptab active" onclick="switchSportTab('waterpolo','info',this)" data-ru="О дисциплине" data-en="About">О дисциплине</button>
+    <button class="sptab active" onclick="switchSportTab('waterpolo','info',this)" data-ru="Регламент" data-en="Regulations">Регламент</button>
     <button class="sptab" onclick="switchSportTab('waterpolo','teams',this)" data-ru="Команды" data-en="Teams">Команды</button>
     <button class="sptab" onclick="switchSportTab('waterpolo','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
   </div>
@@ -859,7 +860,7 @@ header{padding-top:env(safe-area-inset-top);}
     </div>
   </div></div>
   <div class="sptabs">
-    <button class="sptab active" onclick="switchSportTab('figure','info',this)" data-ru="О дисциплине" data-en="About">О дисциплине</button>
+    <button class="sptab active" onclick="switchSportTab('figure','info',this)" data-ru="Регламент" data-en="Regulations">Регламент</button>
     <button class="sptab" onclick="switchSportTab('figure','teams',this)" data-ru="Команды" data-en="Teams">Команды</button>
     <button class="sptab" onclick="switchSportTab('figure','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
   </div>
@@ -892,7 +893,7 @@ header{padding-top:env(safe-area-inset-top);}
     </div>
   </div></div>
   <div class="sptabs">
-    <button class="sptab active" onclick="switchSportTab('golf','info',this)" data-ru="О дисциплине" data-en="About">О дисциплине</button>
+    <button class="sptab active" onclick="switchSportTab('golf','info',this)" data-ru="Регламент" data-en="Regulations">Регламент</button>
     <button class="sptab" onclick="switchSportTab('golf','teams',this)" data-ru="Команды" data-en="Teams">Команды</button>
     <button class="sptab" onclick="switchSportTab('golf','events',this)" data-ru="Ивенты" data-en="Events">Ивенты</button>
   </div>
@@ -971,14 +972,6 @@ header{padding-top:env(safe-area-inset-top);}
 <div class="page" id="page-news">
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Последние события" data-en="Latest Events">Последние события</div><div class="pt" data-ru="Новости" data-en="News">Новости</div><div class="pd"></div></div></div>
   <div class="pb">
-    <form class="news-form" id="newsForm" onsubmit="return publishNews(event)">
-      <div class="news-form-title" data-ru="Новая новость" data-en="New post">Новая новость</div>
-      <input class="fi" id="newsTitle" required placeholder="Заголовок">
-      <textarea class="fi" id="newsText" rows="4" required placeholder="Текст"></textarea>
-      <input class="fi" id="newsImage" placeholder="Ссылка на фото, если есть">
-      <button class="bgold" type="submit" data-ru="Опубликовать" data-en="Publish">Опубликовать</button>
-      <div class="news-form-note" data-ru="Новость сразу появится первой и будет отмечена как новая." data-en="The post appears first right away and is marked as new.">Новость сразу появится первой и будет отмечена как новая.</div>
-    </form>
     <div class="news-list" id="newsList"></div>
   </div>
 </div>
@@ -1015,20 +1008,20 @@ header{padding-top:env(safe-area-inset-top);}
 
 <!-- ══ STANDINGS ══ -->
 <div class="page" id="page-standings">
-  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Сезон 2024–2025" data-en="Season 2024–2025">Сезон 2024–2025</div><div class="pt" data-ru="Турнирные таблицы" data-en="Standings">Турнирные таблицы</div><div class="pd"></div></div></div>
-  <div class="pb"><div class="cs"><div class="cs-i">🏆</div><div class="cs-t" data-ru="Таблицы скоро появятся" data-en="Standings coming soon">Таблицы скоро появятся</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div></div>
+  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Сезон 2024–2025" data-en="Season 2024–2025">Сезон 2024–2025</div><div class="pt" data-ru="Сессии" data-en="Sessions">Сессии</div><div class="pd"></div></div></div>
+  <div class="pb"><div class="cs"><div class="cs-i">🏆</div><div class="cs-t" data-ru="Сессии скоро появятся" data-en="Sessions coming soon">Сессии скоро появятся</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div></div>
 </div>
 
 <!-- ══ PLAYERS ══ -->
 <div class="page" id="page-players">
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Состав" data-en="Roster">Состав</div><div class="pt" data-ru="Игроки" data-en="Players">Игроки</div><div class="pd"></div></div></div>
-  <div class="pb"><div class="cs"><div class="cs-i">👤</div><div class="cs-t" data-ru="Профили игроков скоро появятся" data-en="Player profiles coming soon">Профили игроков скоро появятся</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div></div>
+  <div class="pb"><div id="allPlayers"></div></div>
 </div>
 
 
 <!-- ══ RULES ══ -->
 <div class="page" id="page-rules">
-  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Лига и Академия" data-en="League and Academy">Лига и Академия</div><div class="pt" data-ru="Правила участия" data-en="Participation rules">Правила участия</div><div class="pd"></div></div></div>
+  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Лига и Академия" data-en="League and Academy">Лига и Академия</div><div class="pt" data-ru="Регламент" data-en="Regulations">Регламент</div><div class="pd"></div></div></div>
   <div class="pb">
     <div class="rules" id="rulesContentRu">
       <p>Лига «Интер Селект Про» и Академия «Селект Про» — для тех, кто совмещает учёбу и спорт.</p>
@@ -1113,12 +1106,6 @@ header{padding-top:env(safe-area-inset-top);}
   </div>
 </div>
 
-<!-- ══ DOCUMENTS ══ -->
-<div class="page" id="page-documents">
-  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Официальные файлы" data-en="Official Files">Официальные файлы</div><div class="pt" data-ru="Документы" data-en="Documents">Документы</div><div class="pd"></div></div></div>
-  <div class="pb"><div class="cs"><div class="cs-i">📄</div><div class="cs-t" data-ru="Документы скоро появятся" data-en="Documents coming soon">Документы скоро появятся</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div></div>
-</div>
-
 <!-- ══ GALLERY ══ -->
 <div class="page" id="page-gallery">
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Фото и видео" data-en="Photos & Videos">Фото и видео</div><div class="pt" data-ru="Галерея" data-en="Gallery">Галерея</div><div class="pd"></div></div></div>
@@ -1131,10 +1118,6 @@ header{padding-top:env(safe-area-inset-top);}
       <div class="gal-card" onclick="openPhoto('https://interselectpro.ru/assets/gal-01.jpg')">
         <div class="gal-thumb"><img src="https://interselectpro.ru/assets/gal-01.jpg" alt="Круглый стол"></div>
         <div class="gal-title" data-ru="Круглый стол" data-en="Round table">Круглый стол</div>
-      </div>
-      <div class="gal-card" onclick="openPhoto('https://interselectpro.ru/assets/gal-02.jpg')">
-        <div class="gal-thumb"><img src="https://interselectpro.ru/assets/gal-02.jpg" alt="Конференция"></div>
-        <div class="gal-title" data-ru="Конференция" data-en="Conference">Конференция</div>
       </div>
       <div class="gal-card" onclick="openPhoto('https://interselectpro.ru/assets/gal-03.jpg')">
         <div class="gal-thumb"><img src="https://interselectpro.ru/assets/gal-03.jpg" alt="Командное фото"></div>
@@ -1160,7 +1143,7 @@ header{padding-top:env(safe-area-inset-top);}
     </div>
     <form id="writeForm" class="write-box" onsubmit="return submitWrite(event)">
       <div class="login-title" data-ru="Написать" data-en="Write">Написать</div>
-      <div class="login-sub" data-ru="Откроется почта с готовым письмом на info@interselectpro.ru" data-en="Your mail app will open with a message to info@interselectpro.ru">Откроется почта с готовым письмом на info@interselectpro.ru</div>
+      <div class="login-sub" data-ru="Откроется почта с готовым письмом на spsvr24@gmail.com" data-en="Your mail app will open with a message to spsvr24@gmail.com">Откроется почта с готовым письмом на spsvr24@gmail.com</div>
       <div class="fg"><label data-ru="Имя" data-en="Name">Имя</label><input id="wName" class="fi" required></div>
       <div class="fg"><label data-ru="Ваш email" data-en="Your email">Ваш email</label><input id="wEmail" class="fi" type="email" required></div>
       <div class="fg"><label data-ru="Сообщение" data-en="Message">Сообщение</label><textarea id="wMsg" class="fi" rows="5" required></textarea></div>
@@ -1168,9 +1151,9 @@ header{padding-top:env(safe-area-inset-top);}
       <div class="autoreply" id="writeReply"></div>
     </form>
     <div class="cg">
-      <div class="ccard"><span class="cci">📍</span><div><div class="ccl" data-ru="Адрес" data-en="Address">Адрес</div><div class="ccv" data-ru="Укажите ваш адрес" data-en="Your address here">Укажите ваш адрес</div></div></div>
-      <div class="ccard"><span class="cci">📞</span><div><div class="ccl" data-ru="Телефон" data-en="Phone">Телефон</div><div class="ccv">+7 (___) ___-__-__</div></div></div>
-      <div class="ccard"><span class="cci">✉️</span><div><div class="ccl">Email</div><div class="ccv">info@interselectpro.ru</div></div></div>
+      <div class="ccard"><span class="cci">📍</span><div><div class="ccl" data-ru="Адрес" data-en="Address">Адрес</div><div class="ccv" data-ru="г. Калининград, улица Аллея Смелых, 80, АНО Селект Про Спорт" data-en="Kaliningrad, Alleya Smelykh 80, ANO Select Pro Sport">г. Калининград, улица Аллея Смелых, 80, АНО Селект Про Спорт</div></div></div>
+      <div class="ccard"><span class="cci">📞</span><div><div class="ccl" data-ru="Телефон" data-en="Phone">Телефон</div><div class="ccv"><a href="tel:+79057415544">+79057415544</a> (MAX)</div></div></div>
+      <div class="ccard"><span class="cci">✉️</span><div><div class="ccl">Email</div><div class="ccv">spsvr24@gmail.com</div></div></div>
       <div class="ccard"><span class="cci">📱</span><div><div class="ccl" data-ru="Соц. сети" data-en="Social Media">Соц. сети</div><div class="ccv">VK · Telegram · Instagram</div></div></div>
     </div>
     <div class="mapw">
@@ -1206,7 +1189,7 @@ header{padding-top:env(safe-area-inset-top);}
         <button class="bgold" type="button" onclick="askInvestor('cluster')" data-ru="Запросить материалы" data-en="Request materials">Запросить материалы</button>
       </article>
     </div>
-    <p class="inv-foot"><span data-ru="По вопросам: " data-en="Contact: ">По вопросам: </span><a href="mailto:info@interselectpro.ru">info@interselectpro.ru</a></p>
+    <p class="inv-foot"><span data-ru="По вопросам: " data-en="Contact: ">По вопросам: </span><a href="mailto:spsvr24@gmail.com">spsvr24@gmail.com</a></p>
   </div>
 </div>
 
@@ -1243,7 +1226,7 @@ header{padding-top:env(safe-area-inset-top);}
 
 <!-- ══ LEAGUE ══ -->
 <div class="page" id="page-league">
-  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Об организации" data-en="About the Organization">Об организации</div><div class="pt" data-ru="Лига" data-en="League">Лига</div><div class="pd"></div></div></div>
+  <div class="ph"><div class="ph-in"><div class="pl" data-ru="Об организации" data-en="About the Organization">Об организации</div><div class="pt" data-ru="Лига ISP" data-en="ISP League">Лига ISP</div><div class="pd"></div></div></div>
   <div class="pb">
     <div class="cs"><div class="cs-i">🏛️</div><div class="cs-t" data-ru="Информация о лиге скоро появится" data-en="League information coming soon">Информация о лиге скоро появится</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div>
   </div>
@@ -1354,7 +1337,7 @@ header{padding-top:env(safe-area-inset-top);}
     </div>
     <form id="merchForm" class="write-box" onsubmit="return submitMerch(event)">
       <div class="login-title" data-ru="Заказ" data-en="Order">Заказ</div>
-      <div class="login-sub" data-ru="Заявка откроется в почте и уйдёт на info@interselectpro.ru" data-en="The request opens in your mail app, addressed to info@interselectpro.ru">Заявка откроется в почте и уйдёт на info@interselectpro.ru</div>
+      <div class="login-sub" data-ru="Заявка откроется в почте и уйдёт на spsvr24@gmail.com" data-en="The request opens in your mail app, addressed to spsvr24@gmail.com">Заявка откроется в почте и уйдёт на spsvr24@gmail.com</div>
       <div class="fg"><label data-ru="Вещь" data-en="Item">Вещь</label>
         <select id="mItem" class="fi" required>
           <option value="shirt" data-ru="Футболка" data-en="T-shirt">Футболка</option>
@@ -1568,7 +1551,7 @@ header{padding-top:env(safe-area-inset-top);}
       <p>Оператор оставляет за собой право вносить изменения в настоящую Политику. Актуальная версия всегда доступна на данной странице.</p>
 
       <h3>10. Контакты</h3>
-      <p>По всем вопросам, связанным с обработкой персональных данных, вы можете обратиться по адресу: info@interselectpro.ru</p>
+      <p>По всем вопросам, связанным с обработкой персональных данных, вы можете обратиться по адресу: spsvr24@gmail.com</p>
     </div>
 
     <div class="legal-text" id="privacyContentEn" style="display:none;">
@@ -1622,7 +1605,7 @@ header{padding-top:env(safe-area-inset-top);}
       <p>The Operator reserves the right to make changes to this Policy. The current version is always available on this page.</p>
 
       <h3>10. Contact</h3>
-      <p>For any questions related to the processing of personal data, please contact: info@interselectpro.ru</p>
+      <p>For any questions related to the processing of personal data, please contact: spsvr24@gmail.com</p>
     </div>
   </div>
 </div>
@@ -1723,7 +1706,7 @@ window.addEventListener('resize',initCv);
 initCv();drawPts();
 
 // PAGES
-const VALID=['home','league','calendar','partners','academy','rules','legends','teams','news','events','standings','players','documents','merch','gallery','contacts','sponsors','about','account','privacy'];
+const VALID=['home','league','calendar','partners','academy','rules','legends','teams','news','events','standings','players','merch','gallery','contacts','sponsors','about','account','privacy'];
 const SPORTS=['hockey','football','basketball','waterpolo','figure','golf'];
 
 
@@ -1748,27 +1731,10 @@ function paintNews(items){
   if(page) page.innerHTML=items.length?items.map(newsCard).join(''):empty;
 }
 function renderNews(){
-  const local=readLocalNews();
   fetch('assets/news.json?v='+Date.now()).then(r=>r.ok?r.json():[]).catch(()=>[]).then(remote=>{
-    const map=new Map();
-    (Array.isArray(remote)?remote:[]).concat(local).forEach(n=>{if(n&&n.id)map.set(String(n.id),n);});
-    const items=[...map.values()].sort((a,b)=>(b.ts||0)-(a.ts||0));
+    const items=(Array.isArray(remote)?remote:[]).filter(n=>n&&n.id).sort((a,b)=>(b.ts||0)-(a.ts||0));
     paintNews(items);
   });
-}
-function publishNews(e){
-  e.preventDefault();
-  const title=document.getElementById('newsTitle').value.trim();
-  const text=document.getElementById('newsText').value.trim();
-  const image=document.getElementById('newsImage').value.trim();
-  if(!title||!text)return false;
-  const item={id:Date.now().toString(36),ts:Date.now(),title:title,text:text,image:image};
-  const all=readLocalNews();
-  all.unshift(item);
-  localStorage.setItem(NEWS_KEY, JSON.stringify(all));
-  document.getElementById('newsForm').reset();
-  renderNews();
-  return false;
 }
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -1782,6 +1748,7 @@ function showPage(id){
   window.scrollTo({top:0,behavior:'smooth'});
   history.pushState({page:id},'','#'+id);
   if(id==='home'){cntDone=false;animateCounters();}
+  if(id==='players'){renderAllPlayers();}
   if(id==='home'||id==='news'){renderNews();}
   if(id==='gallery'){document.querySelectorAll('#page-gallery iframe[data-src]').forEach(function(f){if(!f.getAttribute('src'))f.setAttribute('src',f.getAttribute('data-src'));});}
   if(id==='calendar'||id==='league'||id==='events'||id==='home'){renderCalendar();}
@@ -1856,6 +1823,7 @@ function setLang(lang){
   const rEn = document.getElementById('rulesContentEn');
   if(rRu && rEn){ rRu.style.display = lang==='ru' ? 'block' : 'none'; rEn.style.display = lang==='en' ? 'block' : 'none'; }
   if(typeof applyMerchFilters==='function') applyMerchFilters();
+  if(typeof renderAllPlayers==='function') renderAllPlayers();
   if(_lastBreadcrumbTrail !== undefined) renderBreadcrumb(_lastBreadcrumbTrail);
   document.getElementById('btn-ru').classList.toggle('active',lang==='ru');
   document.getElementById('btn-en').classList.toggle('active',lang==='en');
@@ -1998,7 +1966,7 @@ function submitMerch(e){
   const note=document.getElementById('mNote').value.trim();
   const lang=localStorage.getItem('lang')||'ru';
   const body=['Вещь: '+item,'Вид спорта: '+sport,'Размер: '+size,'Имя: '+name,'Email: '+email,'',note].join('\n');
-  window.location.href='mailto:info@interselectpro.ru?subject='+encodeURIComponent('Заказ атрибутики Inter Select Pro')+'&body='+encodeURIComponent(body);
+  window.location.href='mailto:spsvr24@gmail.com?subject='+encodeURIComponent('Заказ атрибутики Inter Select Pro')+'&body='+encodeURIComponent(body);
   showReply('merchReply', lang==='ru'
     ? 'Заявка на '+item+' ('+sport+', размер '+size+') составлена. Отправьте открывшееся письмо. Цену и способ оплаты напишем на '+email+'.'
     : 'Order for '+item+' ('+sport+', size '+size+') is ready. Send the email that just opened. We will write the price and payment method to '+email+'.');
@@ -2012,7 +1980,7 @@ function submitWrite(e){
   const msg=document.getElementById('wMsg').value.trim();
   const lang=localStorage.getItem('lang')||'ru';
   const body=encodeURIComponent('Имя: '+name+'\nEmail: '+email+'\n\n'+msg);
-  window.location.href='mailto:info@interselectpro.ru?subject='+encodeURIComponent('Сообщение с сайта Inter Select Pro')+'&body='+body;
+  window.location.href='mailto:spsvr24@gmail.com?subject='+encodeURIComponent('Сообщение с сайта Inter Select Pro')+'&body='+body;
   showReply('writeReply', lang==='ru'
     ? name+', сообщение составлено. Отправьте открывшееся письмо. Ответ придёт на '+email+'.'
     : name+', the message is ready. Send the email that just opened. The reply will come to '+email+'.');
@@ -2033,7 +2001,7 @@ function submitApp(){
     return;
   }
   const body=['Имя: '+name,'Контакт: '+contact,'Вид спорта: '+sportName,'',note].join('\n');
-  window.location.href='mailto:info@interselectpro.ru?subject='+encodeURIComponent('Заявка в Select Pro')+'&body='+encodeURIComponent(body);
+  window.location.href='mailto:spsvr24@gmail.com?subject='+encodeURIComponent('Заявка в Select Pro')+'&body='+encodeURIComponent(body);
   showReply('fok', lang==='ru'
     ? name+', заявка составлена. Отправьте открывшееся письмо. Проверка занимает 1–3 рабочих дня, ответ придёт на '+contact+'.'
     : name+', the application is ready. Send the email that just opened. Review takes 1–3 business days. The reply will come to '+contact+'.');
@@ -2063,7 +2031,7 @@ function animateCounters(){
 
 // ── BREADCRUMBS ──
 const breadcrumbTrails = {
-  league:     [{ru:'Спорт',en:'Sport',action:()=>showPage('academy')},{ru:'О лиге',en:'About League'}],
+  league:     [{ru:'Спорт',en:'Sport',action:()=>showPage('academy')},{ru:'Лига ISP',en:'ISP League'}],
   calendar:   [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Таблица ивентов',en:'Events Calendar'}],
   partners:   [{ru:'Спорт',en:'Sport',action:()=>showPage('academy')},{ru:'Вузы и Лиги',en:'Universities & Leagues'}],
   academy:    [{ru:'Спорт',en:'Sport'}],
@@ -2071,11 +2039,10 @@ const breadcrumbTrails = {
   teams:      [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Команды',en:'Teams'}],
   news:       [{ru:'Новости',en:'News'}],
   events:     [{ru:'Ивенты',en:'Events'}],
-  standings:  [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Турнирные таблицы',en:'Standings'}],
+  standings:  [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Сессии',en:'Sessions'}],
   players:    [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Игроки',en:'Players'}],
-  documents:  [{ru:'Ивенты',en:'Events',action:()=>showPage('events')},{ru:'Документы',en:'Documents'}],
   merch:      [{ru:'Атрибутика',en:'Merchandise'}],
-  rules:      [{ru:'Правила',en:'Rules'}],
+  rules:      [{ru:'Регламент',en:'Regulations'}],
   gallery:    [{ru:'Галерея',en:'Gallery'}],
   contacts:   [{ru:'Контакты',en:'Contacts'}],
   sponsors:   [{ru:'Контакты',en:'Contacts',action:()=>showPage('contacts')},{ru:'Для инвесторов',en:'For Investors'}],
@@ -2163,6 +2130,23 @@ const teamsData = {
   golfclub:   { name:'Клуб гольфа ISP', nameEn:'ISP Golf Club', sport:'golf', emoji:'⛳', playerCount:8, players:genPlayers(8,'golf') },
 };
 
+function renderAllPlayers(){
+  const box=document.getElementById('allPlayers');
+  if(!box || typeof teamsData==='undefined') return;
+  const lang=localStorage.getItem('lang')||'ru';
+  const sports={hockey:['Хоккей','Hockey'],football:['Футбол','Football'],basketball:['Баскетбол','Basketball'],waterpolo:['Водное поло','Water Polo'],figure:['Фигурное катание','Figure Skating'],golf:['Гольф','Golf']};
+  box.innerHTML=Object.keys(teamsData).map(function(key){
+    const team=teamsData[key];
+    const sn=sports[team.sport]||['',''];
+    const cards=team.players.map(function(pl){
+      const name=lang==='ru'?pl.name:pl.nameEn;
+      const pos=lang==='ru'?pl.position:(posEn[pl.position]||pl.position);
+      return '<div class="player-card" onclick="showPlayerModal(\''+key+'\',\''+pl.id+'\')"><div class="player-avatar">'+pl.number+'</div><div class="player-card-name">'+name+'</div><div class="player-card-pos">'+pos+'</div></div>';
+    }).join('');
+    const title=(lang==='ru'?team.name:team.nameEn)+' · '+(lang==='ru'?sn[0]:sn[1]);
+    return '<div class="players-block"><h3>'+team.emoji+' '+title+'</h3><div class="roster-grid">'+cards+'</div></div>';
+  }).join('');
+}
 function showTeamPage(key){
   const team = teamsData[key];
   if(!team) return;
@@ -2234,18 +2218,18 @@ function switchPmTab(tab, btn){
 // ── SITE SEARCH ──
 const searchIndex = [
   {title:'Главная', titleEn:'Home', icon:'🏠', cat:'Страница', catEn:'Page', action:()=>showPage('home')},
-  {title:'Лига', titleEn:'League', icon:'🏛️', cat:'Страница', catEn:'Page', action:()=>showPage('league')},
-  {title:'Академия', titleEn:'Academy', icon:'🎓', cat:'Страница', catEn:'Page', action:()=>showPage('academy')},
-  {title:'Правила участия', titleEn:'Participation rules', icon:'📜', cat:'Страница', catEn:'Page', action:()=>showPage('rules')},
+  {title:'Лига ISP', titleEn:'ISP League', icon:'🏛️', cat:'Страница', catEn:'Page', action:()=>showPage('league')},
+  {title:'Академия Select Pro', titleEn:'Select Pro Academy', icon:'🎓', cat:'Страница', catEn:'Page', action:()=>showPage('academy')},
+  {title:'Регламент', titleEn:'Regulations', icon:'📜', cat:'Страница', catEn:'Page', action:()=>showPage('rules')},
   {title:'Вызов Легенд', titleEn:'Legends Challenge', icon:'⚔️', cat:'Страница', catEn:'Page', action:()=>showPage('legends')},
   {title:'Команды', titleEn:'Teams', icon:'👥', cat:'Страница', catEn:'Page', action:()=>showPage('teams')},
   {title:'Новости', titleEn:'News', icon:'📰', cat:'Страница', catEn:'Page', action:()=>showPage('news')},
   {title:'Ивенты', titleEn:'Events', icon:'🗓️', cat:'Страница', catEn:'Page', action:()=>showPage('events')},
   {title:'Таблица ивентов', titleEn:'Events Calendar', icon:'📅', cat:'Страница', catEn:'Page', action:()=>showPage('calendar')},
   {title:'Вузы и Лиги', titleEn:'Universities & Leagues', icon:'🎓', cat:'Страница', catEn:'Page', action:()=>showPage('partners')},
-  {title:'Турнирные таблицы', titleEn:'Standings', icon:'🏆', cat:'Страница', catEn:'Page', action:()=>showPage('standings')},
+  {title:'Сессии', titleEn:'Sessions', icon:'🏆', cat:'Страница', catEn:'Page', action:()=>showPage('standings')},
   {title:'Игроки', titleEn:'Players', icon:'👤', cat:'Страница', catEn:'Page', action:()=>showPage('players')},
-  {title:'Документы', titleEn:'Documents', icon:'📄', cat:'Страница', catEn:'Page', action:()=>showPage('documents')},
+  
   {title:'Атрибутика', titleEn:'Merchandise', icon:'👕', cat:'Страница', catEn:'Page', action:()=>showPage('merch')},
   {title:'Галерея', titleEn:'Gallery', icon:'📸', cat:'Страница', catEn:'Page', action:()=>showPage('gallery')},
   {title:'Контакты', titleEn:'Contacts', icon:'📍', cat:'Страница', catEn:'Page', action:()=>showPage('contacts')},
