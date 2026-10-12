@@ -146,7 +146,7 @@ nav a.active::after{left:8%;right:8%;}
 .news-card{cursor:pointer;}
 .news-feature{background:var(--bg2);border:1px solid var(--border);border-radius:18px;overflow:hidden;}
 .news-feature-photo{display:block;background:#0c1220;}
-.news-feature-photo img{width:100%;height:420px;object-fit:cover;object-position:center 30%;display:block;}
+.news-feature-photo img{width:100%;height:460px;object-fit:cover;object-position:center center;display:block;}
 .news-feature-body{padding:1.35rem 1.5rem 1.6rem;}
 .news-feature-body h2{font-family:'Cinzel',serif;font-size:1.65rem;line-height:1.25;color:var(--text);margin:.45rem 0 .75rem;}
 .news-lead{font-size:1.08rem!important;line-height:1.65!important;color:var(--text)!important;margin:0 0 1rem!important;}
@@ -698,6 +698,26 @@ header{padding-top:env(safe-area-inset-top);}
     <div class="pd"></div>
   </div></div>
   <div class="pb">
+    <div class="rules" data-langblock="ru">
+      <p>Академия «Селект Про» создана для тех, кто хочет получить максимум в спортивно-образовательном развитии — как участник, тренер или менеджер.</p>
+      <p>Здесь каждый получает максимально полное спортивное участие в ивентах своего вида, условия, которые позволяют совмещать интенсивную подготовку с учёбой, и поддержку в выполнении требований успешного обучения.</p>
+      <h3>Два направления</h3>
+      <ul>
+        <li>Скаут-продвижение участников по виду спорта.</li>
+        <li>Самые благоприятные условия для учёбы, проживания и комплексной подготовки.</li>
+      </ul>
+      <p>Система академии открывает перспективу трудоустройства и помогает выстраивать долгосрочную траекторию в спорте и за его пределами. Это среда, где спортивный рост и образование усиливают друг друга.</p>
+    </div>
+    <div class="rules" data-langblock="en" style="display:none">
+      <p>Select Pro Academy is for anyone who wants the most from sports and education — as a participant, a coach or a manager.</p>
+      <p>Each person gets the fullest possible sporting role in the events of their sport, conditions that let intensive training sit alongside study, and support in meeting the requirements of successful education.</p>
+      <h3>Two directions</h3>
+      <ul>
+        <li>Scout promotion of participants in their sport.</li>
+        <li>The best possible conditions for study, housing and complete preparation.</li>
+      </ul>
+      <p>The academy’s system opens a path to employment and helps people build a long trajectory in sport and beyond it. It is an environment where sporting growth and education strengthen each other.</p>
+    </div>
     <p class="academy-lead"><a class="rules-link" onclick="showPage('rules')" data-ru="Правила участия" data-en="Rules">Правила участия</a></p>
     <div class="sg">
     <div class="sc" onclick="showSportPage('hockey')">
@@ -1230,8 +1250,31 @@ header{padding-top:env(safe-area-inset-top);}
 <!-- ══ LEAGUE ══ -->
 <div class="page" id="page-league">
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Об организации" data-en="About the Organization">Об организации</div><div class="pt" data-ru="Лига ISP" data-en="ISP League">Лига ISP</div><div class="pd"></div></div></div>
-  <div class="pb">
-    <div class="cs"><div class="cs-i">🏛️</div><div class="cs-t" data-ru="Информация о лиге скоро появится" data-en="League information coming soon">Информация о лиге скоро появится</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div>
+<div class="pb">
+    <div class="rules" data-langblock="ru">
+      <p>Лига «Интер Селект Про» — высший формат спортивно-образовательных мероприятий. Максимальное число ивентов по всем шести видам спорта и продуманные сессии для команд-участниц. Всё собрано для одного: развития, мотивации и выхода на уровень элиты.</p>
+      <p>Участники не просто тренируются. Они проходят системные сессии, где на рост работает каждая деталь: техника, командное взаимодействие, принятие решений и характер. Формат выстроен так, чтобы человек видел прогресс и понимал, что может выйти на уровень легенд.</p>
+      <h3>Что даёт Лига «Интер Селект Про»</h3>
+      <ul>
+        <li>Самое плотное расписание ивентов среди всех форматов.</li>
+        <li>Глубоко проработанные сессии под каждую команду.</li>
+        <li>Постоянное развитие и сильная внутренняя мотивация.</li>
+        <li>Возможность закрепиться в элите и играть на уровне легенд.</li>
+      </ul>
+      <p>Лига «Интер Селект Про» — для тех, кто выбирает максимум.</p>
+    </div>
+    <div class="rules" data-langblock="en" style="display:none">
+      <p>The Inter Select Pro League is the top format of sports and education events. It has the fullest calendar across all six sports and sessions built for the teams taking part. Everything is aimed at development, motivation and a path to the elite.</p>
+      <p>Participants do more than train. They go through structured sessions in which every detail serves growth: technique, teamwork, decision-making and character. The format is built so a person can feel progress and see a way to the level of legends.</p>
+      <h3>What the Inter Select Pro League gives</h3>
+      <ul>
+        <li>The densest event schedule of all the formats.</li>
+        <li>Sessions worked out in depth for each team.</li>
+        <li>Steady development and strong inner motivation.</li>
+        <li>A chance to stay in the elite and play at the level of legends.</li>
+      </ul>
+      <p>The Inter Select Pro League is for those who choose the maximum.</p>
+    </div>
   </div>
 
   <div class="gd"></div>
@@ -1280,7 +1323,46 @@ header{padding-top:env(safe-area-inset-top);}
 <!-- ══ LEGENDS CHALLENGE ══ -->
 <div class="page" id="page-legends">
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Специальный формат" data-en="Special Format">Специальный формат</div><div class="pt" data-ru="Вызов Легенд" data-en="Legends Challenge">Вызов Легенд</div><div class="pd"></div></div></div>
-  <div class="pb"><div class="cs"><div class="cs-i">⚔️</div><div class="cs-t" data-ru="Раздел «Вызов Легенд» скоро появится" data-en="Legends Challenge section coming soon">Раздел «Вызов Легенд» скоро появится</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div></div>
+  <div class="pb">
+    <div class="rules" data-langblock="ru">
+      <p>«Вызов легенд» — смысловое сердце и высшая планка экосистемы АНО «Селект Про Спорт». Это не почётный знак, а рабочий инструмент, встроенный в Лигу «Интер Селект Про». Участие признанных спортсменов и людей индустрии задаёт уровень качества, престижа и мотивации, которого нет у обычного проекта.</p>
+      <h3>Статус и масштаб</h3>
+      <ul>
+        <li>Живой контакт. Легенды не смотрят со стороны: они входят в ивенты и сессии лиги как наставники, эксперты и идеологи.</li>
+        <li>Мост между поколениями. Знания, ментальность победителей и опыт тех, кто уже был наверху, передаются напрямую тем, кто делает первые главные шаги на аренах шести видов спорта.</li>
+      </ul>
+      <h3>Мотивация для участников 16–25 лет</h3>
+      <ul>
+        <li>Энергия преодоления. Когда ориентир — человек, который уже прошёл этот путь, а сессии идут при его участии, личная планка поднимается. Участник видит конкретный пример, а не лозунг.</li>
+        <li>Стимул к прогрессу. Ивент лиги — это шанс проявить себя перед мастерами, заявить о таланте и получить оценку от людей, которые сами играют на уровне элиты.</li>
+      </ul>
+      <h3>Спорт и интеллект</h3>
+      <ul>
+        <li>Воспитание лидеров. Масштаб личности измеряется не только медалями, но и умением созидать. Программа зовёт развиваться и на площадке, и в голове.</li>
+        <li>Шанс войти в историю. Грань между учеником и мастером здесь тоньше. Атлет, будущий скаут, спортивный менеджер или человек из образования может перенять эстафету и со временем сам войти в круг легенд.</li>
+      </ul>
+      <p>Итог простой: каждый ивент и каждая сессия лиги должны быть заряжены этой планкой. По шести видам спорта организация собирает среду, в которой молодёжь колледжей и вузов получает сильную мотивацию, снимает внутренние ограничения и растёт до уровня элиты.</p>
+    </div>
+    <div class="rules" data-langblock="en" style="display:none">
+      <p>The Legends Challenge is the meaning and the highest bar of the Select Pro Sport ecosystem. It is not an honorary badge. It is a working tool built into the Inter Select Pro League. Recognized athletes and people from the industry set a level of quality, prestige and motivation that an ordinary project does not have.</p>
+      <h3>Status and scale</h3>
+      <ul>
+        <li>Live contact. Legends do not watch from the side. They enter the league’s events and sessions as mentors, experts and voices of the idea.</li>
+        <li>A bridge between generations. Knowledge, a winner’s mindset and the experience of people who have already been at the top pass directly to those taking their first big steps in six sports.</li>
+      </ul>
+      <h3>Motivation for participants aged 16–25</h3>
+      <ul>
+        <li>The energy to go further. When the reference point is a person who has already walked the path, and sessions happen with that person involved, the personal bar rises. The participant sees a concrete example, not a slogan.</li>
+        <li>A reason to progress. A league event is a chance to show yourself to masters, to make a talent visible and to hear an assessment from people who themselves play at elite level.</li>
+      </ul>
+      <h3>Sport and intellect</h3>
+      <ul>
+        <li>Raising leaders. The scale of a person is measured not only by medals, but by the ability to build. The program asks young people to grow on the floor and in their thinking.</li>
+        <li>A chance to enter the story. The line between student and master is thinner here. An athlete, a future scout, a sports manager or someone in education can take up the baton and, in time, enter the circle of legends.</li>
+      </ul>
+      <p>The result is simple: every league event and every session should carry this standard. Across six sports the organization builds an environment in which college and university youth get strong motivation, drop inner limits and grow toward the elite.</p>
+    </div>
+  </div>
 </div>
 
 <!-- ══ MERCH (АТРИБУТИКА) ══ -->
@@ -1489,8 +1571,26 @@ header{padding-top:env(safe-area-inset-top);}
 <div class="page" id="page-partners">
   <div class="ph"><div class="ph-in"><div class="pl" data-ru="Сотрудничество" data-en="Cooperation">Сотрудничество</div><div class="pt" data-ru="Вузы и Лиги" data-en="Universities &amp; Leagues">Вузы и Лиги</div><div class="pd"></div></div></div>
   <div class="pb">
-    <p class="ap" style="margin-bottom:2rem;" data-ru="Inter Select Pro сотрудничает с ведущими вузами и спортивными лигами, создавая единую экосистему для развития спорта и образования." data-en="Inter Select Pro cooperates with leading universities and sports leagues, creating a unified ecosystem for the development of sports and education.">Inter Select Pro сотрудничает с ведущими вузами и спортивными лигами, создавая единую экосистему для развития спорта и образования.</p>
-    <div class="cs"><div class="cs-i">🎓</div><div class="cs-t" data-ru="Информация о партнёрах скоро появится" data-en="Partner information coming soon">Информация о партнёрах скоро появится</div><div class="cs-s" data-ru="Следите за обновлениями" data-en="Stay tuned">Следите за обновлениями</div></div>
+    <div class="rules" data-langblock="ru">
+      <p>С самого старта АНО «Селект Про Спорт» делает ставку на связку образования и молодёжного спорта. На запуске инициативы закрепляются соглашениями с прогрессивными структурами академической и спортивной среды международного уровня.</p>
+      <h3>Старт и ключевые партнёры</h3>
+      <ul>
+        <li>Санкт-Петербургский политехнический университет Петра Великого. Заключён официальный договор о сотрудничестве с одним из ведущих вузов, в лице Валерия Петровича Сущенко. Это задаёт академический и организационный стандарт работы со студенческой молодёжью.</li>
+        <li>Ведущие студенческие лиги и ассоциации. Старт опирается на взаимодействие со структурами, которые развивают дисциплины на стыке образования и спорта — в частности хоккей, баскетбол, водное поло и гольф.</li>
+      </ul>
+      <h3>Куда это растёт</h3>
+      <p>Этот старт — только начало. Задача — кратно расширить партнёрство и привлечь к ивентам и сессиям максимальное число вузов, студенческих лиг и ассоциаций международного уровня. Организация собирает образовательные и молодёжно-спортивные структуры в одну экосистему, где участникам 16–25 лет открываются возможности для роста, карьеры и выхода на уровень элиты.</p>
+    </div>
+    <div class="rules" data-langblock="en" style="display:none">
+      <p>From the first day, Select Pro Sport has bet on the link between education and youth sport. At launch, the initiatives are fixed in agreements with progressive academic and sporting structures of international standing.</p>
+      <h3>The start and the key partners</h3>
+      <ul>
+        <li>Peter the Great St. Petersburg Polytechnic University. An official cooperation agreement has been signed with one of the leading universities, in the person of Valery Petrovich Sushchenko. It sets the academic and organizational standard for work with student youth.</li>
+        <li>Leading student leagues and associations. The start rests on work with structures that develop sports where education and competition meet — in particular hockey, basketball, water polo and golf.</li>
+      </ul>
+      <h3>Where this grows</h3>
+      <p>This start is only the beginning. The task is to multiply the partnership and bring the largest possible number of international-level universities, student leagues and associations into the events and sessions. The organization gathers educational and youth-sport structures into one ecosystem, where participants aged 16–25 get room to grow, to build a career and to reach the elite.</p>
+    </div>
   </div>
 </div>
 
@@ -1854,6 +1954,7 @@ function setLang(lang){
   const rRu = document.getElementById('rulesContentRu');
   const rEn = document.getElementById('rulesContentEn');
   if(rRu && rEn){ rRu.style.display = lang==='ru' ? 'block' : 'none'; rEn.style.display = lang==='en' ? 'block' : 'none'; }
+  document.querySelectorAll('[data-langblock]').forEach(function(el){el.style.display=el.getAttribute('data-langblock')===lang?'block':'none';});
   if(typeof applyMerchFilters==='function') applyMerchFilters();
   if(typeof renderAllPlayers==='function') renderAllPlayers();
   if(typeof renderNews==='function') renderNews();
